@@ -6,12 +6,12 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:38:23 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/18 22:25:34 by eushin           ###   ########.fr       */
+/*   Updated: 2023/03/19 22:10:33 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	count_word(char *tmp, char c)
+static int	count_word(char *tmp, char c)
 {
 	int	i;
 	int	word_cnt;
@@ -30,7 +30,7 @@ int	count_word(char *tmp, char c)
 	return (word_cnt);
 }
 
-char	**ft_free(char **ret, int i)
+static char	**ft_free(char **ret, int i)
 {
 	while (i)
 		free(ret[--i]);
@@ -38,7 +38,7 @@ char	**ft_free(char **ret, int i)
 	return (0);
 }
 
-char	**ft_malloc(char **board, char *tmp, char c, int word_cnt)
+static char	**ft_malloc(char **board, char *tmp, char c, int word_cnt)
 {
 	int	i;
 	int	len;
@@ -63,7 +63,7 @@ char	**ft_malloc(char **board, char *tmp, char c, int word_cnt)
 	return (board);
 }
 
-char	**fill_string(char **board, char *tmp, char c, int word_cnt)
+static char	**fill_string(char **board, char *tmp, char c, int word_cnt)
 {
 	int	i;
 	int	j;

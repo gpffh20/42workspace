@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:36:23 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/19 21:39:59 by eushin           ###   ########.fr       */
+/*   Updated: 2023/03/19 22:10:05 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 		end--;
 	res = ft_substr(s1, start, end - start);
 	return (res);
-}
-
-#include <stdio.h>
-int main()
-{
-	printf("%s\n", ft_strtrim("ancde", "123"));
-	return (0);
 }

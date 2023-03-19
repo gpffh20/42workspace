@@ -6,12 +6,12 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 15:54:55 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/19 19:32:47 by eushin           ###   ########.fr       */
+/*   Updated: 2023/03/19 22:10:50 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	get_len(long long n, int len)
+static int	get_len(long long n, int len)
 {
 	if (n < 0)
 	{
@@ -26,7 +26,7 @@ int	get_len(long long n, int len)
 	return (len);
 }		
 
-char	*fill_str(long long n, int len)
+static char	*fill_str(long long n, int len)
 {
 	char	*str;
 	int		flag;
