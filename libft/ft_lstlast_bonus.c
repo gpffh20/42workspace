@@ -21,7 +21,7 @@ t_list	*ft_lstlast(t_list *lst)
 	while (cnt != 1)
 	{
 		tmp = tmp->next;
-		size--;
+		cnt--;
 	}
 	return (tmp);
 }
