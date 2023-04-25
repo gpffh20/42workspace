@@ -37,7 +37,7 @@ bonus:
 	make BONUS=1 all
 
 clean:
-		rm -f ${OBJS} ${OBJS_S}
+		rm -f ${OBJS} ${OBJS_b}
 
 fclean: clean
 		rm -f ${NAME}
