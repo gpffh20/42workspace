@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 16:22:37 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/27 16:22:43 by eushin           ###   ########.fr       */
+/*   Created: 2023/04/27 19:10:13 by eushin            #+#    #+#             */
+/*   Updated: 2023/04/27 19:17:56 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*dst;
+	t_list *ret;
 
-	dst = (t_list *)malloc(sizeof(t_list));
-	if (!dst)
-		return (0);
-	dst->content = content;
-	dst->next = NULL;
-	return (dst);
+	ret = ft_lstnew(NULL);
+	ft_lstadd_front(*ret, f(lst->content));
+
+	while (lst != NULL)
+	{
+
+
+	}
 }

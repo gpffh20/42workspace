@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:12:20 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/18 00:14:55 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/27 16:07:23 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*tmp_d;
 	unsigned char	*tmp_s;
 
+	if (len == 0 || (dst == NULL && src == NULL))
+		return (dst);
 	tmp_d = (unsigned char *)dst;
 	tmp_s = (unsigned char *)src;
 	if (dst < src)
