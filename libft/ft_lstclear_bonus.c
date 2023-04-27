@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:18:15 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/27 19:36:32 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/27 20:19:59 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -21,7 +21,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	{
 		next = tmp->next;
 		ft_lstdelone(tmp, del);
-		tmp = next
+		tmp = next;
 	}
 	*lst = NULL;
 }
