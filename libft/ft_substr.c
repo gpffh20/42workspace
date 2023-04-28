@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 16:26:35 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/18 17:39:54 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:53:44 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	else
 		str = malloc(sizeof(char) * len + 1);
 	if (!str)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (s[i] && s[start + i] && i < len)
 	{

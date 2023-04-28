@@ -6,10 +6,9 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:25:07 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/17 15:07:04 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:41:53 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
@@ -19,7 +18,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*tmp_s;
 
 	if (dst == src)
-		return (0);
+		return (NULL);
 	i = 0;
 	tmp_d = (unsigned char *)dst;
 	tmp_s = (unsigned char *)src;

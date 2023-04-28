@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:38:23 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/19 22:10:33 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:44:19 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -35,7 +35,7 @@ static char	**ft_free(char **ret, int i)
 	while (i)
 		free(ret[--i]);
 	free(ret);
-	return (0);
+	return (NULL);
 }
 
 static char	**ft_malloc(char **board, char *tmp, char c, int word_cnt)
@@ -94,12 +94,12 @@ char	**ft_split(char const *s, char c)
 	char	*tmp;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	tmp = (char *)s;
 	word_cnt = count_word(tmp, c);
 	board = (char **)malloc(sizeof(char *) * (word_cnt + 1));
 	if (!board)
-		return (0);
+		return (NULL);
 	board[word_cnt] = 0;
 	board = ft_malloc(board, tmp, c, word_cnt);
 	if (!board)

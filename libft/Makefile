@@ -31,6 +31,7 @@ all:	${NAME}
 	${CC} ${CFLAGS} -c $< -o $@ -I${INC}
 
 bonus:
+		sleep 1
 		make BONUS=1 all
 
 clean:

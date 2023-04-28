@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:36:23 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/19 22:10:05 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:48:43 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	unsigned int	end;
 
 	if (!s1 || !set)
-		return (0);
+		return (NULL);
 	start = 0;
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;

@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:30:03 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/25 15:39:09 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:18:35 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size = ft_strlen(src);
 	dst = (char *)malloc(sizeof(char) * (size + 1));
 	if (!dst)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{

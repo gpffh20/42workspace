@@ -6,11 +6,9 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:41:24 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/25 15:52:47 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:45:42 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

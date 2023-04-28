@@ -6,10 +6,9 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:12:20 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/27 16:07:23 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:42:13 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)

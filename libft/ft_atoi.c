@@ -6,15 +6,16 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:18:42 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/18 10:21:06 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:36:49 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	is_minus;
-	int	num;
+	int			i;
+	int			is_minus;
+	int			ret;
+	long long	num;
 
 	i = 0;
 	is_minus = 1;
@@ -33,5 +34,6 @@ int	ft_atoi(const char *str)
 		num = num * 10 + (str[i] - '0');
 		i++;
 	}
-	return (is_minus * num);
+	ret = is_minus * num;
+	return (ret);
 }

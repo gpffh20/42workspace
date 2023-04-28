@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 15:54:55 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/19 22:10:50 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:39:18 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -34,7 +34,7 @@ static char	*fill_str(long long n, int len)
 	flag = len;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
-		return (0);
+		return (NULL);
 	str[len] = 0;
 	if (n < 0)
 	{

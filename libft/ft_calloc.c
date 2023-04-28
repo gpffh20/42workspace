@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:19:53 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/27 16:08:34 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:37:52 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	tmp = malloc(count * size);
 	if (!tmp)
-		return (0);
+		return (NULL);
 	tmp = ft_memset(tmp, 0, count * size);
 	return (tmp);
 }
