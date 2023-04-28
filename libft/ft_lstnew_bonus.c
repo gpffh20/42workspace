@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:22:37 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/27 16:22:43 by eushin           ###   ########.fr       */
+/*   Updated: 2023/04/28 17:32:22 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,7 +17,7 @@ t_list	*ft_lstnew(void *content)
 
 	dst = (t_list *)malloc(sizeof(t_list));
 	if (!dst)
-		return (0);
+		return (NULL);
 	dst->content = content;
 	dst->next = NULL;
 	return (dst);
