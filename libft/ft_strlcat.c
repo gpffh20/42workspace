@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:31:01 by eushin            #+#    #+#             */
-/*   Updated: 2023/03/17 15:38:26 by eushin           ###   ########.fr       */
+/*   Updated: 2023/05/01 20:14:32 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	src_len = 0;
 	dst_len = 0;
 	idx = 0;
+	if (dst == 0 && dstsize == 0)
+		return (0);
 	while (src[src_len])
 		src_len++;
 	while (dst[dst_len])
