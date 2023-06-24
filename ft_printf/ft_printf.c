@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:32:14 by eushin            #+#    #+#             */
-/*   Updated: 2023/06/24 21:22:32 by eushin           ###   ########.fr       */
+/*   Updated: 2023/06/24 21:25:05 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -63,7 +63,7 @@ int	ft_printf(const char *format, ...)
 
 int main()
 {
-	printf("MY P) %d\n", ft_printf("ME: %s\n", "abc"));
+	printf("MY P) %d\n", ft_printf("ME: %c %s\n", 65, "abc"));
 	printf("ANS P) %d\n", printf("ANS: %s\n", "abc"));
 
 	return 0;
