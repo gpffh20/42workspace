@@ -6,25 +6,25 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:32:14 by eushin            #+#    #+#             */
-/*   Updated: 2023/06/25 21:20:17 by eushin           ###   ########.fr       */
+/*   Updated: 2023/06/25 21:40:19 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	find_format(va_list *ap, int *cnt, char format)
+void	find_format(va_list ap, int *cnt, char format)
 {
 	if (format == 'c')
-		print_char(va_arg(*ap, int), cnt);
+		print_char(va_arg(ap, int), cnt);
 	else if (format == 's')
-		print_str(va_arg(*ap, char *), cnt);
+		print_str(va_arg(ap, char *), cnt);
 	else if (format == 'p')
-		print_ptr(va_arg(*ap, size_t), cnt);
+		print_ptr(va_arg(ap, size_t), cnt);
 	else if (format == 'd' || format == 'i')
-		print_int(va_arg(*ap, int), cnt);
+		print_int(va_arg(ap, int), cnt);
 	else if (format == 'u')
-		print_unsignedint(va_arg(*ap, unsigned int), cnt);
+		print_unsignedint(va_arg(ap, unsigned int), cnt);
 	else if (format == 'x' || format == 'X')
-		print_hex(va_arg(*ap, unsigned int), cnt, format);
+		print_hex(va_arg(ap, unsigned int), cnt, format);
 	else if (format == '%')
 	{
 		write(1, "%", 1);
@@ -44,7 +44,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			find_format(&ap, &cnt, *format);
+			find_format(ap, &cnt, *format);
 		}
 		else
 		{
