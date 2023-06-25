@@ -14,6 +14,28 @@
 #include <stdio.h>
 #include <string.h>
 
+void	print_int(int nb, int *cnt)
+{
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		(*cnt)++;
+		return ;
+	}
+	if (nb < 0)
+	{
+		nb *= -1;
+		write(1, "-", 1);
+		(*cnt)++;
+	}
+	if (nb / 10 > 0)
+	{
+		print_int(nb / 10, cnt);
+	}
+	write(1, &"0123456789"[nb % 10], 1);
+	(*cnt)++;
+}
+
 void	print_str(char *var, int *cnt)
 {
 	write(1, var, strlen(var));
@@ -44,8 +66,8 @@ int	ft_printf(const char *format, ...)
 				print_str(va_arg(ap, char *), &cnt);
 //			else if (*format == 'p')
 //				print_ptr();
-//			else if (*format == 'd' || *format == 'i')
-//				print_int();
+			else if (*format == 'd' || *format == 'i')
+				print_int(va_arg(ap, int), &cnt);
 //			else if (*format == 'u')
 //				print_unsignedint();
 //			else if (*format == 'x' || *format == 'X')
@@ -63,8 +85,8 @@ int	ft_printf(const char *format, ...)
 
 int main()
 {
-	printf("MY P) %d\n", ft_printf("ME: %c %s\n", 65, "abc"));
-	printf("ANS P) %d\n", printf("ANS: %s\n", "abc"));
+	printf("MY P) %d\n", ft_printf("ME: %d %i\n", 65, 1234));
+	printf("ANS P) %d\n", printf("ANS: %d %i\n", 65, 1234));
 
 	return 0;
 }
