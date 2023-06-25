@@ -14,6 +14,29 @@
 #include <stdio.h>
 #include <string.h>
 
+void	print_hex(unsigned int nb, int *cnt, char format)
+{
+	if (nb / 16 > 0)
+	{
+		print_hex(nb / 16, cnt, format);
+	}
+	if (format == 'x')
+		write(1, &"0123456789abcdef"[nb % 16], 1);
+	else
+		write(1, &"0123456789ABCDEF"[nb % 16], 1);
+	(*cnt)++;
+}
+
+void	print_unsignedint(unsigned int nb, int *cnt)
+{
+	if (nb / 10 > 0)
+	{
+		print_unsignedint(nb / 10, cnt);
+	}
+	write(1, &"0123456789"[nb % 10], 1);
+	(*cnt)++;
+}
+
 void	print_int(int nb, int *cnt)
 {
 	if (nb == -2147483648)
@@ -68,10 +91,15 @@ int	ft_printf(const char *format, ...)
 //				print_ptr();
 			else if (*format == 'd' || *format == 'i')
 				print_int(va_arg(ap, int), &cnt);
-//			else if (*format == 'u')
-//				print_unsignedint();
-//			else if (*format == 'x' || *format == 'X')
-//				print_hex();
+			else if (*format == 'u')
+				print_unsignedint(va_arg(ap, unsigned int), &cnt);
+			else if (*format == 'x' || *format == 'X')
+				print_hex(va_arg(ap, unsigned int), &cnt, *format);
+			else if (*format == '%')
+			{
+				write(1, "%", 1);
+				cnt++;
+			}
 		}
 		else
 		{
@@ -85,8 +113,8 @@ int	ft_printf(const char *format, ...)
 
 int main()
 {
-	printf("MY P) %d\n", ft_printf("ME: %d %i\n", 65, 1234));
-	printf("ANS P) %d\n", printf("ANS: %d %i\n", 65, 1234));
+	printf("MY P) %d\n", ft_printf("ME: %x %X\n", 34, -3));
+	printf("ANS P) %d\n", printf("ANS: %x %X\n", 34, -3));
 
 	return 0;
 }
