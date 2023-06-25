@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:32:14 by eushin            #+#    #+#             */
-/*   Updated: 2023/06/24 21:25:05 by eushin           ###   ########.fr       */
+/*   Updated: 2023/06/25 19:12:26 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -14,17 +14,25 @@
 #include <stdio.h>
 #include <string.h>
 
-void	print_hex(unsigned int nb, int *cnt, char format)
+
+void	print_hex(size_t nb, int *cnt, char format)
 {
 	if (nb / 16 > 0)
 	{
 		print_hex(nb / 16, cnt, format);
 	}
-	if (format == 'x')
-		write(1, &"0123456789abcdef"[nb % 16], 1);
-	else
+	if (format == 'X')
 		write(1, &"0123456789ABCDEF"[nb % 16], 1);
+	else
+		write(1, &"0123456789abcdef"[nb % 16], 1);
 	(*cnt)++;
+}
+
+void	print_ptr(size_t var, int *cnt)
+{
+	write(1, "0x", 2);
+	(*cnt) += 2;
+	print_hex(var, cnt, 0);
 }
 
 void	print_unsignedint(unsigned int nb, int *cnt)
@@ -87,8 +95,8 @@ int	ft_printf(const char *format, ...)
 				print_char(va_arg(ap, int), &cnt);
 			else if (*format == 's')
 				print_str(va_arg(ap, char *), &cnt);
-//			else if (*format == 'p')
-//				print_ptr();
+			else if (*format == 'p')
+				print_ptr(va_arg(ap, size_t), &cnt);
 			else if (*format == 'd' || *format == 'i')
 				print_int(va_arg(ap, int), &cnt);
 			else if (*format == 'u')
@@ -109,12 +117,4 @@ int	ft_printf(const char *format, ...)
 		format++;
 	}
 	return (cnt);
-}
-
-int main()
-{
-	printf("MY P) %d\n", ft_printf("ME: %x %X\n", 34, -3));
-	printf("ANS P) %d\n", printf("ANS: %x %X\n", 34, -3));
-
-	return 0;
 }
