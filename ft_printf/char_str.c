@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   char_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 18:04:14 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/28 18:39:30 by eushin           ###   ########.fr       */
+/*   Created: 2023/06/25 20:13:24 by eushin            #+#    #+#             */
+/*   Updated: 2023/06/25 21:03:42 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	print_str(char *var, int *cnt)
 {
-	t_list	*tmp;
-
-	if (lst == NULL || new == NULL)
-		return ;
-	if (*lst == NULL)
+	if (var == NULL)
 	{
-		*lst = new;
+		write(1, "(null)", 6);
+		(*cnt) += 6;
 		return ;
 	}
-	tmp = ft_lstlast(*lst);
-	tmp->next = new;
+	write(1, var, ft_strlen(var));
+	(*cnt) += ft_strlen(var);
+}
+
+void	print_char(int var, int *cnt)
+{
+	write(1, &var, 1);
+	(*cnt)++;
 }

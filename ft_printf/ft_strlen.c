@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 01:27:33 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/28 18:50:45 by eushin           ###   ########.fr       */
+/*   Created: 2023/03/15 20:00:22 by eushin            #+#    #+#             */
+/*   Updated: 2023/06/25 20:02:42 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-char	*ft_strrchr(const char *s, int c)
+size_t	ft_strlen(const char *s)
 {
-	char	*tmp;
-	int		len;
+	size_t	len;
 
-	tmp = (char *)s;
+	if (s == 0)
+		return (0);
 	len = 0;
-	while (tmp[len])
+	while (s[len])
 		len++;
-	while (len >= 0)
-	{
-		if (tmp[len] == (char)c)
-			return (&tmp[len]);
-		len--;
-	}
-	return (0);
+	return (len);
 }
