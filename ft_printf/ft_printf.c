@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:32:14 by eushin            #+#    #+#             */
-/*   Updated: 2023/06/26 11:50:46 by eushin           ###   ########.fr       */
+/*   Updated: 2023/06/26 17:22:13 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -47,5 +47,6 @@ int	ft_printf(const char *format, ...)
 			cnt += write(1, format, 1);
 		format++;
 	}
+	va_end(ap);
 	return (cnt);
 }

@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 INC = ./
 
-SRCS = char_str.c ft_printf.c ft_strlen.c int_hex_ptr.c
+SRCS = ft_printf.c ft_strlen.c print_char.c print_int.c print_hex_ptr.c print_str.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -24,6 +24,7 @@ clean:
 fclean: clean
 		rm -f ${NAME}
 
-re: fclean all
+re: fclean
+	make all
 
 .PHONY: all clean fclean re
