@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:32:14 by eushin            #+#    #+#             */
-/*   Updated: 2023/06/25 21:40:19 by eushin           ###   ########.fr       */
+/*   Updated: 2023/06/26 11:50:46 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -26,10 +26,7 @@ void	find_format(va_list ap, int *cnt, char format)
 	else if (format == 'x' || format == 'X')
 		print_hex(va_arg(ap, unsigned int), cnt, format);
 	else if (format == '%')
-	{
-		write(1, "%", 1);
-		(*cnt)++;
-	}
+		(*cnt) += write(1, "%", 1);
 }
 
 int	ft_printf(const char *format, ...)
@@ -47,10 +44,7 @@ int	ft_printf(const char *format, ...)
 			find_format(ap, &cnt, *format);
 		}
 		else
-		{
-			write(1, format, 1);
-			cnt++;
-		}
+			cnt += write(1, format, 1);
 		format++;
 	}
 	return (cnt);
