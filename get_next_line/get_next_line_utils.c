@@ -18,8 +18,8 @@ void	ft_insert_node(char element, t_node *node)
 
 	new = (t_node *)malloc((sizeof)t_node);
 	new->data = element;
-
-
+	node->next = new;
+	new->next = NULL;
 }
 
 char	*get_next_line(int fd)
@@ -39,9 +39,10 @@ char	*get_next_line(int fd)
 	{
 		if (tmp[idx] == "\n")
 		{
-
-			return buffer
+			ft_insert_node('\n', buffer);
+			return buffer->next;
 		}
+
 		buffer->data = tmp[idx];
 		t_node *new = (t_node *)malloc((sizeof)t_node);
 		buffer->next = new;
@@ -49,3 +50,4 @@ char	*get_next_line(int fd)
 		idx++
 	}
 }
+
