@@ -5,67 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 19:06:48 by eushin            #+#    #+#             */
-/*   Updated: 2023/08/05 22:41:30 by eushin           ###   ########.fr       */
+/*   Created: 2023/08/08 04:43:57 by eushin            #+#    #+#             */
+/*   Updated: 2023/08/08 05:03:34 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_print_list()
-{
-	return ;
-}
-
-t_node*	ft_insert_node(t_node prev, char element)
-{
-	return ;
-}
-
-void	ft_reader(t_node *node, char *tmp)
-{
-	int	idx;
-
-	idx = 0;
-	if (tmp[i] == "/n")
-	{
-		continue;
-	}
-	else if (node->data == NULL)
-	{
-		continue;
-	}
-	else
-	{
-		node->data = tmp[i];
-		node =
-		continue;
-	}
-	return ;
-}
-
 char	*get_next_line(int fd)
 {
-	static t_node		*buffer; // list
-	char				tmp[BUFFER_SIZE + 1];
-	int					res;
+	char	*line;
+	char	tmp[BUFFER_SIZE + 1];
+	int		res;
+	int		i;
 
-	res = read(fd, tmp, BUFF_SIZE);
-	// 에러이거나 파일이 끝났을 때 null 리턴
+	res = read(fd, tmp, BUFFER_SIZE);
 	if (res <= 0)
 		return NULL;
-	buffer = (t_node *)malloc(sizeof(t_node));
-	while (!buffer)
+
+	i = 0;
+	while (1)
 	{
-		ft_reader(buffer, tmp);
-		buffer = buffer->next;
+		if (!tmp[i])
+		{
+			res = read(fd, tmp, BUFFER_SIZE);
+			if (res <= 0)
+				return NULL;
+			i = -1;
+		}
+		else if (tmp[i] == '\n')
+		{
+			line[i] = tmp[i];
+			return line;
+		}
+		else
+			line[i] = tmp[i];
+		i++;	
 	}
-
-
-
-
-
-
-
-
+	return line;
 }
