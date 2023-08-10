@@ -14,14 +14,17 @@
 
 char	*get_next_line(int fd)
 {
-	char	*line;
-	char	tmp[BUFFER_SIZE + 1];
-	int		res;
-	int		i;
+	static char	*buffer;
+	char		*line;
+	char		tmp[BUFFER_SIZE + 1];
+	int			res;
+	int			i;
 
 	res = read(fd, tmp, BUFFER_SIZE);
 	if (res <= 0)
 		return NULL;
+
+	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 
 	i = 0;
 	while (1)
@@ -35,8 +38,8 @@ char	*get_next_line(int fd)
 		}
 		else if (tmp[i] == '\n')
 		{
-			line[i] = tmp[i];
-			return line;
+			line[i] = '\n';
+			break;
 		}
 		else
 			line[i] = tmp[i];
