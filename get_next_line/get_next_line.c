@@ -16,7 +16,7 @@ char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*line;
-	char		tmp[BUFFER_SIZE + 1];
+	char		tmp[BUFFER_SIZE+1];
 	int			res;
 	int			i;
 
@@ -24,7 +24,8 @@ char	*get_next_line(int fd)
 	if (res <= 0)
 		return NULL;
 
-	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE+1));
+	memcpy(line, tmp, BUFFER_SIZE+1);
 
 	i = 0;
 	while (1)
@@ -46,4 +47,4 @@ char	*get_next_line(int fd)
 		i++;	
 	}
 	return line;
-}
+
