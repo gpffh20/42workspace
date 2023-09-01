@@ -24,7 +24,7 @@ static int	get_len(long long n, int len)
 		len++;
 	}
 	return (len);
-}		
+}
 
 static char	*fill_str(long long n, int len)
 {

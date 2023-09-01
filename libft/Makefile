@@ -20,7 +20,6 @@ else
 	OBJS_T = ${OBJS}
 endif
 
-
 ${NAME}:	${OBJS_T}
 			ar -rc ${NAME} ${OBJS_T}
 
