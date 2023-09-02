@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 04:43:57 by eushin            #+#    #+#             */
-/*   Updated: 2023/09/02 22:08:40 by eushin           ###   ########.fr       */
+/*   Updated: 2023/09/02 22:33:57 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,27 @@ char	*get_next_line(int fd)
 	int			res;
 	int			i;
 
+
 	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+//	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	
 	res = read(fd, tmp, BUFFER_SIZE);
 	if (res < 0)
 		return (NULL);
-	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 
 	i = 0;
 	while (tmp[i])
 	{
 		if (tmp[i] == '\n')
 		{
+			printf("tmp: %s\n", tmp);
 			ft_strlcpy(line, tmp, i+1);
-			ft_strlcpy(buffer, tmp + i, res - i);
-			printf("buffer: %s", buffer);
+			ft_strlcpy(buffer, tmp + i + 1, res - i);
+			printf("buffer: %s\n", buffer);
 			free(tmp);
 			return line;
 		}
-//		if (tmp[i] == '\n')
-//		{
-//			while (tmp[i])
-//			{
-//				buffer[i] = tmp[i];
-//				i++;
-//			}
-//		}
-//		return line;
 		i++;
 	}
 

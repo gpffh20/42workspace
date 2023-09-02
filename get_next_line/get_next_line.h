@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 19:07:45 by eushin            #+#    #+#             */
-/*   Updated: 2023/09/02 22:08:42 by eushin           ###   ########.fr       */
+/*   Updated: 2023/09/02 22:34:00 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE 10000000
+# define BUFFER_SIZE 10
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
