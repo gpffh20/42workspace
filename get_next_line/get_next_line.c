@@ -14,11 +14,25 @@
 
 char	*get_next_line(int fd)
 {
+	// 개행 이후 문자열 저장할 버퍼
 	static char	*buffer;
+	// 출력을 위해 할당할 라인
 	char		*line;
+	// 작업 위해 일단 복사할 tmp
 	char		tmp[BUFFER_SIZE+1];
 	int			res;
 	int			i;
+
+	// buffer가 비어있나 확인
+	// x -> buffer에 개행이 있나 확인
+	// o -> EoF 확인
+
+	// 비었으면 read
+	// read하고 error check
+
+	// 안 비어있으면 개행 전까지 line에 할당
+	// 개행 이후는 buffer에 할당
+
 
 	res = read(fd, tmp, BUFFER_SIZE);
 	if (res <= 0)
