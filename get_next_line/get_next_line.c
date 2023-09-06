@@ -12,65 +12,56 @@
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+char	*check_new_line(char *str, char **buffer)
+{
+	int		idx;
+	char	*line;
+	char	*tmp;
+
+	idx = ft_strchr(str, '\n');
+	printf("idx: %d, str: %s\n", idx, str);
+	if (idx < 0)
+	{
+		*buffer = NULL;
+		return (str);
+	}
+	line = ft_substr(str, 0, idx + 1);
+	line = ft_strjoin(*buffer, line);
+	*buffer = ft_substr(str, idx + 1, ft_strlen(str) - idx - 1);
+	printf("buffer: %s, line: %s\n", *buffer, line);
+	return line;
+}
+
 char	*get_next_line(int fd)
 {
-	// 개행 이후 문자열 저장할 버퍼
+
 	static char	*buffer;
-	// 출력을 위해 할당할 라인
 	char		*line;
-	// 작업 위해 일단 복사할 tmp
 	char		*tmp;
-	int			res;
-	int			i;
+	int			read_len;
 
 
 	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-//	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	
-	res = read(fd, tmp, BUFFER_SIZE);
-	if (res < 0)
-		return (NULL);
+	//buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 
-	i = 0;
-	while (tmp[i])
+
+	printf("len: %zu\n", ft_strlen(buffer));
+	if (ft_strchr(buffer, '\n') > 0)
+		return (check_new_line(buffer, &buffer));
+
+	while (1)
 	{
-		if (tmp[i] == '\n')
-		{
-			printf("tmp: %s\n", tmp);
-			ft_strlcpy(line, tmp, i+1);
-			ft_strlcpy(buffer, tmp + i + 1, res - i);
-			printf("buffer: %s\n", buffer);
-			free(tmp);
-			return line;
-		}
-		i++;
+		read_len = read(fd, tmp, BUFFER_SIZE);
+		printf("tmp: %s\n", tmp);
+		if (read_len < 0)
+			return (NULL);
+//		EoF 처리
+		if (read_len == 0)
+			return (line);
+		line = check_new_line(tmp, &buffer);
+		break;
 	}
-
-
-
-
-//	// buffer가 비어있나 확인
-//	if (ft_strlen(buffer) == 0)
-//	{
-//		// 비었으면 read
-//		// read하고 error check
-//		res = read(fd, tmp[BUFFER_SIZE+1], BUFFER_SIZE);
-//		if (res < 0)
-//			return (NULL);
-//		if (res = 0)
-//			return line;
-//		}
-//		else
-//			return line;
-//	}
-//	else
-//	{
-//		// x -> buffer에 개행이 있나 확인
-//		if (ft_strchr())
-//			continue;
-//		// 안 비어있으면 개행 전까지 line에 할당
-//		// 개행 이후는 buffer에 할당
-//	}
-	return 0;
+	return (line);
 }
