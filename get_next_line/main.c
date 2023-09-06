@@ -5,10 +5,10 @@
 int main()
 {
 	int fd = open("test.txt" ,O_RDONLY);
-	int cnt = 2;
+	int cnt = 8;
 	while (cnt--)
 	{
-		printf("%s\n", get_next_line(fd));
+		printf("%s", get_next_line(fd));
 	}
 	printf("%s", get_next_line(fd));
 }
