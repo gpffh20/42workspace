@@ -18,6 +18,7 @@
 # define BUFFER_SIZE 10
 
 char	*get_next_line(int fd);
+char	*divide_line(char *str, char **buffer);
 size_t	ft_strlen(const char *s);
 int		ft_strchr(const char *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

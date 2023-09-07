@@ -13,7 +13,7 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-char	*check_new_line(char *str, char **buffer)
+char	*divide_line(char *str, char **buffer)
 {
 	int		idx;
 	char	*line;
@@ -22,46 +22,40 @@ char	*check_new_line(char *str, char **buffer)
 //	printf("idx: %d, str: %s\n", idx, str);
 	if (idx < 0)
 	{
-		*buffer = ft_strjoin(*buffer, str);
-		return (*buffer);
+		*buffer = NULL;
+		return (str);
 	}
 	line = ft_substr(str, 0, idx + 1);
-	if (ft_strchr(*buffer, '\n') < 0)
-	{
-		line = ft_strjoin(*buffer, line);
-	}
 	*buffer = ft_substr(str, idx + 1, ft_strlen(str));
+	printf("test buffer: %s, line: %s\n", *buffer, line);
+	printf("=================================\n");
 	return line;
 }
 
 char	*get_next_line(int fd)
 {
-
 	static char	*buffer;
-	char		*line;
 	char		*tmp;
 	int			read_len;
 
 
 	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!tmp || !line)
+	if (!tmp)
 		return (NULL);
 
 	if (ft_strchr(buffer, '\n') >= 0)
-		return (check_new_line(buffer, &buffer));
+		return (divide_line(buffer, &buffer));
 
 	while (1)
 	{
 		read_len = read(fd, tmp, BUFFER_SIZE);
-		if (read_len < 0)
+		printf("1// buffer: %s, tmp: %s\n", buffer, tmp);
+		if (read_len <= 0)
 			return (NULL);
-//		EoF 처리
-		if (read_len == 0)
-			return (NULL);
-		line = check_new_line(tmp, &buffer);
+		tmp[read_len] = '\0';
+		buffer = ft_strjoin(buffer, tmp);
 		if (ft_strchr(tmp, '\n') >= 0)
-			break;
+			return (divide_line(buffer, &buffer));
+		printf("buffer: %s, tmp: %s\n", buffer, tmp);
 	}
-	return (line);
 }
