@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 04:44:13 by eushin            #+#    #+#             */
-/*   Updated: 2023/09/02 22:34:04 by eushin           ###   ########.fr       */
+/*   Updated: 2023/09/10 20:11:49 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int	ft_strchr(const char *s, char c)
+int	ft_strchr(char *s, char c)
 {
-	char	*tmp;
 	int		i;
 
-	tmp = (char *)s;
 	if (!(char *)s)
 		return (-1);
 	i = -1;
-	while (tmp[++i] != c)
-		if (tmp[i] == '\0')
+	while (s[++i] != c)
+		if (s[i] == '\0')
 			return (-1);
 	return (i);
 }
@@ -91,4 +89,21 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str[i + j] = 0;
 	return (str);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*new_str;
+	char	*tmp;
+
+	tmp = (char *)s1;
+	new_str = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
+	if (!new_str)
+		return (NULL);
+	i = -1;
+	while (tmp[++i])
+		new_str[i] = tmp[i];
+	new_str[i] = 0;
+	return (new_str);
 }
