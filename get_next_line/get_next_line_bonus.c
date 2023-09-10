@@ -28,19 +28,26 @@ char	*divide_line(char **backup)
 {
 	int		idx;
 	char	*line;
-	char	*buff;
+	char	*tmp;
 
-	buff = *backup;
-	idx = ft_strchr(buff, '\n');
-	line = ft_substr(buff, 0, idx + 1);
-	*backup = ft_substr(buff, idx + 1, ft_strlen(buff));
-	free (buff);
+	tmp = *backup;
+	idx = ft_strchr(tmp, '\n');
+	line = ft_substr(tmp, 0, idx + 1);
+	if (line == NULL)
+		return (free_str(NULL, backup));
+	*backup = ft_substr(tmp, idx + 1, ft_strlen(tmp));
+	free (tmp);
+	if (*backup == NULL)
+	{
+		free (line);
+		return (NULL);
+	}
 	return (line);
 }
 
 char	*read_line(int fd, int read_len, char *buff, char **backup)
 {
-	char	*read_str_buff;
+	char	*tmp;
 	char	*line;
 
 	while (1)
@@ -49,9 +56,11 @@ char	*read_line(int fd, int read_len, char *buff, char **backup)
 		if (read_len <= 0)
 			break ;
 		buff[read_len] = '\0';
-		read_str_buff = *backup;
+		tmp = *backup;
 		*backup = ft_strjoin(*backup, buff);
-		free (read_str_buff);
+		free (tmp);
+		if (*backup == NULL)
+			return (free_str(buff, backup));
 		if (ft_strchr(buff, '\n') >= 0)
 		{
 			free (buff);
