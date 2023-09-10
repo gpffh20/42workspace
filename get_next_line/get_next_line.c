@@ -12,70 +12,74 @@
 
 #include "get_next_line.h"
 
-char	*divide_line(char **buffer)
+void	*free_str(char *buff, char **backup)
+{
+	if (buff != NULL)
+		free (buff);
+	if (*backup != NULL)
+	{
+		free (*backup);
+		*backup = NULL;
+	}
+	return (NULL);
+}
+
+char	*divide_line(char **backup)
 {
 	int		idx;
 	char	*line;
-	char	*tmp;
+	char	*buff;
 
-	tmp = *buffer;
-	idx = ft_strchr(tmp, '\n');
-	line = ft_substr(tmp, 0, idx + 1);
-	*buffer = ft_substr(tmp, idx + 1, ft_strlen(tmp));
-	free (tmp);
-	return line;
+	buff = *backup;
+	idx = ft_strchr(buff, '\n');
+	line = ft_substr(buff, 0, idx + 1);
+	*backup = ft_substr(buff, idx + 1, ft_strlen(buff));
+	free (buff);
+	return (line);
+}
+
+char	*read_line(int fd, int read_len, char *buff, char **backup)
+{
+	char	*read_str_buff;
+	char	*line;
+
+	while (1)
+	{
+		read_len = read(fd, buff, BUFFER_SIZE);
+		if (read_len <= 0)
+			break ;
+		buff[read_len] = '\0';
+		read_str_buff = *backup;
+		*backup = ft_strjoin(*backup, buff);
+		free (read_str_buff);
+		if (ft_strchr(buff, '\n') >= 0)
+		{
+			free (buff);
+			return (divide_line(backup));
+		}
+	}
+	line = NULL;
+	if (read_len == 0 && **backup != '\0')
+		line = ft_strdup(*backup);
+	free_str(buff, backup);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
-	char		*tmp;
-	char		*tmp_buff;
-	int			read_len;
+	static char	*backup;
+	char		*buff;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (buffer == NULL)
-		buffer = ft_strdup("");
-	if (buffer == NULL)
+	if (backup == NULL)
+		backup = ft_strdup("");
+	if (backup == NULL)
 		return (NULL);
-	if (ft_strchr(buffer, '\n') >= 0)
-		return (divide_line(&buffer));
-	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!tmp)
-	{
-		free (buffer);
-		return (NULL);
-	}
-
-	while (1)
-	{
-		read_len = read(fd, tmp, BUFFER_SIZE);
-		if (read_len < 0)
-		{
-			free(tmp);
-			free(buffer);
-			buffer = 0;
-			return (NULL);
-		}
-		else if (read_len == 0)
-		{
-			char *line = NULL;
-			if (*buffer != '\0')
-				line = ft_strdup(buffer);
-			free (buffer);
-			free (tmp);
-			buffer = NULL;
-			return (line);
-		}
-		tmp[read_len] = '\0';
-		tmp_buff = buffer;
-		buffer = ft_strjoin(buffer, tmp);
-		free (tmp_buff);
-		if (ft_strchr(tmp, '\n') >= 0)
-		{
-			free(tmp);
-			return (divide_line(&buffer));
-		}
-	}
+	if (ft_strchr(backup, '\n') >= 0)
+		return (divide_line(&backup));
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+		return (free_str(NULL, &backup));
+	return (read_line(fd, 0, buff, &backup));
 }

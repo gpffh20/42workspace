@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 04:44:13 by eushin            #+#    #+#             */
-/*   Updated: 2023/09/10 20:11:49 by eushin           ###   ########.fr       */
+/*   Created: 2023/09/10 21:48:50 by eushin            #+#    #+#             */
+/*   Updated: 2023/09/10 21:48:52 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_strchr(char *s, char c)
 			return (-1);
 	return (i);
 }
-
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

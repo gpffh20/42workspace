@@ -21,6 +21,8 @@
 
 char	*get_next_line(int fd);
 char	*divide_line(char **buffer);
+char	*read_line(int fd, int read_len, char *tmp, char **buffer);
+void	*free_str(char *tmp, char **buffer);
 
 size_t	ft_strlen(const char *s);
 int		ft_strchr(char *s, char c);

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
@@ -35,7 +36,6 @@ int	ft_strchr(char *s, char c)
 			return (-1);
 	return (i);
 }
-
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
