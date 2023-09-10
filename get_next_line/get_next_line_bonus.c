@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*divide_line(char **buffer)
 {
@@ -28,23 +28,25 @@ char	*divide_line(char **buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*tmp;
 	char		*tmp_buff;
 	int			read_len;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (buffer == NULL)
-		buffer = ft_strdup("");
-	if (buffer == NULL)
-		return (NULL);
-	if (ft_strchr(buffer, '\n') >= 0)
-		return (divide_line(&buffer));
+	if (buffer[fd] == NULL)
+	{
+		buffer[fd] = ft_strdup("");
+		if (buffer[fd] == NULL)
+			return (NULL);
+	}
+	if (ft_strchr(buffer[fd], '\n') >= 0)
+		return (divide_line(&buffer[fd]));
 	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!tmp)
 	{
-		free (buffer);
+		free (buffer[fd]);
 		return (NULL);
 	}
 
@@ -54,28 +56,28 @@ char	*get_next_line(int fd)
 		if (read_len < 0)
 		{
 			free(tmp);
-			free(buffer);
-			buffer = 0;
+			free(buffer[fd]);
+			buffer[fd] = 0;
 			return (NULL);
 		}
 		else if (read_len == 0)
 		{
 			char *line = NULL;
-			if (*buffer != '\0')
-				line = ft_strdup(buffer);
-			free (buffer);
+			if (*buffer[fd] != '\0')
+				line = ft_strdup(buffer[fd]);
+			free (buffer[fd]);
 			free (tmp);
-			buffer = NULL;
+			buffer[fd] = NULL;
 			return (line);
 		}
 		tmp[read_len] = '\0';
-		tmp_buff = buffer;
-		buffer = ft_strjoin(buffer, tmp);
+		tmp_buff = buffer[fd];
+		buffer[fd] = ft_strjoin(buffer[fd], tmp);
 		free (tmp_buff);
 		if (ft_strchr(tmp, '\n') >= 0)
 		{
 			free(tmp);
-			return (divide_line(&buffer));
+			return (divide_line(&buffer[fd]));
 		}
 	}
 }
