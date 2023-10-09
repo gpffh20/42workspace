@@ -75,5 +75,6 @@ int	main(int ac, char *av[])
 	if (fd < 0)
 		exit(error_handle("Error: open 에러"));
 	dmap = read_map(fd, 0);
+	printf("%f", dmap[0][0]);
 	return (0);
 }

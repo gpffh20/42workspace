@@ -1,26 +1,33 @@
 NAME = fdf
 
-CC = gcc
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+INC = ./
 
-INC = ./libft
+SRCS = ft_atoi.c ft_split.c ft_strjoin.c ft_strlen.c ft_strncmp.c ft_substr.c fdf.c
+OBJS = $(SRCS:.c=.o)
 
-SRCS = *.c
+MLX_DIR = ./minilibx_macos
+MLX = $(MLX_DIR)/libmlx.a
 
-OBJS = ${SRCS:.c=.o}
+$(NAME) :$(OBJS) $(MLX)
+	$(CC) $(CFLAGS) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit $^ -o $(NAME)
 
-${NAME}:	${OBJS}
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) 
+$(MLX):
+	make -C $(MLX_DIR)
 
-all:	${NAME}
+%.o: %.c ./fdf.h 
+	$(CC) $(CFLAGS) -c $< -o $@ -I$(INC)
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+all : $(NAME)
 
 clean:
-		rm -f ${OBJS}
+	make -C $(MLX_DIR) clean
+	rm -rf $(OBJS)
 
-fclean: clean
-		rm -f ${NAME}
+fclean: 
+	make -C $(MLX_DIR)  clean
+	rm -rf $(NAME) $(OBJS)
 
 re: fclean
 	make all
