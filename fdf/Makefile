@@ -1,22 +1,20 @@
 NAME = fdf
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc
 
-INC = ./
+INC = ./libft
 
 SRCS = *.c
 
 OBJS = ${SRCS:.c=.o}
 
 ${NAME}:	${OBJS}
-			ar -rc ${NAME} ${OBJS}
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) 
 
 all:	${NAME}
 
-
-.c.o:
-	${CC} ${CFLAGS} -c $< -o $@ -I${INC}
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 clean:
 		rm -f ${OBJS}
