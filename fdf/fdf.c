@@ -10,6 +10,7 @@ void	read_map(int fd)
 	double	**dmap;
 	int		i;
 	int		j;
+	t_fdf	split_info;
 
 	buff = ft_strdup("");
 	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -27,19 +28,32 @@ void	read_map(int fd)
 		exit(1);
 	}
 	free(tmp);
-	map = ft_split(buff, '\n');
-	dmap = (double **)malloc(sizeof(double *) * ())
+	map = ft_split(buff, '\n', &split_info);
+	dmap = (double **)malloc(sizeof(double *) * (split_info.row_cnt));
 	i = 0;
 	while (map[i])
 	{
-		map_lines = split(map[i], ' ');
+		dmap[i] = (double *)malloc(sizeof(double) * split_info.col_cnt);
+		map_lines = ft_split(map[i], ' ', &split_info);
 		j = 0;
 		while (map_lines[j])
 		{
-
-
+			dmap[i][j] = (double)ft_atoi(map_lines[j]);
+			j++;
 		}
-		free(map[i]);
+		i++;
+	}
+	free(map);
+	i = 0;
+	while(dmap[i])
+	{
+		j = 0;
+		while(j < 11)
+		{
+			printf("%f ", dmap[i][j]);
+			j++;
+		}
+		printf("\n");
 		i++;
 	}
 	return ;

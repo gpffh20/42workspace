@@ -12,5 +12,14 @@
 #  define BUFFER_SIZE 4096
 # endif
 
+typedef struct s_fdf
+{
+	char **map;
+	int row_cnt;
+	int col_cnt;
+}	t_fdf;
+
+
+char	**ft_split(char const *s, char c, t_fdf *split_info);
 
 #endif
