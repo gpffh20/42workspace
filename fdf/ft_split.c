@@ -38,7 +38,7 @@ static char	**ft_free(char **ret, int i)
 	return (NULL);
 }
 
-static char	**ft_malloc(t_fdf *split_info, char **board, char *tmp, char c)
+static char	**ft_malloc(t_fdf *split_data, char **board, char *tmp, char c)
 {
 	int	i;
 	int	len;
@@ -46,7 +46,7 @@ static char	**ft_malloc(t_fdf *split_info, char **board, char *tmp, char c)
 
 	idx = 0;
 	i = 0;
-	while (i < split_info->row_cnt)
+	while (i < split_data->row_cnt)
 	{
 		len = 0;
 		while (tmp[idx] && tmp[idx] == c)
@@ -87,7 +87,7 @@ static char	**fill_string(char **board, char *tmp, char c, int word_cnt)
 	return (board);
 }
 
-char	**ft_split(char const *s, char c, t_fdf *split_info)
+char	**ft_split(char const *s, char c, t_fdf *split_data)
 {
 	char	**board;
 	char	*tmp;
@@ -95,15 +95,15 @@ char	**ft_split(char const *s, char c, t_fdf *split_info)
 	if (!s)
 		return (NULL);
 	tmp = (char *)s;
-	split_info->row_cnt = count_word(tmp, c);
-	board = (char **)malloc(sizeof(char *) * (split_info->row_cnt + 1));
+	split_data->row_cnt = count_word(tmp, c);
+	board = (char **)malloc(sizeof(char *) * (split_data->row_cnt + 1));
 	if (!board)
 		return (NULL);
-	board[split_info->row_cnt] = 0;
-	board = ft_malloc(split_info, board, tmp, c);
+	board[split_data->row_cnt] = 0;
+	board = ft_malloc(split_data, board, tmp, c);
 	if (!board)
 		return (ft_free(board, 0));
-	board = fill_string(board, tmp, c, split_info->row_cnt);
+	board = fill_string(board, tmp, c, split_data->row_cnt);
 	free(tmp);
 	return (board);
 }
