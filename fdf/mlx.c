@@ -11,15 +11,6 @@
 /* ************************************************************************** */
 #include "fdf.h"
 
-void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = fdf->addr + (y * fdf->line_length + x
-			* (fdf->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
 //int	esc_close(int keycode, t_fdf *fdf)
 //{
 //	if (keycode == 53)

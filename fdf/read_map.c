@@ -9,7 +9,6 @@
 /*   Updated: 2023/10/13 07:31:28 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "fdf.h"
 
 static double	**convert_to_double(char **map, t_map *map_info)

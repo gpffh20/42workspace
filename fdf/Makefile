@@ -4,7 +4,19 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 INC = ./
 
-SRCS = ft_atoi.c ft_split.c ft_strjoin.c ft_strlen.c ft_strncmp.c ft_substr.c main.c mlx.c draw.c isomatric_projection.c read_map.c error_handle.c
+SRCS =  ft_atoi.c\
+		ft_split.c\
+		ft_strjoin.c\
+		ft_strlen.c\
+		ft_strncmp.c\
+		ft_substr.c\
+		main.c\
+		error_handle.c\
+		read_map.c\
+		mlx.c\
+		draw.c\
+		isomatric_projection.c
+
 OBJS = $(SRCS:.c=.o)
 
 MLX_DIR = ./minilibx_macos

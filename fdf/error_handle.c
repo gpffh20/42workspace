@@ -9,7 +9,6 @@
 /*   Updated: 2023/10/13 07:20:10 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "fdf.h"
 
 int	error_handler(char *error_msg)
@@ -21,7 +20,7 @@ int	error_handler(char *error_msg)
 
 void	invalid_file(char *file_name)
 {
-	int	 len;
+	int	len;
 
 	len = ft_strlen(file_name);
 	if (ft_strncmp(ft_substr(file_name, len - 4, 4), ".fdf", 4))
