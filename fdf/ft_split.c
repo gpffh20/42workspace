@@ -30,14 +30,6 @@ static int	count_word(char *tmp, char c)
 	return (word_cnt);
 }
 
-void	free_str(char **ret, int i)
-{
-	while (i)
-		free(ret[--i]);
-	free(ret);
-	return ;
-}
-
 static char	**ft_malloc(t_map *map_info, char **board, char *tmp, char c)
 {
 	int	i;
@@ -60,7 +52,6 @@ static char	**ft_malloc(t_map *map_info, char **board, char *tmp, char c)
 		idx += len;
 		i++;
 	}
-//	map_info->col_cnt = len;
 	return (board);
 }
 

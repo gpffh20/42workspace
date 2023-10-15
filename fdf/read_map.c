@@ -6,17 +6,18 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 07:31:25 by eushin            #+#    #+#             */
-/*   Updated: 2023/10/13 07:31:28 by eushin           ###   ########.fr       */
+/*   Updated: 2023/10/16 00:53:00 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
 static int	**convert_to_int(char **map, t_map *map_info)
 {
-	int **imap;
-	char **map_lines;
-	int i;
-	int j;
+	int		**imap;
+	char	**map_lines;
+	int		i;
+	int		j;
+
 	imap = (int **) malloc(sizeof(int *) * (map_info->height));
 	i = 0;
 	while (i < map_info->height)
@@ -34,7 +35,6 @@ static int	**convert_to_int(char **map, t_map *map_info)
 	}
 	map_info->width = map_info->row_cnt;
 	free(map);
-//	free_str(map, i);
 	return (imap);
 }
 

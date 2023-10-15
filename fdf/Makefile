@@ -15,7 +15,7 @@ SRCS =  ft_atoi.c\
 		read_map.c\
 		mlx.c\
 		draw.c\
-		isomatric_projection.c
+		utils.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -23,15 +23,13 @@ MLX_DIR = ./minilibx_macos
 MLX = $(MLX_DIR)/libmlx.a
 
 $(NAME) :$(OBJS) $(MLX)
-	#$(CFLAGS)
-	$(CC) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit $^ -o $(NAME)
+	$(CC) $(CFLAGS) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit $^ -o $(NAME)
 
 $(MLX):
 	make -C $(MLX_DIR)
 
 %.o: %.c ./fdf.h
-	#$(CFLAGS)
-	$(CC) -c $< -o $@ -I$(INC)
+	$(CC) $(CFLAGS) -c $< -o $@ -I$(INC)
 
 all : $(NAME)
 

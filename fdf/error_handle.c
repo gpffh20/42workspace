@@ -17,7 +17,6 @@ int	error_handler(char *error_msg)
 	return (1);
 }
 
-
 void	invalid_file(char *file_name)
 {
 	int	len;
