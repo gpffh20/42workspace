@@ -11,32 +11,34 @@
 /* ************************************************************************** */
 #include "fdf.h"
 
-static double	**convert_to_double(char **map, t_map *map_info)
+static int	**convert_to_int(char **map, t_map *map_info)
 {
-	double	**dmap;
-	char	**map_lines;
-	int		i;
-	int		j;
-
-	dmap = (double **)malloc(sizeof(double *) * (map_info->row_cnt));
+	int **imap;
+	char **map_lines;
+	int i;
+	int j;
+	imap = (int **) malloc(sizeof(int *) * (map_info->height));
 	i = 0;
-	while (map[i])
+	while (i < map_info->height)
 	{
-		dmap[i] = (double *)malloc(sizeof(double) * map_info->col_cnt);
 		map_lines = ft_split(map[i], ' ', map_info);
+		imap[i] = (int *) malloc(sizeof(int) * map_info->row_cnt);
 		j = 0;
-		while (map_lines[j])
+		while (j < map_info->row_cnt)
 		{
-			dmap[i][j] = (double)ft_atoi(map_lines[j]);
+			imap[i][j] = ft_atoi(map_lines[j]);
 			j++;
 		}
+		free_str(map_lines, j);
 		i++;
 	}
+	map_info->width = map_info->row_cnt;
 	free(map);
-	return (dmap);
+//	free_str(map, i);
+	return (imap);
 }
 
-static double	**parse_map(t_map *map_info, int fd)
+static int	**parse_map(t_map *map_info, int fd)
 {
 	char	**map;
 	char	*buff;
@@ -55,9 +57,8 @@ static double	**parse_map(t_map *map_info, int fd)
 	if (!buff)
 		exit(error_handler("Error: read error."));
 	map = ft_split(buff, '\n', map_info);
-	map_info->width = map_info->col_cnt;
 	map_info->height = map_info->row_cnt;
-	return (convert_to_double(map, map_info));
+	return (convert_to_int(map, map_info));
 }
 
 void	read_map(char *file_name, t_map *map_info)

@@ -30,7 +30,7 @@ static int	count_word(char *tmp, char c)
 	return (word_cnt);
 }
 
-static void	ft_free(char **ret, int i)
+void	free_str(char **ret, int i)
 {
 	while (i)
 		free(ret[--i]);
@@ -55,14 +55,12 @@ static char	**ft_malloc(t_map *map_info, char **board, char *tmp, char c)
 			len++;
 		board[i] = (char *)malloc(sizeof(char) * (len + 1));
 		if (!board[i])
-		{
-			ft_free(board, i);
 			exit(error_handler("Error: malloc error."));
-		}
 		board[i][len] = 0;
 		idx += len;
 		i++;
 	}
+//	map_info->col_cnt = len;
 	return (board);
 }
 
@@ -103,10 +101,7 @@ char	**ft_split(char const *s, char c, t_map *map_info)
 	board[map_info->row_cnt] = 0;
 	board = ft_malloc(map_info, board, tmp, c);
 	if (!board)
-	{
-		ft_free(board, 0);
 		exit(error_handler("Error: malloc error."));
-	}
 	board = fill_string(board, tmp, c, map_info->row_cnt);
 	free(tmp);
 	return (board);
