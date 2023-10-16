@@ -11,31 +11,29 @@
 /* ************************************************************************** */
 #include "fdf.h"
 
-static void	bresenham(t_point f, t_point s, t_fdf *fdf)
+static void	bresenham(t_point s, t_point f, t_fdf *fdf)
 {
 	t_point	delta;
-	t_point	sign;
 	t_point	cur;
-	int		error[2];
+	int		d[2];
 
-	delta.x = abs(s.x - f.x);
-	delta.y = abs(s.y - f.y);
-	sign.x = f.x < s.x ? 1 : -1;
-	sign.y = f.y < s.y ? 1 : -1;
-	error[0] = delta.x - delta.y;
-	cur = f;
-	while (cur.x != s.x || cur.y != s.y)
+	delta.x = abs(f.x - s.x);
+	delta.y = abs(f.y - s.y);
+	d[0] = delta.x - delta.y;
+	cur = s;
+	while (cur.x != f.x || cur.y != f.y)
 	{
-		my_mlx_pixel_put(fdf, cur.x, cur.y, 0xF00FFFFF);
-		if ((error[1] = error[0] * 2) > -delta.y)
+		my_mlx_pixel_put(fdf, cur.x, cur.y, 0xFFFFFFFF);
+		d[1] = d[0] * 2;
+		if (-d[1] < delta.y)
 		{
-			error[0] -= delta.y;
-			cur.x += sign.x;
+			d[0] -= delta.y;
+			cur.x += max_flag(s.x, f.x);
 		}
-		if (error[1] < delta.x)
+		if (d[1] < delta.x)
 		{
-			error[0] += delta.x;
-			cur.y += sign.y;
+			d[0] += delta.x;
+			cur.y += max_flag(s.y, f.y);
 		}
 	}
 }

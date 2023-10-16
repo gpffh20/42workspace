@@ -63,6 +63,7 @@ size_t	ft_strlen(const char *s);
 void	free_str(char **ret, int i);
 void	free_int(int **ret, int i);
 int		ft_min(int a, int b);
+int 	max_flag(int a, int b);
 int		error_handler(char *error_msg);
 void	invalid_file(char *file_name);
 void	read_map(char *file_name, t_map *map_info);
@@ -70,6 +71,5 @@ void	my_mlx(t_fdf *fdf, char *file_name);
 void	draw(t_map *map_info, t_fdf *fdf);
 int		esc_close(int keycode, t_fdf *fdf);
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
-
 
 #endif

@@ -11,6 +11,13 @@
 /* ************************************************************************** */
 #include "fdf.h"
 
+int	max_flag(int a, int b)
+{
+	if (a < b)
+		return (1);
+	return (-1);
+}
+
 void	free_int(int **ret, int i)
 {
 	while (i)
