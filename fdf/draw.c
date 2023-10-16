@@ -23,7 +23,7 @@ static void	bresenham(t_point s, t_point f, t_fdf *fdf)
 	cur = s;
 	while (cur.x != f.x || cur.y != f.y)
 	{
-		my_mlx_pixel_put(fdf, cur.x, cur.y, 0xFFFFFFFF);
+		my_mlx_pixel_put(fdf, cur.x, cur.y, 0xF89B00);
 		d[1] = d[0] * 2;
 		if (-d[1] < delta.y)
 		{
