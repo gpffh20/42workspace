@@ -37,7 +37,7 @@ static void	bresenham(t_point s, t_point f, t_fdf *fdf)
 		}
 	}
 }
-void	rotate_x(t_point *point)
+static void	rotate_x(t_point *point)
 {
 	t_point cur;
 
@@ -47,24 +47,14 @@ void	rotate_x(t_point *point)
 	point->z = cur.y * sin(asin(tan(M_PI / 6))) + cur.z * cos(asin(tan(M_PI / 6)));
 }
 
-void	rotate_z(t_point *point)
+static void	rotate_z(t_point *point)
 {
-	t_point cur;
+	t_point	cur;
 
 	cur.x = point->x;
 	cur.y = point->y;
 	point->x = cur.x * cos(M_PI / 4) - cur.y * sin(M_PI / 4);
 	point->y = cur.x * sin(M_PI / 4) + cur.y * cos(M_PI / 4);
-}
-
-static t_point	init_point(int x, int y, t_map *map_info)
-{
-	t_point	point;
-
-	point.x = x;
-	point.y = y;
-	point.z = map_info->map[y][x];
-	return (point);
 }
 
 static t_point	relocate(t_point point, t_map *map)
@@ -92,7 +82,6 @@ void	draw(t_map *map_info, t_fdf *fdf)
 	int	y;
 
 	y = 0;
-	map_info->img_size = sqrt(pow(map_info->height, 2) + pow(map_info->width, 2));
 	while (y < map_info->height)
 	{
 		x = 0;
