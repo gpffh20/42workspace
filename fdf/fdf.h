@@ -55,13 +55,6 @@ typedef struct s_point
 	int	z;
 }	t_point;
 
-//typedef struct s_d_point
-//{
-//	double	x;
-//	double	y;
-//	double	z;
-//}	t_d_point;
-
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c, t_map *map_info);
@@ -71,7 +64,8 @@ size_t	ft_strlen(const char *s);
 void	free_str(char **ret, int i);
 void	free_int(int **ret, int i);
 int		ft_min(int a, int b);
-int 	max_flag(int a, int b);
+int		max_flag(int a, int b);
+t_point	init_point(int x, int y, t_map *map_info);
 int		error_handler(char *error_msg);
 void	invalid_file(char *file_name);
 void	read_map(char *file_name, t_map *map_info);

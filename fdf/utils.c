@@ -40,3 +40,13 @@ int	ft_min(int a, int b)
 		return (b);
 	return (a);
 }
+
+t_point	init_point(int x, int y, t_map *map_info)
+{
+	t_point	point;
+
+	point.x = x;
+	point.y = y;
+	point.z = map_info->map[y][x];
+	return (point);
+}

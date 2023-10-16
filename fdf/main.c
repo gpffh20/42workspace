@@ -22,7 +22,6 @@ int	main(int ac, char *av[])
 		read_map(av[1], &map_info);
 		my_mlx(&fdf, av[1]);
 		draw(&map_info, &fdf);
-		printf("w: %d, h: %d\n", map_info.width, map_info.height);
 		mlx_key_hook(fdf.win, esc_close, &fdf);
 		mlx_loop(fdf.mlx);
 	}
