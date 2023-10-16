@@ -42,6 +42,7 @@ static int	**parse_map(t_map *map_info, int fd)
 {
 	char	**map;
 	char	*buff;
+	char	*buff_tmp;
 	char	tmp[BUFFER_SIZE + 1];
 	int		read_len;
 
@@ -52,9 +53,11 @@ static int	**parse_map(t_map *map_info, int fd)
 		if (read_len <= 0)
 			break ;
 		tmp[read_len] = '\0';
-		buff = ft_strjoin(buff, tmp);
+		buff_tmp = buff;
+		buff = ft_strjoin(buff_tmp, tmp);
+		free(buff_tmp);
 	}
-	if (!buff)
+	if (read_len < 0)
 		exit(error_handler("Error: read error."));
 	map = ft_split(buff, '\n', map_info);
 	free(buff);

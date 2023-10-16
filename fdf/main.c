@@ -6,19 +6,13 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 07:19:59 by eushin            #+#    #+#             */
-/*   Updated: 2023/10/16 16:40:09 by eushin           ###   ########.fr       */
+/*   Updated: 2023/10/16 17:58:23 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
 
-void	a(void)
-{
-	system("leaks fdf");
-}
-
 int	main(int ac, char *av[])
 {
-	atexit(a);
 	t_map	map_info;
 	t_fdf	fdf;
 

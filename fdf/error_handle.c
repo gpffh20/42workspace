@@ -19,10 +19,16 @@ int	error_handler(char *error_msg)
 
 void	invalid_file(char *file_name)
 {
-	int	len;
+	int		len;
+	char	*tmp;
 
 	len = ft_strlen(file_name);
-	if (ft_strncmp(ft_substr(file_name, len - 4, 4), ".fdf", 4))
+	tmp = ft_substr(file_name, len - 4, 4);
+	if (ft_strncmp(tmp, ".fdf", 4))
+	{
+		free(tmp);
 		return ;
+	}
+	free(tmp);
 	exit(error_handler("Error: map extension error."));
 }

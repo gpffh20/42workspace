@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 00:53:13 by eushin            #+#    #+#             */
-/*   Updated: 2023/10/16 00:53:19 by eushin           ###   ########.fr       */
+/*   Updated: 2023/10/16 18:01:07 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -23,6 +23,7 @@ void	free_int(int **ret, int len)
 	int	i;
 
 	i = 0;
+	printf("len: %d\n", len);
 	while (i < len)
 	{
 		free(ret[i]);
