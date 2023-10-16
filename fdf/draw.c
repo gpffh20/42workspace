@@ -37,19 +37,24 @@ static void	bresenham(t_point s, t_point f, t_fdf *fdf)
 		}
 	}
 }
-
-static void	iso(t_point *point)
+void	rotate_x(t_point *point)
 {
-	int		prev_x;
-	int		prev_y;
-	double	theta;
+	t_point cur;
 
-	prev_x = point->x;
-	prev_y = point->y;
-	theta = M_PI / 6;
-	point->x = prev_x * cos(theta) - prev_y * cos(theta);
-	point->y = prev_x * sin(theta) + prev_y * sin(theta) - point->z;
-	return ;
+	cur.y = point->y;
+	cur.z = point->z;
+	point->y = cur.y * cos(asin(tan(M_PI / 6))) - cur.z * sin(asin(tan(M_PI / 6)));
+	point->z = cur.y * sin(asin(tan(M_PI / 6))) + cur.z * cos(asin(tan(M_PI / 6)));
+}
+
+void	rotate_z(t_point *point)
+{
+	t_point cur;
+
+	cur.x = point->x;
+	cur.y = point->y;
+	point->x = cur.x * cos(M_PI / 4) - cur.y * sin(M_PI / 4);
+	point->y = cur.x * sin(M_PI / 4) + cur.y * cos(M_PI / 4);
 }
 
 static t_point	init_point(int x, int y, t_map *map_info)
@@ -66,15 +71,18 @@ static t_point	relocate(t_point point, t_map *map)
 {
 	int	zoom;
 
-	zoom = ft_min(WIDTH / map->width / 3, HEIGHT / map->height / 3);
+	if (map->width * map->height < 200000)
+		zoom = ft_min(WIDTH / map->width / 3, HEIGHT / map->height / 3);
+	else
+		zoom = 1;
 	point.x *= zoom;
 	point.y *= zoom;
 	point.z *= zoom;
-	point.x -= (map->width * zoom) / 2;
-	point.y -= (map->height * zoom) / 2;
-	iso(&point);
+	rotate_z(&point);
+	rotate_x(&point);
 	point.x += WIDTH / 2;
 	point.y += HEIGHT / 2;
+	point.y -= HEIGHT / 4;
 	return (point);
 }
 
@@ -84,6 +92,7 @@ void	draw(t_map *map_info, t_fdf *fdf)
 	int	y;
 
 	y = 0;
+	map_info->img_size = sqrt(pow(map_info->height, 2) + pow(map_info->width, 2));
 	while (y < map_info->height)
 	{
 		x = 0;

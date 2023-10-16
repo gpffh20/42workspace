@@ -34,6 +34,7 @@ typedef struct s_map
 	int		row_cnt;
 	int		width;
 	int		height;
+	int 	img_size;
 }	t_map;
 
 typedef struct s_fdf
@@ -53,6 +54,13 @@ typedef struct s_point
 	int	y;
 	int	z;
 }	t_point;
+
+//typedef struct s_d_point
+//{
+//	double	x;
+//	double	y;
+//	double	z;
+//}	t_d_point;
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
