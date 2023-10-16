@@ -23,7 +23,6 @@ void	free_int(int **ret, int len)
 	int	i;
 
 	i = 0;
-	printf("len: %d\n", len);
 	while (i < len)
 	{
 		free(ret[i]);
