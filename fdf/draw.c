@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:23:11 by eushin            #+#    #+#             */
-/*   Updated: 2023/10/16 16:41:52 by eushin           ###   ########.fr       */
+/*   Updated: 2023/10/16 16:53:40 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -37,14 +37,17 @@ static void	bresenham(t_point s, t_point f, t_fdf *fdf)
 		}
 	}
 }
+
 static void	rotate_x(t_point *point)
 {
-	t_point cur;
+	t_point	cur;
 
 	cur.y = point->y;
 	cur.z = point->z;
-	point->y = cur.y * cos(asin(tan(M_PI / 6))) - cur.z * sin(asin(tan(M_PI / 6)));
-	point->z = cur.y * sin(asin(tan(M_PI / 6))) + cur.z * cos(asin(tan(M_PI / 6)));
+	point->y = cur.y * cos(asin(tan(M_PI / 6)))
+		- cur.z * sin(asin(tan(M_PI / 6)));
+	point->z = cur.y * sin(asin(tan(M_PI / 6)))
+		+ cur.z * cos(asin(tan(M_PI / 6)));
 }
 
 static void	rotate_z(t_point *point)
@@ -71,8 +74,8 @@ static t_point	relocate(t_point point, t_map *map)
 	rotate_z(&point);
 	rotate_x(&point);
 	point.x += WIDTH / 2;
-	point.y += HEIGHT / 1.5;
-//	point.y -= HEIGHT / 4;
+	point.y += HEIGHT / 2;
+	point.y -= HEIGHT / 4;
 	return (point);
 }
 
