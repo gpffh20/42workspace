@@ -34,7 +34,6 @@ typedef struct s_map
 	int		row_cnt;
 	int		width;
 	int		height;
-	int 	img_size;
 }	t_map;
 
 typedef struct s_fdf

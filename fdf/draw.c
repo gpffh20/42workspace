@@ -82,8 +82,6 @@ void	draw(t_map *map_info, t_fdf *fdf)
 	int	y;
 
 	y = 0;
-	map_info->img_size = sqrt(pow(map_info->height, 2)
-			+ pow(map_info->width, 2));
 	while (y < map_info->height)
 	{
 		x = 0;
