@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:23:11 by eushin            #+#    #+#             */
-/*   Updated: 2023/10/16 00:52:34 by eushin           ###   ########.fr       */
+/*   Updated: 2023/10/16 16:41:52 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -81,8 +81,8 @@ static t_point	relocate(t_point point, t_map *map)
 	rotate_z(&point);
 	rotate_x(&point);
 	point.x += WIDTH / 2;
-	point.y += HEIGHT / 2;
-	point.y -= HEIGHT / 4;
+	point.y += HEIGHT / 1.5;
+//	point.y -= HEIGHT / 4;
 	return (point);
 }
 
