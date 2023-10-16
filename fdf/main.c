@@ -11,8 +11,14 @@
 /* ************************************************************************** */
 #include "fdf.h"
 
+void	a(void)
+{
+	system("leaks fdf");
+}
+
 int	main(int ac, char *av[])
 {
+	atexit(a);
 	t_map	map_info;
 	t_fdf	fdf;
 
@@ -22,7 +28,9 @@ int	main(int ac, char *av[])
 		read_map(av[1], &map_info);
 		my_mlx(&fdf, av[1]);
 		draw(&map_info, &fdf);
+		fdf.map = &map_info;
 		mlx_key_hook(fdf.win, esc_close, &fdf);
+		mlx_hook(fdf.win, 17, 0, mouse_close, &fdf);
 		mlx_loop(fdf.mlx);
 	}
 	exit(error_handler("Error: argument count error."));

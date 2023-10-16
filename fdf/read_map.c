@@ -30,11 +30,11 @@ static int	**convert_to_int(char **map, t_map *map_info)
 			imap[i][j] = ft_atoi(map_lines[j]);
 			j++;
 		}
-		free_str(map_lines, j);
+		free_str(map_lines);
 		i++;
 	}
 	map_info->width = map_info->row_cnt;
-	free(map);
+	free_str(map);
 	return (imap);
 }
 
@@ -57,6 +57,7 @@ static int	**parse_map(t_map *map_info, int fd)
 	if (!buff)
 		exit(error_handler("Error: read error."));
 	map = ft_split(buff, '\n', map_info);
+	free(buff);
 	map_info->height = map_info->row_cnt;
 	return (convert_to_int(map, map_info));
 }

@@ -16,9 +16,19 @@ int	esc_close(int keycode, t_fdf *fdf)
 	if (keycode == 53)
 	{
 		mlx_destroy_window(fdf->mlx, fdf->win);
+		mlx_destroy_image(fdf->mlx, fdf->img);
+		free_int(fdf->map->map, fdf->map->height);
 		exit(0);
 	}
 	return (0);
+}
+
+int	mouse_close(t_fdf *fdf)
+{
+	mlx_destroy_window(fdf->mlx, fdf->win);
+	mlx_destroy_image(fdf->mlx, fdf->img);
+	free_int(fdf->map->map, fdf->map->height);
+	exit(0);
 }
 
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color)

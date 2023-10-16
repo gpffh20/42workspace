@@ -100,7 +100,7 @@ void	draw(t_map *map_info, t_fdf *fdf)
 		}
 		y++;
 	}
-	free_int(map_info->map, map_info->height);
+//	free_int(map_info->map, map_info->height);
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 	return ;
 }

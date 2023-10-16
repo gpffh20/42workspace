@@ -18,20 +18,30 @@ int	max_flag(int a, int b)
 	return (-1);
 }
 
-void	free_int(int **ret, int i)
+void	free_int(int **ret, int len)
 {
-	while (i)
-		free(ret[--i]);
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		free(ret[i]);
+		i++;
+	}
 	free(ret);
-	return ;
 }
 
-void	free_str(char **ret, int i)
+void	free_str(char **ret)
 {
-	while (i)
-		free(ret[--i]);
+	int	i;
+
+	i = 0;
+	while (ret[i])
+	{
+		free(ret[i]);
+		i++;
+	}
 	free(ret);
-	return ;
 }
 
 int	ft_min(int a, int b)

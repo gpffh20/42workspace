@@ -94,6 +94,5 @@ char	**ft_split(char const *s, char c, t_map *map_info)
 	if (!board)
 		exit(error_handler("Error: malloc error."));
 	board = fill_string(board, tmp, c, map_info->row_cnt);
-	free(tmp);
 	return (board);
 }

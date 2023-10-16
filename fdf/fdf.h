@@ -45,6 +45,7 @@ typedef struct s_fdf
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	t_map	*map;
 }	t_fdf;
 
 typedef struct s_point
@@ -60,8 +61,8 @@ char	**ft_split(char const *s, char c, t_map *map_info);
 int		ft_atoi(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);;
 size_t	ft_strlen(const char *s);
-void	free_str(char **ret, int i);
-void	free_int(int **ret, int i);
+void	free_str(char **ret);
+void	free_int(int **ret, int len);
 int		ft_min(int a, int b);
 int		max_flag(int a, int b);
 t_point	init_point(int x, int y, t_map *map_info);
@@ -71,6 +72,7 @@ void	read_map(char *file_name, t_map *map_info);
 void	my_mlx(t_fdf *fdf, char *file_name);
 void	draw(t_map *map_info, t_fdf *fdf);
 int		esc_close(int keycode, t_fdf *fdf);
+int		mouse_close(t_fdf *fdf);
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
 
 #endif
