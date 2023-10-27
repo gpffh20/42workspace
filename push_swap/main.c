@@ -37,9 +37,9 @@ int	main(void)
 
 	print_deque(a); print_deque(b);
 
-	ra(a);
-	rb(b);
-	rr(a, b);
+	rra(a);
+	rrb(b);
+	rrr(a, b);
 
 	printf("a: "); print_deque(a);
 	printf("b: "); print_deque(b);

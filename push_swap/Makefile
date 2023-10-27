@@ -10,6 +10,7 @@ SRCS =	main.c\
 		op_s.c\
 		op_p.c\
 		op_r.c\
+		op_rr.c\
 
 
 
