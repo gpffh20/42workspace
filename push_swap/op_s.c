@@ -33,6 +33,13 @@ void	sb(t_deque *b)
 
 void	ss(t_deque *a, t_deque *b)
 {
-	sa(a);
-	sb(b);
+	t_element	tmp;
+
+	tmp = a->front->data;
+	a->front->data = a->front->next->data;
+	a->front->next->data = tmp;
+	tmp = b->front->data;
+	b->front->data = b->front->next->data;
+	b->front->next->data = tmp;
+	write(1, "ss\n", 3);
 }
