@@ -8,6 +8,8 @@ INC = ./
 SRCS =	main.c\
 		deque.c\
 		op_s.c\
+		op_p.c\
+
 
 
 OBJS = $(SRCS:.c=.o)

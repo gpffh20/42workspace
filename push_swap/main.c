@@ -23,14 +23,23 @@ void print_deque(t_deque *deque)
 int	main(void)
 {
 	t_deque *a;
+	t_deque *b;
 
 	a = create_deque();
-	push_front(a, '1');
-	push_front(a, '2');
+	b = create_deque();
+	push_back(a, '1');
+	push_back(a, '2');
 	push_back(a, '3');
-	print_deque(a);
 
-	sa(a);
+	push_back(b, '4');
+	push_back(b, '5');
+	push_back(b, '6');
 
-	print_deque(a);
+	print_deque(a); print_deque(b);
+
+	pb(b, a);
+
+	printf("a: "); print_deque(a);
+	printf("b: "); print_deque(b);
+
 }
