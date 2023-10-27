@@ -41,6 +41,11 @@ void	sb(t_deque *b);
 void	ss(t_deque *a, t_deque *b);
 void	pa(t_deque *a, t_deque *b);
 void	pb(t_deque *b, t_deque *a);
+void	ra(t_deque *a);
+void	rb(t_deque *b);
+void	rr(t_deque *a, t_deque *b);
+
+
 
 
 #endif
