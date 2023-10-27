@@ -12,6 +12,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdio.h>
 
 typedef char	t_element;
@@ -35,5 +36,7 @@ void	push_front(t_deque *deque, t_element data);
 void	push_back(t_deque *deque, t_element data);
 void	pop_front(t_deque *deque);
 void	pop_back(t_deque *deque);
+void	sa(t_deque *a);
+void	sb(t_deque *b);
 
 #endif

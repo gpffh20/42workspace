@@ -5,7 +5,10 @@ CFLAGS = -Wall -Werror -Wextra
 
 INC = ./
 
-SRCS =	main.c deque.c
+SRCS =	main.c\
+		deque.c\
+		op_s.c\
+
 
 OBJS = $(SRCS:.c=.o)
 

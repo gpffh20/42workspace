@@ -72,7 +72,6 @@ void	pop_front(t_deque *deque)
 {
 	t_deque_node	*tmp;
 
-	printf("element: %c\n", deque->front->data);
 	if (deque->size == 1)
 	{
 		deque->front = NULL;
@@ -106,4 +105,3 @@ void	pop_back(t_deque *deque)
 	}
 	deque->size--;
 }
-

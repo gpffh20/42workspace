@@ -11,19 +11,26 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+void print_deque(t_deque *deque)
+{
+	t_deque_node *node;
+
+	for(node = deque->front; node != NULL; node = node->next)
+		printf("[%c] ", node->data);
+	printf("\n");
+}
+
 int	main(void)
 {
-	t_deque	*a;
+	t_deque *a;
 
 	a = create_deque();
 	push_front(a, '1');
-	printf("element: %c\n", a->rear->data);
 	push_front(a, '2');
-	printf("element: %c\n", a->rear->data);
 	push_back(a, '3');
-	printf("element: %c\n", a->rear->data);
+	print_deque(a);
 
-	pop_front(a);
-	pop_front(a);
-	pop_front(a);
+	sa(a);
+
+	print_deque(a);
 }
