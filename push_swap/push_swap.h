@@ -38,5 +38,7 @@ void	pop_front(t_deque *deque);
 void	pop_back(t_deque *deque);
 void	sa(t_deque *a);
 void	sb(t_deque *b);
+void	ss(t_deque *a, t_deque *b);
+
 
 #endif

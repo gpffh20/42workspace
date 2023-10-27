@@ -30,3 +30,9 @@ void	sb(t_deque *b)
 	b->front->next->data = tmp;
 	write(1, "sb\n", 3);
 }
+
+void	ss(t_deque *a, t_deque *b)
+{
+	sa(a);
+	sb(b);
+}
