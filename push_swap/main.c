@@ -20,28 +20,48 @@ void print_deque(t_deque *deque)
 	printf("\n");
 }
 
-int	main(void)
+int	print_error(void)
+{
+	write(2, "Error!\n", 7);
+	return (1);
+}
+
+int	main(int ac, char *av[])
 {
 	t_deque *a;
 	t_deque *b;
+	int 	i;
+	int		*arr;
 
-	a = create_deque();
-	b = create_deque();
-	push_back(a, '1');
-	push_back(a, '2');
-	push_back(a, '3');
 
-	push_back(b, '4');
-	push_back(b, '5');
-	push_back(b, '6');
+	if (ac < 2)
+		return (print_error());
 
-	print_deque(a); print_deque(b);
+	arr = (int *)malloc(sizeof(int) * ac);
+	i = 1;
+	while (i < ac)
+	{
+		arr[i - 1] = ft_atoi(av[i]);
+		i++;
+	}
 
-	rra(a);
-	rrb(b);
-	rrr(a, b);
+//	a = create_deque();
+//	b = create_deque();
+//	push_back(a, '1');
+//	push_back(a, '2');
+//	push_back(a, '3');
+//
+//	push_back(b, '4');
+//	push_back(b, '5');
+//	push_back(b, '6');
+//
+////	print_deque(a); print_deque(b);
+//
+//	rra(a);
+//	rrb(b);
+//	rrr(a, b);
 
-	printf("a: "); print_deque(a);
-	printf("b: "); print_deque(b);
+//	printf("a: "); print_deque(a);
+//	printf("b: "); print_deque(b);
 
 }

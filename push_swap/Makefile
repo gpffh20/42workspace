@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+#CFLAGS = -Wall -Werror -Wextra
 
 INC = ./
 
@@ -11,6 +11,7 @@ SRCS =	main.c\
 		op_p.c\
 		op_r.c\
 		op_rr.c\
+		ft_atoi.c\
 
 
 

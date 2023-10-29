@@ -15,6 +15,9 @@
 # include <unistd.h>
 # include <stdio.h>
 
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
+
 typedef char	t_element;
 
 typedef struct s_deque_node
@@ -47,4 +50,8 @@ void	rr(t_deque *a, t_deque *b);
 void	rra(t_deque *a);
 void	rrb(t_deque *b);
 void	rrr(t_deque *a, t_deque *b);
+int		ft_atoi(const char *str);
+int		print_error(void);
+
+
 #endif
