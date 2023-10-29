@@ -13,18 +13,20 @@
 
 void	pa(t_deque *a, t_deque *b)
 {
-	if (b->size == 0)
-		return ;
-	push_front(a, b->front->data);
-	pop_front(b);
+	if (b->size > 0)
+	{
+		push_front(a, b->front->data);
+		pop_front(b);
+	}
 	write(1, "pa\n", 3);
 }
 
 void	pb(t_deque *b, t_deque *a)
 {
-	if (a->size == 0)
-		return ;
-	push_front(b, a->front->data);
-	pop_front(a);
+	if (a->size > 0)
+	{
+		push_front(b, a->front->data);
+		pop_front(a);
+	}
 	write(1, "pb\n", 3);
 }
