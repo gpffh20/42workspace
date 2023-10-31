@@ -26,13 +26,25 @@ int	print_error(void)
 	return (1);
 }
 
+void	check_dup(int *arr, int num, int limit)
+{
+	int	i;
+
+	i = 0;
+	while (i < limit)
+	{
+		if (arr[i] == num)
+			exit(print_error());
+		i++;
+	}
+}
+
 int	main(int ac, char *av[])
 {
 	t_deque *a;
 	t_deque *b;
 	int 	i;
 	int		*arr;
-
 
 	if (ac < 2)
 		return (print_error());
@@ -42,6 +54,7 @@ int	main(int ac, char *av[])
 	while (i < ac)
 	{
 		arr[i - 1] = ft_atoi(av[i]);
+		check_dup(arr, arr[i - 1], i - 1);
 		i++;
 	}
 
