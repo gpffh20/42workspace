@@ -46,9 +46,9 @@ int	ft_atoi(const char *str)
 			i++;
 		}
 		else
-			exit(print_error());
+			exit(print_error(6));
 	}
 	if (is_minus * num > INT_MAX || is_minus * num < INT_MIN)
-		exit(print_error());
+		exit(print_error(6));
 	return (is_minus * num);
 }

@@ -18,7 +18,7 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-typedef char	t_element;
+typedef int	t_element;
 
 typedef struct s_deque_node
 {
@@ -51,7 +51,14 @@ void	rra(t_deque *a);
 void	rrb(t_deque *b);
 void	rrr(t_deque *a, t_deque *b);
 int		ft_atoi(const char *str);
-int		print_error(void);
+int		print_error(int code);
+int		*ft_strdup(int *s1, int len);
+void	check_dup(int *arr, int num, int limit);
+void	set_stack(t_deque *stack, int *arr, int len);
+
+
+void	print_arr(int *arr, int ac);
+
 
 
 #endif

@@ -12,6 +12,10 @@ SRCS =	main.c\
 		op_r.c\
 		op_rr.c\
 		ft_atoi.c\
+		ft_strdup.c\
+		utils.c\
+		set_stack.c\
+		push_swap.c\
 
 
 
