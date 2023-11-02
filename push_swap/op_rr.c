@@ -13,23 +13,23 @@
 
 void	rra(t_deque *a)
 {
-	push_front(a, a->rear->data);
+	push_front(a, a->back->data);
 	pop_back(a);
 	write(1, "rra\n", 4);
 }
 
 void	rrb(t_deque *b)
 {
-	push_front(b, b->rear->data);
+	push_front(b, b->back->data);
 	pop_back(b);
 	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_deque *a, t_deque *b)
 {
-	push_front(a, a->rear->data);
+	push_front(a, a->back->data);
 	pop_back(a);
-	push_front(b, b->rear->data);
+	push_front(b, b->back->data);
 	pop_back(b);
 	write(1, "rrr\n", 4);
 }

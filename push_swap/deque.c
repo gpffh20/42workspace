@@ -17,22 +17,22 @@ t_deque	*create_deque(void)
 
 	deque = (t_deque *)malloc(sizeof(t_deque));
 	deque->size = 0;
-	deque->rear = NULL;
+	deque->back = NULL;
 	deque->front = NULL;
 	return (deque);
 }
 
 void	push_front(t_deque *deque, t_element data)
 {
-	t_deque_node	*new;
+	t_node	*new;
 
-	new = (t_deque_node *)malloc(sizeof(t_deque_node));
+	new = (t_node *)malloc(sizeof(t_node));
 	new->data = data;
 	if (deque->size == 0)
 	{
 		new->next = NULL;
 		new->pre = NULL;
-		deque->rear = new;
+		deque->back = new;
 		deque->front = new;
 	}
 	else
@@ -47,35 +47,35 @@ void	push_front(t_deque *deque, t_element data)
 
 void	push_back(t_deque *deque, t_element data)
 {
-	t_deque_node	*new;
+	t_node	*new;
 
-	new = (t_deque_node *)malloc(sizeof(t_deque_node));
+	new = (t_node *)malloc(sizeof(t_node));
 	new->data = data;
 	if (deque->size == 0)
 	{
 		new->next = NULL;
 		new->pre = NULL;
-		deque->rear = new;
+		deque->back = new;
 		deque->front = new;
 	}
 	else
 	{
 		new->next = NULL;
-		new->pre = deque->rear;
-		deque->rear->next = new;
-		deque->rear = new;
+		new->pre = deque->back;
+		deque->back->next = new;
+		deque->back = new;
 	}
 	deque->size++;
 }
 
 void	pop_front(t_deque *deque)
 {
-	t_deque_node	*tmp;
+	t_node	*tmp;
 
 	if (deque->size == 1)
 	{
 		deque->front = NULL;
-		deque->rear = NULL;
+		deque->back = NULL;
 	}
 	else
 	{
@@ -89,18 +89,18 @@ void	pop_front(t_deque *deque)
 
 void	pop_back(t_deque *deque)
 {
-	t_deque_node	*tmp;
+	t_node	*tmp;
 
 	if (deque->size == 1)
 	{
 		deque->front = NULL;
-		deque->rear = NULL;
+		deque->back = NULL;
 	}
 	else
 	{
-		tmp = deque->rear;
-		deque->rear = tmp->pre;
-		deque->rear->next = NULL;
+		tmp = deque->back;
+		deque->back = tmp->pre;
+		deque->back->next = NULL;
 		free(tmp);
 	}
 	deque->size--;

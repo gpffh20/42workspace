@@ -37,7 +37,8 @@ int	ft_atoi(const char *str)
 	num = 0;
 	is_minus = 1;
 	i = data_refine((char *)str, &is_minus);
-
+	if (str[i] == '\0')
+		exit(print_error(7));
 	while (str[i])
 	{
 		if ('0' <= str[i] && str[i] <= '9')

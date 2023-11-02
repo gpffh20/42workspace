@@ -9,5 +9,77 @@
 /*   Updated: 2023/11/02 00:09:02 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
+void	triplicate(t_deque *a, t_deque *b, int len)
+{
+	t_element	pivot1;
+	t_element	pivot2;
+	int			i;
+
+	pivot1 = len / 3 - 1;
+	pivot2 = 2 * len / 3 - 1;
+	i = 0;
+	while (i < len)
+	{
+		if (a->front->data <= pivot1)
+		{
+			pb(b, a);
+			rb(b);
+		}
+		else if (a->front->data <= pivot2)
+		{
+			pb(b, a);
+		}
+		else
+		{
+			ra(a);
+		}
+		i++;
+	}
+	while (a->size > 3)
+		pb(b, a);
+	under_three(a);
+}
+
+void	case_three(t_deque *a)
+{
+	if (a->front->data == 1 && a->back->data == 2)
+		sa(a);
+	else if (a->front->data == 2 && a->back->data == 0)
+	{
+		sa(a);
+		rra(a);
+	}
+	else if (a->front->data == 2 && a->back->data == 1)
+		ra(a);
+	else if (a->front->data == 0 && a->back->data == 1)
+	{
+		sa(a);
+		ra(a);
+	}
+	else if (a->front->data == 1 && a->back->data == 0)
+		rra(a);
+}
+
+void	under_three(t_deque *a)
+{
+	if (a->size == 1)
+		exit(1);
+	else if (a->size == 2)
+	{
+		if (a->front->data > a->back->data)
+			sa(a);
+	}
+	else
+		case_three(a);
+}
+
+void	push_swap(t_deque *a, t_deque *b, int len)
+{
+	if (a->size <= 3)
+		under_three(a);
+	else
+		triplicate(a, b, len);
+}
 

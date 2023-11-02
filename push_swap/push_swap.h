@@ -20,18 +20,18 @@
 
 typedef int	t_element;
 
-typedef struct s_deque_node
+typedef struct s_node
 {
-	t_element			data;
-	struct s_deque_node	*pre;
-	struct s_deque_node	*next;
-}	t_deque_node;
+	t_element		data;
+	struct s_node	*pre;
+	struct s_node	*next;
+}	t_node;
 
 typedef struct s_deque
 {
-	int				size;
-	t_deque_node	*rear;
-	t_deque_node	*front;
+	int		size;
+	t_node	*front;
+	t_node	*back;
 }	t_deque;
 
 t_deque	*create_deque(void);
@@ -55,6 +55,8 @@ int		print_error(int code);
 int		*ft_strdup(int *s1, int len);
 void	check_dup(int *arr, int num, int limit);
 void	set_stack(t_deque *stack, int *arr, int len);
+void	push_swap(t_deque *a, t_deque *b, int len);
+void	under_three(t_deque *a);
 
 
 void	print_arr(int *arr, int ac);

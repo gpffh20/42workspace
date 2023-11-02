@@ -20,7 +20,7 @@ void print_arr(int *arr, int ac) {
 }
 
 void print_deque(t_deque *deque) {
-	t_deque_node *node;
+	t_node *node;
 
 	for (node = deque->front; node != NULL; node = node->next)
 		printf("[%d] ", node->data);
@@ -38,15 +38,21 @@ int	main(int ac, char *av[])
 	if (ac < 2)
 		return (print_error(1));
 	a = create_deque();
+	b = create_deque();
 	arr = (int *) malloc(sizeof(int) * ac);
 	i = 1;
 	while (i < ac)
 	{
+
 		arr[i - 1] = ft_atoi(av[i]);
 		check_dup(arr, arr[i - 1], i - 1);
 		i++;
 	}
 	set_stack(a, arr, ac - 1);
-	push_swap(a, b);
-//	print_deque(a);
+	push_swap(a, b, ac - 1);
+	printf("a: ");
+	print_deque(a);
+	printf("b: ");
+	print_deque(b);
+
 }
