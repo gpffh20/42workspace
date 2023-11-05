@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -58,4 +59,6 @@ void	under_five(t_deque *a, t_deque *b);
 char	**ft_split(char const *s, char c);
 int		is_sorted(t_deque *a);
 void	short_sort(t_deque *a, t_deque *b);
+void	free_deque(t_deque *stack);
+void	free_str(char **str);
 #endif

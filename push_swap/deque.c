@@ -72,6 +72,7 @@ void	pop_front(t_deque *deque)
 {
 	t_node	*tmp;
 
+	tmp = deque->front;
 	if (deque->size == 1)
 	{
 		deque->front = NULL;
@@ -79,11 +80,10 @@ void	pop_front(t_deque *deque)
 	}
 	else
 	{
-		tmp = deque->front;
 		deque->front = tmp->next;
 		deque->front->pre = NULL;
-		free(tmp);
 	}
+	free(tmp);
 	deque->size--;
 }
 
@@ -91,6 +91,7 @@ void	pop_back(t_deque *deque)
 {
 	t_node	*tmp;
 
+	tmp = deque->back;
 	if (deque->size == 1)
 	{
 		deque->front = NULL;
@@ -98,10 +99,9 @@ void	pop_back(t_deque *deque)
 	}
 	else
 	{
-		tmp = deque->back;
 		deque->back = tmp->pre;
 		deque->back->next = NULL;
-		free(tmp);
 	}
+	free(tmp);
 	deque->size--;
 }

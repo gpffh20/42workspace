@@ -85,6 +85,7 @@ void	set_stack(t_deque *stack, int *arr, int len)
 	quick_sort(sort_arr, 0, len - 1);
 	indexing(arr, sort_arr, len);
 	check_dup(sort_arr, len);
+	free(sort_arr);
 	i = 0;
 	while (i < len)
 	{

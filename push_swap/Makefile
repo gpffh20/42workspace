@@ -2,6 +2,7 @@ NAME = push_swap
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
+# -fsanitize=address -g3
 
 INC = ./
 
@@ -18,6 +19,7 @@ SRCS =	main.c\
 		push_swap.c\
 		ft_split.c\
 		short_sort.c\
+		free.c\
 
 
 

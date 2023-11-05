@@ -11,19 +11,6 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ft_free(char **str, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
 int	split_args(int ac, char *av[], int *arr)
 {
 	int		i;
@@ -43,7 +30,7 @@ int	split_args(int ac, char *av[], int *arr)
 			j++;
 			idx++;
 		}
-		ft_free(tmp, j - 1);
+		free_str(tmp);
 		i++;
 	}
 	return (idx);
@@ -54,7 +41,7 @@ void	check_dup(int *arr, int limit)
 	int	i;
 
 	i = 0;
-	while (i < limit)
+	while (i + 1 < limit)
 	{
 		if (arr[i] == arr[i + 1])
 			exit(print_error());
