@@ -11,103 +11,96 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	triplicate(t_deque *a, t_deque *b, int len)
+int	get_chunk(int size)
 {
-	t_element	pivot1;
-	t_element	pivot2;
-	int			i;
+	int	chunk;
 
-	pivot1 = len / 3 - 1;
-	pivot2 = 2 * len / 3 - 1;
-	i = 0;
-	while (i < len)
+	if (size < 10)
+		chunk = 3;
+	else if (size < 30)
+		chunk = 5;
+	else
+		chunk = (int)(0.000000053 * size * size + 0.03 * size + 14.5);
+	return (chunk);
+}
+
+void	a_to_b(t_deque *a, t_deque *b, int i)
+{
+	int	chunk;
+
+	chunk = get_chunk(a->size);
+	while (a->size > 0)
 	{
-		if (a->front->data <= pivot1)
+		if (a->front->data <= i)
+		{
+			pb(b, a);
+			i++;
+		}
+		else if (a->front->data > i && a->front->data <= i + chunk)
 		{
 			pb(b, a);
 			rb(b);
+			i++;
 		}
-		else if (a->front->data <= pivot2)
+		else if (a->front->data > (i + chunk))
 		{
-			pb(b, a);
+			if (i < a->size / 2 && i >= 0)
+				rra(a);
+			else
+				ra(a);
 		}
-		else
-		{
-			ra(a);
-		}
-		i++;
 	}
-	while (a->size > 3)
-		pb(b, a);
-	under_three(a);
 }
 
-void	case_three(t_deque *a)
+void	sort_b(t_deque *b, int len)
 {
-	if (a->front->data == 1 && a->back->data == 2)
-		sa(a);
-	else if (a->front->data == 2 && a->back->data == 0)
-	{
-		sa(a);
-		rra(a);
-	}
-	else if (a->front->data == 2 && a->back->data == 1)
-		ra(a);
-	else if (a->front->data == 0 && a->back->data == 1)
-	{
-		sa(a);
-		ra(a);
-	}
-	else if (a->front->data == 1 && a->back->data == 0)
-		rra(a);
-}
+	int		idx;
+	t_node	*tmp;
 
-void	under_three(t_deque *a)
-{
-	if (a->size == 1)
-		exit(1);
-	else if (a->size == 2)
+	idx = 0;
+	tmp = b->front;
+	while (tmp && tmp->next)
 	{
-		if (a->front->data > a->back->data)
-			sa(a);
+		if (tmp->data == len)
+			break ;
+		tmp = tmp->next;
+		idx++;
+	}
+	printf("%d\n", len);
+	if (idx > len / 2)
+	{
+		while (b->front->data != len)
+		{
+			rrb(b);
+		}
 	}
 	else
-		case_three(a);
+	{
+		while (b->front->data != len)
+		{
+			rb(b);
+		}
+	}
 }
 
-//void	greedy(t_deque *a, t_deque *b)
-//{
-//	int	a_data;
-//	int b_data;
-//
-//	while (b->size)
-//	{
-//		find_best(a, b, &a_data, &b_data);
-//		before_push_all(a, b, &a_data, &b_data);
-//		before_push_single(a, b, &a_data, &b_data);
-//		push(a, b);
-//	}
-//	last_sort(a);
-//}
-
-void	find_best(t_deque *a, t_deque *b)
+void	b_to_a(t_deque *a, t_deque *b)
 {
-	return ;
+	while (b->size != 0)
+	{
+		sort_b(b, b->size - 1);
+		pa(a, b);
+	}
 }
 
-void	push_swap(t_deque *a, t_deque *b, int len)
+
+void	push_swap(t_deque *a, t_deque *b)
 {
-	if (a->size <= 3)
-		under_three(a);
+	if (a->size <= 5)
+		short_sort(a, b);
 	else
 	{
-		triplicate(a, b, len);
+		a_to_b(a, b, 0);
+		b_to_a(a, b);
+		return ;
 	}
-	while (b->size)
-	{
-		find_best(a, b);
-	}
-
-
 }
-

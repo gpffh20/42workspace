@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = cc
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 INC = ./
 
@@ -17,6 +17,7 @@ SRCS =	main.c\
 		set_stack.c\
 		push_swap.c\
 		ft_split.c\
+		short_sort.c\
 
 
 

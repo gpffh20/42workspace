@@ -76,16 +76,16 @@ static void	indexing(int *arr, int *sort_arr, int len)
 	}
 }
 
-int	is_sorted(int *arr, int len)
+int	is_sorted(t_deque *a)
 {
-	int i;
+	t_node	*tmp;
 
-	i = 0;
-	while (i + 1 < len)
+	tmp = a->front;
+	while (tmp->next)
 	{
-		if (arr[i] > arr[i + 1])
+		if (tmp->data > tmp->next->data)
 			return (0);
-		i++;
+		tmp = tmp->next;
 	}
 	return (1);
 
@@ -96,15 +96,16 @@ void	set_stack(t_deque *stack, int *arr, int len)
 	int	i;
 	int	*sort_arr;
 
-	if (is_sorted(arr, len))
-		exit(0);
 	sort_arr = ft_strdup(arr, len);
 	quick_sort(sort_arr, 0, len - 1);
 	indexing(arr, sort_arr, len);
+	check_dup(sort_arr, len);
 	i = 0;
 	while (i < len)
 	{
 		push_back(stack, arr[i]);
 		i++;
 	}
+	if (is_sorted(stack))
+		exit(0);
 }

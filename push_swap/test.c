@@ -4,4 +4,3 @@
 int main()
 {
 	printf("%d", atoi("+123"));
-}

@@ -13,16 +13,13 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-typedef int	t_element;
-
 typedef struct s_node
 {
-	t_element		data;
+	int				data;
 	struct s_node	*pre;
 	struct s_node	*next;
 }	t_node;
@@ -35,8 +32,8 @@ typedef struct s_deque
 }	t_deque;
 
 t_deque	*create_deque(void);
-void	push_front(t_deque *deque, t_element data);
-void	push_back(t_deque *deque, t_element data);
+void	push_front(t_deque *deque, int data);
+void	push_back(t_deque *deque, int data);
 void	pop_front(t_deque *deque);
 void	pop_back(t_deque *deque);
 void	sa(t_deque *a);
@@ -53,15 +50,20 @@ void	rrr(t_deque *a, t_deque *b);
 int		ft_atoi(const char *str);
 int		print_error(int code);
 int		*ft_strdup(int *s1, int len);
-void	check_dup(int *arr, int num, int limit);
+void	check_dup(int *arr, int limit);
 void	set_stack(t_deque *stack, int *arr, int len);
-void	push_swap(t_deque *a, t_deque *b, int len);
-void	under_three(t_deque *a);
+void	push_swap(t_deque *a, t_deque *b);
+void	under_five(t_deque *a, t_deque *b);
 char	**ft_split(char const *s, char c);
+int		is_sorted(t_deque *a);
+void	short_sort(t_deque *a, t_deque *b);
+
+
 
 
 
 void	print_arr(int *arr, int ac);
+void print_deque(t_deque *deque);
 
 
 

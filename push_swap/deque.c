@@ -22,7 +22,7 @@ t_deque	*create_deque(void)
 	return (deque);
 }
 
-void	push_front(t_deque *deque, t_element data)
+void	push_front(t_deque *deque, int data)
 {
 	t_node	*new;
 
@@ -45,7 +45,7 @@ void	push_front(t_deque *deque, t_element data)
 	deque->size++;
 }
 
-void	push_back(t_deque *deque, t_element data)
+void	push_back(t_deque *deque, int data)
 {
 	t_node	*new;
 

@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	check_dup(int *arr, int num, int limit)
+void	check_dup(int *arr, int limit)
 {
 	int	i;
 
 	i = 0;
 	while (i < limit)
 	{
-		if (arr[i] == num)
+		if (arr[i] == arr[i + 1])
 			exit(print_error(4));
 		i++;
 	}

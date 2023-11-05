@@ -65,7 +65,6 @@ int	main(int ac, char *av[])
 		while (tmp[j])
 		{
 			arr[idx] = ft_atoi(tmp[j]);
-			check_dup(arr, arr[i - 1], i - 1);
 			j++;
 			idx++;
 		}
@@ -73,9 +72,9 @@ int	main(int ac, char *av[])
 		i++;
 	}
 	set_stack(a, arr, idx);
-	push_swap(a, b, idx);
-	printf("a: ");
-	print_deque(a);
-	printf("b: ");
-	print_deque(b);
+	push_swap(a, b);
+//	printf("a: ");
+//	print_deque(a);
+//	printf("b: ");
+//	print_deque(b);
 }
