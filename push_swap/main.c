@@ -11,8 +11,14 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+void	a(void)
+{
+	system("leaks --quiet push_swap");
+}
+
 int	main(int ac, char *av[])
 {
+	atexit(a);
 	t_deque	*a;
 	t_deque	*b;
 	int		idx;

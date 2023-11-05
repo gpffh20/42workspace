@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 	is_minus = 1;
 	i = data_refine((char *)str, &is_minus);
 	if (str[i] == '\0')
-		exit(print_error(7));
+		exit(print_error());
 	while (str[i])
 	{
 		if ('0' <= str[i] && str[i] <= '9')
@@ -47,9 +47,9 @@ int	ft_atoi(const char *str)
 			i++;
 		}
 		else
-			exit(print_error(6));
+			exit(print_error());
 	}
 	if (is_minus * num > INT_MAX || is_minus * num < INT_MIN)
-		exit(print_error(6));
+		exit(print_error());
 	return (is_minus * num);
 }
