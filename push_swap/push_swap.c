@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 00:09:01 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/02 00:09:02 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:27:43 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -66,20 +66,15 @@ void	sort_b(t_deque *b, int len)
 		tmp = tmp->next;
 		idx++;
 	}
-	printf("%d\n", len);
 	if (idx > len / 2)
 	{
 		while (b->front->data != len)
-		{
 			rrb(b);
-		}
 	}
 	else
 	{
 		while (b->front->data != len)
-		{
 			rb(b);
-		}
 	}
 }
 
@@ -91,7 +86,6 @@ void	b_to_a(t_deque *a, t_deque *b)
 		pa(a, b);
 	}
 }
-
 
 void	push_swap(t_deque *a, t_deque *b)
 {

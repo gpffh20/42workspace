@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:56:54 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/05 15:56:55 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:29:49 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -52,15 +52,11 @@ void	case_four(t_deque *a, t_deque *b)
 		idx++;
 	}
 	if (idx < 2)
-	{
 		while (a->front->data != 0)
 			ra(a);
-	}
 	else
-	{
 		while (a->front->data != 0)
 			rra(a);
-	}
 	if (!is_sorted(a))
 	{
 		pb(b, a);

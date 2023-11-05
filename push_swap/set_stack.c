@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 23:58:12 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/01 23:58:13 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/05 20:28:22 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -74,21 +74,6 @@ static void	indexing(int *arr, int *sort_arr, int len)
 			j++;
 		}
 	}
-}
-
-int	is_sorted(t_deque *a)
-{
-	t_node	*tmp;
-
-	tmp = a->front;
-	while (tmp->next)
-	{
-		if (tmp->data > tmp->next->data)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-
 }
 
 void	set_stack(t_deque *stack, int *arr, int len)

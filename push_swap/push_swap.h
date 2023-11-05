@@ -47,8 +47,9 @@ void	rr(t_deque *a, t_deque *b);
 void	rra(t_deque *a);
 void	rrb(t_deque *b);
 void	rrr(t_deque *a, t_deque *b);
+int		split_args(int ac, char *av[], int *arr);
+int		print_error(void);
 int		ft_atoi(const char *str);
-int		print_error(int code);
 int		*ft_strdup(int *s1, int len);
 void	check_dup(int *arr, int limit);
 void	set_stack(t_deque *stack, int *arr, int len);
@@ -57,14 +58,4 @@ void	under_five(t_deque *a, t_deque *b);
 char	**ft_split(char const *s, char c);
 int		is_sorted(t_deque *a);
 void	short_sort(t_deque *a, t_deque *b);
-
-
-
-
-
-void	print_arr(int *arr, int ac);
-void print_deque(t_deque *deque);
-
-
-
 #endif
