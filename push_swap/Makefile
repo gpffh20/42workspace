@@ -16,6 +16,7 @@ SRCS =	main.c\
 		utils.c\
 		set_stack.c\
 		push_swap.c\
+		ft_split.c\
 
 
 

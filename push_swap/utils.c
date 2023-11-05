@@ -26,7 +26,7 @@ void	check_dup(int *arr, int num, int limit)
 
 int	print_error(int code)
 {
-	write(2, "Error!\n", 7);
+	write(2, "Error\n", 6);
 	printf("error code: %d\n", code);
 	return (1);
 }

@@ -57,6 +57,8 @@ void	check_dup(int *arr, int num, int limit);
 void	set_stack(t_deque *stack, int *arr, int len);
 void	push_swap(t_deque *a, t_deque *b, int len);
 void	under_three(t_deque *a);
+char	**ft_split(char const *s, char c);
+
 
 
 void	print_arr(int *arr, int ac);

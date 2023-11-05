@@ -27,13 +27,29 @@ void print_deque(t_deque *deque) {
 	printf("\n");
 }
 
+void	ft_free(char **str, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
 
 int	main(int ac, char *av[])
 {
 	t_deque	*a;
 	t_deque	*b;
 	int		i;
+	int 	j;
+	int 	idx;
 	int		*arr;
+	char 	**tmp;
 
 	if (ac < 2)
 		return (print_error(1));
@@ -41,18 +57,25 @@ int	main(int ac, char *av[])
 	b = create_deque();
 	arr = (int *) malloc(sizeof(int) * ac);
 	i = 1;
+	idx = 0;
 	while (i < ac)
 	{
-
-		arr[i - 1] = ft_atoi(av[i]);
-		check_dup(arr, arr[i - 1], i - 1);
+		j = 0;
+		tmp = ft_split(av[i], 32);
+		while (tmp[j])
+		{
+			arr[idx] = ft_atoi(tmp[j]);
+			check_dup(arr, arr[i - 1], i - 1);
+			j++;
+			idx++;
+		}
+		ft_free(tmp, j - 1);
 		i++;
 	}
-	set_stack(a, arr, ac - 1);
-	push_swap(a, b, ac - 1);
+	set_stack(a, arr, idx);
+	push_swap(a, b, idx);
 	printf("a: ");
 	print_deque(a);
 	printf("b: ");
 	print_deque(b);
-
 }

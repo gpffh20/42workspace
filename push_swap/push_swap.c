@@ -75,11 +75,39 @@ void	under_three(t_deque *a)
 		case_three(a);
 }
 
+//void	greedy(t_deque *a, t_deque *b)
+//{
+//	int	a_data;
+//	int b_data;
+//
+//	while (b->size)
+//	{
+//		find_best(a, b, &a_data, &b_data);
+//		before_push_all(a, b, &a_data, &b_data);
+//		before_push_single(a, b, &a_data, &b_data);
+//		push(a, b);
+//	}
+//	last_sort(a);
+//}
+
+void	find_best(t_deque *a, t_deque *b)
+{
+	return ;
+}
+
 void	push_swap(t_deque *a, t_deque *b, int len)
 {
 	if (a->size <= 3)
 		under_three(a);
 	else
+	{
 		triplicate(a, b, len);
+	}
+	while (b->size)
+	{
+		find_best(a, b);
+	}
+
+
 }
 

@@ -76,11 +76,28 @@ static void	indexing(int *arr, int *sort_arr, int len)
 	}
 }
 
+int	is_sorted(int *arr, int len)
+{
+	int i;
+
+	i = 0;
+	while (i + 1 < len)
+	{
+		if (arr[i] > arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+
+}
+
 void	set_stack(t_deque *stack, int *arr, int len)
 {
 	int	i;
 	int	*sort_arr;
 
+	if (is_sorted(arr, len))
+		exit(0);
 	sort_arr = ft_strdup(arr, len);
 	quick_sort(sort_arr, 0, len - 1);
 	indexing(arr, sort_arr, len);
