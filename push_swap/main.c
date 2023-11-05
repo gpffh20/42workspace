@@ -21,10 +21,10 @@ int	main(int ac, char *av[])
 	if (ac < 2)
 		return (print_error());
 	a = create_deque();
-	arr = (int *) malloc(sizeof(int) * ac);
+	// arr = (int *) malloc(sizeof(int) * ac);
 	idx = split_args(ac, av, arr);
 	set_stack(a, arr, idx);
-	free(arr);
+	// free(arr);
 	b = create_deque();
 	push_swap(a, b);
 	exit (0);

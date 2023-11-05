@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+#include <stdio.h>
+
 int	split_args(int ac, char *av[], int *arr)
 {
 	int		i;
@@ -26,6 +28,7 @@ int	split_args(int ac, char *av[], int *arr)
 		tmp = ft_split(av[i], 32);
 		while (tmp[j])
 		{
+			printf("str : %s\n", tmp[j]);
 			arr[idx] = ft_atoi(tmp[j]);
 			j++;
 			idx++;
