@@ -11,32 +11,26 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-#include <stdio.h>
-
-int	split_args(int ac, char *av[], int *arr)
+void	split_args(int ac, char *av[], t_deque *a)
 {
 	int		i;
 	int		j;
-	int		idx;
 	char	**tmp;
 
 	i = 1;
-	idx = 0;
 	while (i < ac)
 	{
 		j = 0;
 		tmp = ft_split(av[i], 32);
 		while (tmp[j])
 		{
-			printf("str : %s\n", tmp[j]);
-			arr[idx] = ft_atoi(tmp[j]);
+//			printf("str : %s\n", tmp[j]);
+			push_back(a, ft_atoi(tmp[j]));
 			j++;
-			idx++;
 		}
 		free_str(tmp);
 		i++;
 	}
-	return (idx);
 }
 
 void	check_dup(int *arr, int limit)

@@ -54,20 +54,24 @@ static void	quick_sort(int *arr, int low, int high)
 	}
 }
 
-static void	indexing(int *arr, int *sort_arr, int len)
+static void	indexing(t_deque *stack, int *sort_arr, int len)
 {
 	int	i;
 	int	j;
+	t_node	*tmp;
 
 	i = 0;
+	tmp = stack->front;
 	while (i < len)
 	{
 		j = 0;
 		while (j < len)
 		{
-			if (arr[i] == sort_arr[j])
+//			if (arr[i] == sort_arr[j])
+			if (tmp->data == sort_arr[j])
 			{
-				arr[i] = j;
+				tmp->data = j;
+				tmp = tmp->next;
 				i++;
 				break ;
 			}
@@ -83,15 +87,9 @@ void	set_stack(t_deque *stack, int *arr, int len)
 
 	sort_arr = ft_strdup(arr, len);
 	quick_sort(sort_arr, 0, len - 1);
-	indexing(arr, sort_arr, len);
+	indexing(stack, sort_arr, len);
 	check_dup(sort_arr, len);
 	free(sort_arr);
-	i = 0;
-	while (i < len)
-	{
-		push_back(stack, arr[i]);
-		i++;
-	}
 	if (is_sorted(stack))
 		exit(0);
 }

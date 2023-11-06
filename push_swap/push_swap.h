@@ -15,6 +15,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+#include <stdio.h>
+
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
@@ -48,7 +50,7 @@ void	rr(t_deque *a, t_deque *b);
 void	rra(t_deque *a);
 void	rrb(t_deque *b);
 void	rrr(t_deque *a, t_deque *b);
-int		split_args(int ac, char *av[], int *arr);
+void	split_args(int ac, char *av[], t_deque *a);
 int		print_error(void);
 int		ft_atoi(const char *str);
 int		*ft_strdup(int *s1, int len);
@@ -61,4 +63,9 @@ int		is_sorted(t_deque *a);
 void	short_sort(t_deque *a, t_deque *b);
 void	free_deque(t_deque *stack);
 void	free_str(char **str);
+
+void print_arr(int *arr, int ac);
+void print_deque(t_deque *deque);
+
+
 #endif

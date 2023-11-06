@@ -66,7 +66,7 @@ void	sort_b(t_deque *b, int len)
 		tmp = tmp->next;
 		idx++;
 	}
-	if (idx > len / 2)
+	if (idx >= len / 2)
 	{
 		while (b->front->data != len)
 			rrb(b);
