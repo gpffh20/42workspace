@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 23:33:30 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/05 20:30:16 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:10:09 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -24,7 +24,6 @@ void	split_args(int ac, char *av[], t_deque *a)
 		tmp = ft_split(av[i], 32);
 		while (tmp[j])
 		{
-//			printf("str : %s\n", tmp[j]);
 			push_back(a, ft_atoi(tmp[j]));
 			j++;
 		}

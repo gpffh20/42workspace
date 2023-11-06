@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:40:59 by eushin            #+#    #+#             */
-/*   Updated: 2023/10/27 14:41:00 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:10:45 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -14,8 +14,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-#include <stdio.h>
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
@@ -63,9 +61,4 @@ int		is_sorted(t_deque *a);
 void	short_sort(t_deque *a, t_deque *b);
 void	free_deque(t_deque *stack);
 void	free_str(char **str);
-
-void print_arr(int *arr, int ac);
-void print_deque(t_deque *deque);
-
-
 #endif

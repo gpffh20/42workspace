@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 23:58:12 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/05 20:28:22 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:09:52 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -56,8 +56,8 @@ static void	quick_sort(int *arr, int low, int high)
 
 static void	indexing(t_deque *stack, int *sort_arr, int len)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_node	*tmp;
 
 	i = 0;
@@ -67,7 +67,6 @@ static void	indexing(t_deque *stack, int *sort_arr, int len)
 		j = 0;
 		while (j < len)
 		{
-//			if (arr[i] == sort_arr[j])
 			if (tmp->data == sort_arr[j])
 			{
 				tmp->data = j;
