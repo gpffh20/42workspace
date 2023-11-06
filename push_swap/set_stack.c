@@ -81,7 +81,6 @@ static void	indexing(t_deque *stack, int *sort_arr, int len)
 
 void	set_stack(t_deque *stack, int *arr, int len)
 {
-	int	i;
 	int	*sort_arr;
 
 	sort_arr = ft_strdup(arr, len);
