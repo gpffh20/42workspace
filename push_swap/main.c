@@ -33,7 +33,7 @@ int	main(int ac, char *av[])
 	int		*arr;
 
 	if (ac < 2)
-		return (print_error());
+		return ();
 	a = create_deque();
 	split_args(ac, av, a);
 	arr = (int *) malloc(sizeof(int) * a->size);
