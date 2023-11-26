@@ -9,6 +9,7 @@
 /*   Updated: 2023/04/28 18:17:29 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "pipex.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

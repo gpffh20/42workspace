@@ -9,6 +9,13 @@ SRCS =	pipex.c\
 		ft_split.c\
 		ft_strnstr.c\
 		ft_strjoin.c\
+		error_handle.c\
+		get_path.c\
+		execute.c\
+		init.c\
+		get_cmd.c\
+		open_file.c\
+
 
 
 OBJS = $(SRCS:.c=.o)

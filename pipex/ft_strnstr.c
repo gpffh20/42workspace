@@ -9,7 +9,7 @@
 /*   Updated: 2023/04/28 18:47:52 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "pipex.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {

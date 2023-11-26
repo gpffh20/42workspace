@@ -9,7 +9,7 @@
 /*   Updated: 2023/04/28 18:44:19 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "pipex.h"
 
 static int	count_word(char *tmp, char c)
 {
