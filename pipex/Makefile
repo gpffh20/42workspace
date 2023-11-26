@@ -6,6 +6,9 @@ CC = cc
 INC = ./
 
 SRCS =	pipex.c\
+		ft_split.c\
+		ft_strnstr.c\
+		ft_strjoin.c\
 
 
 OBJS = $(SRCS:.c=.o)

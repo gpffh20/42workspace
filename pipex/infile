@@ -1,5 +1,4 @@
-a
-b
-c
-d
-w
+[memo]
+cmd에는 경로
+arg에는 경로, 명령어 옵션, null
+env에는 환경변수
