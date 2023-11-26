@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execute.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/27 04:29:30 by eushin            #+#    #+#             */
+/*   Updated: 2023/11/27 04:29:31 by eushin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	exec_child(t_args *args, t_fds *fds, t_exec_args *exec_args)
@@ -32,6 +44,7 @@ void	execute(t_args *args, t_fds *fds)
 	t_exec_args exec_args;
 
 	init_exec_args(&exec_args, args);
+	exit(1);
 	if (args->pid == 0)
 	{
 		exec_child(args, fds, &exec_args);

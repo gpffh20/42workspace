@@ -1,7 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/27 04:30:16 by eushin            #+#    #+#             */
+/*   Updated: 2023/11/27 04:30:17 by eushin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
 # include "./ft_printf/ft_printf.h"
+
+# include <stdio.h>
+
+
 
 # include <string.h>
 # include <errno.h>
@@ -44,10 +60,6 @@ void	init_args(t_args *args, char **av, char **envp);
 void	init_exec_args(t_exec_args *exec_args, t_args *args);
 char	*get_cmd(char *cmd, char **envp);
 void	open_file(t_args *args, t_fds *fds);
-
-
-
-
 
 
 
