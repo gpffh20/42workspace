@@ -14,17 +14,21 @@
 
 void	error_handle(int errnum)
 {
+	ft_putstr_fd("pipex: ", 2);
 	if (errnum == 1)
-		ft_printf("Number of Argument Error!\n");
+		ft_putstr_fd("Number of Argument Error!\n", 2);
 	else if (errnum == 2)
-		ft_printf("Pipe Error!: %s\n", strerror(errno));
+		ft_putstr_fd(strerror(errno), 2);
 	else if (errnum == 3)
-		ft_printf("Fork Error!: %s\n", strerror((errno)));
+		ft_putstr_fd(strerror(errno),2);
 	else if (errnum == 4)
-		ft_printf("Open Error!: %s\n", strerror(errno));
+		ft_putstr_fd(strerror(errno), 2);
 	else if (errnum == 5)
-		ft_printf("Dup Error!: %s\n", strerror(errno));
+		ft_putstr_fd(strerror(errno), 2);
 	else if (errnum == 6)
-		ft_printf("Cannot found cmd path: %s\n", strerror(errno));
+		ft_putstr_fd(strerror(errno), 2);
+	else if (errnum == 7)
+		ft_putstr_fd(strerror(errno), 2);
+	ft_putstr_fd("\n", 2);
 	exit(1);
 }

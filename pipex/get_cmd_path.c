@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*         헤더 다시만들기!!!!!!!!!!                                               :::      ::::::::   */
+/*   get_cmd_path.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,27 +12,24 @@
 
 #include "pipex.h"
 
-char	*get_cmd(char *cmd, char **envp)
+char	*get_cmd_path(char *cmd, char **path)
 {
 	int i;
-	int access_ok;
 	char *cmd_path;
 	char *cmd_tmp;
-	char **env_path;
 
+	if (access(cmd, X_OK) == 0)
+		return (cmd);
 	i = 0;
-	env_path = get_path(envp);
 	cmd_path = ft_strjoin("/", cmd);
-	while (env_path[i])
+	while (path[i])
 	{
-		cmd_tmp = ft_strjoin(env_path[i], cmd_path);
-		access_ok = access(cmd_tmp, X_OK);
-		if (access_ok == 0)
+		cmd_tmp = ft_strjoin(path[i], cmd_path);
+		if (access(cmd_tmp, X_OK) == 0)
 		{
 			free(cmd_path);
 			return (cmd_tmp);
 		}
-		close(access_ok);
 		free(cmd_tmp);
 		i++;
 	}

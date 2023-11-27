@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 04:30:10 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/27 04:30:11 by eushin           ###   ########.fr       */
+/*   Created: 2023/04/25 15:57:49 by eushin            #+#    #+#             */
+/*   Updated: 2023/04/25 16:00:06 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
-int	main(int ac, char *av[], char *envp[])
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_pipex	args;
+	int	i;
 
-	if (ac != 5)
-		error_handle(1);
-	args.envp = envp;
-	init_args(&args, av);
-//	if (pipe(args.pipe) < 0)
-//		error_handle(2);
-	execute(&args, av);
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

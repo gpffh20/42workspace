@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_file.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 04:30:03 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/27 04:30:04 by eushin           ###   ########.fr       */
+/*   Created: 2023/03/18 16:18:15 by eushin            #+#    #+#             */
+/*   Updated: 2023/03/19 16:09:22 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "pipex.h"
 
-void	open_file(t_args *args, t_fds *fds)
+char	*ft_strdup(const char *s1)
 {
-	fds->infile_fd = open(args->av[1], O_RDONLY);
-	fds->outfile_fd = open(args->av[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (fds->infile_fd < 0 || fds->outfile_fd < 0)
-		return (error_handle(4));
+	int		i;
+	char	*new_str;
+	char	*tmp;
+
+	tmp = (char *)s1;
+	new_str = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
+	if (!new_str)
+		return (NULL);
+	i = -1;
+	while (tmp[++i])
+		new_str[i] = tmp[i];
+	new_str[i] = 0;
+	return (new_str);
 }

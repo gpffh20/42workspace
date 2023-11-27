@@ -9,48 +9,78 @@
 /*   Updated: 2023/11/27 04:29:31 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "pipex.h"
 
-void	exec_child(t_args *args, t_fds *fds, t_exec_args *exec_args)
+static void	exec_parents(t_pipex *args)
 {
-	close(args->pipe[0]); // 파이프값을 읽을 일 없으니 바로 닫아줌
-	if (dup2(fds->infile_fd, STDIN_FILENO) < 0)// infile_fd가 stdin fd를 복사 -> infile이 stdin을 가르키게 됨. 즉 stdin하면 infjle에 저장
-		return (error_handle(5));
-	if (dup2(args->pipe[1], STDOUT_FILENO) < 0)	// stdout하면 fd[1]에 저장
-		return (error_handle(5));
-	close(args->pipe[1]);
-	close(fds->infile_fd);
-	execve(exec_args->cmd1, exec_args->arg1, args->envp);
-}
-
-void	exec_parents(t_args *args, t_fds *fds, t_exec_args *exec_args)
-{
-	int status;
-
 	close(args->pipe[1]);
 	if (dup2(args->pipe[0], STDIN_FILENO) < 0)
 		return (error_handle(5));
-	if (dup2(fds->outfile_fd, STDOUT_FILENO) < 0)
-		return (error_handle(5));
 	close(args->pipe[0]);
-	close(fds->outfile_fd);
-	waitpid(args->pid, &status, WNOHANG);
-	execve(exec_args->cmd2, exec_args->arg2, args->envp);
 }
 
-void	execute(t_args *args, t_fds *fds)
+static void	exec1_child(t_pipex *args, char *infile)
 {
-	t_exec_args exec_args;
+	int		infile_fd;
+	char	*cmd_path;
 
-	init_exec_args(&exec_args, args);
-	exit(1);
-	if (args->pid == 0)
-	{
-		exec_child(args, fds, &exec_args);
-	}
+	infile_fd = open(infile, O_RDONLY);
+	if (infile_fd < 0)
+		return (error_handle(4));
+//	printf("infile: %d\n", infile_fd);
+	close(args->pipe[0]);
+	if (dup2(infile_fd, STDIN_FILENO) < 0)
+		return (error_handle(5));
+	close(infile_fd);
+	if (dup2(args->pipe[1], STDOUT_FILENO) < 0)
+		return (error_handle(5));
+	close(args->pipe[1]);
+	cmd_path = get_cmd_path(args->arg1[0], args->path);
+//	ft_printf("cmd path: %s\n", cmd_path);
+//	ft_putstr_fd(cmd_path, 2);
+//	write(2, "haha\n", 5);
+	if (execve(cmd_path, args->arg1, args->envp) == -1)
+		return (error_handle(7));
+}
+
+static void	exec2_child(t_pipex *args, char *outfile)
+{
+	int		outfile_fd;
+	char	*cmd_path;
+
+	outfile_fd = open(outfile, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (outfile_fd < 0)
+		return (error_handle(4));
+	if (dup2(outfile_fd, STDOUT_FILENO) < 0)
+		return (error_handle(5));
+	close(outfile_fd);
+	cmd_path = get_cmd_path(args->arg2[0], args->path);
+	if (execve(cmd_path, args->arg2, args->envp) == -1)
+		return (error_handle(7));
+}
+
+int	execute(t_pipex *args, char **av)
+{
+	int		status;
+	pid_t	pid;
+
+//	init_args(args, av);
+	if (pipe(args->pipe) < 0)
+		error_handle(2);
+//	printf("pipe: %d, %d\n", args->pipe[0], args->pipe[1]);
+	pid = fork();
+	if (pid < 0)
+		error_handle(3);
+	else if (pid == 0)
+		exec1_child(args, av[1]);
 	else
-	{
-		exec_parents(args, fds, &exec_args);
-	}
+		exec_parents(args);
+	pid = fork();
+	if (pid < 0)
+		error_handle(3);
+	else if (pid == 0)
+		exec2_child(args, av[4]);
+	wait(&status);
+	wait(&status);
+	return (status);
 }
