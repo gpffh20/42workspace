@@ -6,12 +6,12 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 04:30:10 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/27 04:30:11 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/27 20:04:48 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
-void	ft_free(char **path)
+static void	ft_free(char **path)
 {
 	int	i;
 

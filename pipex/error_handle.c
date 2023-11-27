@@ -6,10 +6,9 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 04:29:20 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/27 04:29:23 by eushin           ###   ########.fr       */
+/*   Updated: 2023/11/27 20:03:49 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "pipex.h"
 
 void	error_handle(int errnum)
