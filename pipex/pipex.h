@@ -23,10 +23,10 @@
 typedef struct s_pipex
 {
 	int		pipe[2];
-	char	**path;	// envp path split
-	char	**envp;	// envp from main(copy address)
-	char	**arg1;	// cmd1 array(execve 2)
-	char	**arg2;	// cmd2 array(execve 2)
+	char	**path;
+	char	**envp;
+	char	**arg1;
+	char	**arg2;
 }	t_pipex;
 
 char	**ft_split(char const *s, char c);
@@ -39,7 +39,5 @@ void	init_args(t_pipex *args, char **av);
 char	*get_cmd_path(char *cmd, char **path);
 char	**get_path(char **envp);
 void	ft_putstr_fd(char *s, int fd);
-
-
 
 #endif

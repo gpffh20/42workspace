@@ -20,7 +20,7 @@ void	error_handle(int errnum)
 	else if (errnum == 2)
 		ft_putstr_fd(strerror(errno), 2);
 	else if (errnum == 3)
-		ft_putstr_fd(strerror(errno),2);
+		ft_putstr_fd(strerror(errno), 2);
 	else if (errnum == 4)
 		ft_putstr_fd(strerror(errno), 2);
 	else if (errnum == 5)

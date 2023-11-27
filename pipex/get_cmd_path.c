@@ -13,9 +13,9 @@
 
 char	*get_cmd_path(char *cmd, char **path)
 {
-	int i;
-	char *cmd_path;
-	char *cmd_tmp;
+	int		i;
+	char	*cmd_path;
+	char	*cmd_tmp;
 
 	if (access(cmd, X_OK) == 0)
 		return (cmd);

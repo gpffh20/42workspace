@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void print_unsignedint(unsigned int nb, int *cnt)
+void	print_unsignedint(unsigned int nb, int *cnt)
 {
 	if (nb / 10 > 0)
 	{
@@ -20,7 +20,7 @@ void print_unsignedint(unsigned int nb, int *cnt)
 	(*cnt) += write(1, &"0123456789"[nb % 10], 1);
 }
 
-void print_int(int nb, int *cnt)
+void	print_int(int nb, int *cnt)
 {
 	if (nb == -2147483648)
 	{

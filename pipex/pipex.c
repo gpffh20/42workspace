@@ -11,11 +11,6 @@
 /* ************************************************************************** */
 #include "pipex.h"
 
-void	a()
-{
-	system("leaks pipex");
-}
-
 void	ft_free(char **path)
 {
 	int	i;
@@ -32,8 +27,6 @@ void	ft_free(char **path)
 int	main(int ac, char *av[], char *envp[])
 {
 	t_pipex	args;
-
-	atexit(a);
 
 	if (ac != 5)
 		error_handle(1);
