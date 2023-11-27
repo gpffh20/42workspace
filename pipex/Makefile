@@ -7,7 +7,7 @@ INC = ./
 
 SRCS =	pipex.c\
 		ft_split.c\
-		ft_strnstr.c\
+		ft_strncmp.c\
 		ft_strjoin.c\
 		ft_strdup.c\
 		error_handle.c\

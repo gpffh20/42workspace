@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 04:29:57 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/27 04:29:58 by eushin           ###   ########.fr       */
+/*   Created: 2023/03/17 15:39:33 by eushin            #+#    #+#             */
+/*   Updated: 2023/03/17 15:40:47 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "pipex.h"
 
-void	init_args(t_pipex *args, char **av)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	args->path = get_path(args->envp);
-	args->arg1 = ft_split(av[2], ' ');
-	args->arg2 = ft_split(av[3], ' ');
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while ((unsigned char)s1[i] && (unsigned char)s2[i] && i < n - 1)
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

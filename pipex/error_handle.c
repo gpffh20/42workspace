@@ -29,6 +29,8 @@ void	error_handle(int errnum)
 		ft_putstr_fd(strerror(errno), 2);
 	else if (errnum == 7)
 		ft_putstr_fd(strerror(errno), 2);
+	else if (errnum == 8)
+		ft_putstr_fd("Command Not Found", 2);
 	ft_putstr_fd("\n", 2);
 	exit(1);
 }

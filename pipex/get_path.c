@@ -22,7 +22,7 @@ char	**get_path(char **envp)
 	tmp = NULL;
 	while (envp[i])
 	{
-		if (ft_strnstr(envp[i], "PATH=", 5))
+		if (!ft_strncmp(envp[i], "PATH=", 5))
 		{
 			tmp = envp[i] + 5;
 			break ;
