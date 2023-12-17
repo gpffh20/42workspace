@@ -33,21 +33,21 @@ void	a_to_b(t_deque *a, t_deque *b, int i)
 	{
 		if (a->front->data <= i)
 		{
-			pb(b, a);
+			pb(b, a, 1);
 			i++;
 		}
 		else if (a->front->data > i && a->front->data <= i + chunk)
 		{
-			pb(b, a);
-			rb(b);
+			pb(b, a, 1);
+			rb(b, 1);
 			i++;
 		}
 		else if (a->front->data > (i + chunk))
 		{
 			if (i < a->size / 2 && i >= 0)
-				rra(a);
+				rra(a, 1);
 			else
-				ra(a);
+				ra(a, 1);
 		}
 	}
 }
@@ -69,12 +69,12 @@ void	sort_b(t_deque *b, int len)
 	if (idx >= len / 2)
 	{
 		while (b->front->data != len)
-			rrb(b);
+			rrb(b, 1);
 	}
 	else
 	{
 		while (b->front->data != len)
-			rb(b);
+			rb(b, 1);
 	}
 }
 
@@ -83,7 +83,7 @@ void	b_to_a(t_deque *a, t_deque *b)
 	while (b->size != 0)
 	{
 		sort_b(b, b->size - 1);
-		pa(a, b);
+		pa(a, b, 1);
 	}
 }
 

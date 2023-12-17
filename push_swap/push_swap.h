@@ -14,6 +14,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "./get_next_line/get_next_line.h"
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
@@ -37,17 +38,17 @@ void	push_front(t_deque *deque, int data);
 void	push_back(t_deque *deque, int data);
 void	pop_front(t_deque *deque);
 void	pop_back(t_deque *deque);
-void	sa(t_deque *a);
-void	sb(t_deque *b);
-void	ss(t_deque *a, t_deque *b);
-void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *b, t_deque *a);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
+void	sa(t_deque *a, int flag);
+void	sb(t_deque *b, int flag);
+void	ss(t_deque *a, t_deque *b, int flag);
+void	pa(t_deque *a, t_deque *b, int flag);
+void	pb(t_deque *b, t_deque *a, int flag);
+void	ra(t_deque *a, int flag);
+void	rb(t_deque *b, int flag);
+void	rr(t_deque *a, t_deque *b, int flag);
+void	rra(t_deque *a, int flag);
+void	rrb(t_deque *b, int flag);
+void	rrr(t_deque *a, t_deque *b, int flag);
 void	split_args(int ac, char *av[], t_deque *a);
 int		print_error(void);
 int		ft_atoi(const char *str);

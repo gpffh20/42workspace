@@ -11,22 +11,24 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	pa(t_deque *a, t_deque *b)
+void	pa(t_deque *a, t_deque *b, int flag)
 {
 	if (b->size > 0)
 	{
 		push_front(a, b->front->data);
 		pop_front(b);
 	}
-	write(1, "pa\n", 3);
+	if (flag == 1)
+		write(1, "pa\n", 3);
 }
 
-void	pb(t_deque *b, t_deque *a)
+void	pb(t_deque *b, t_deque *a, int flag)
 {
 	if (a->size > 0)
 	{
 		push_front(b, a->front->data);
 		pop_front(a);
 	}
-	write(1, "pb\n", 3);
+	if (flag == 1)
+		write(1, "pb\n", 3);
 }
