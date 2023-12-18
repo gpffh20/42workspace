@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   make_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 14:42:41 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/13 20:51:59 by eushin           ###   ########.fr       */
+/*   Created: 2023/12/17 19:38:49 by eushin            #+#    #+#             */
+/*   Updated: 2023/12/17 19:38:55 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void 	a(void)
+void	make_arr(t_deque *a, int *arr)
 {
-	system("leaks push_swap");
-}
+	int		i;
+	t_node	*tmp;
 
-int	main(int ac, char *av[])
-{
-//	atexit(a);
-	t_deque	*a;
-	t_deque	*b;
-	int		*arr;
-
-	if (ac < 2)
-		return (0);
-	a = create_deque();
-	split_args(ac, av, a);
-	arr = (int *) malloc(sizeof(int) * a->size);
-	make_arr(a, arr);
-	set_stack(a, arr, a->size);
-	b = create_deque();
-	push_swap(a, b);
-//	while (1)
-//		;
-	exit (0);
+	i = 0;
+	tmp = a->front;
+	while (i < a->size)
+	{
+		arr[i] = tmp->data;
+		tmp = tmp->next;
+		i++;
+	}
 }

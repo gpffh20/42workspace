@@ -34,7 +34,7 @@ char	*divide_line(char **backup)
 	idx = ft_strchr(tmp, '\n');
 	line = ft_substr(tmp, 0, idx + 1);
 	if (line == NULL)
-		return (free_str(NULL, backup));
+		return (gnl_free_str(NULL, backup));
 	*backup = ft_substr(tmp, idx + 1, ft_strlen(tmp));
 	free (tmp);
 	if (*backup == NULL)
@@ -60,7 +60,7 @@ char	*read_line(int fd, int read_len, char *buff, char **backup)
 		*backup = ft_strjoin(*backup, buff);
 		free (tmp);
 		if (*backup == NULL)
-			return (free_str(buff, backup));
+			return (gnl_free_str(buff, backup));
 		if (ft_strchr(buff, '\n') >= 0)
 		{
 			free (buff);
@@ -69,8 +69,8 @@ char	*read_line(int fd, int read_len, char *buff, char **backup)
 	}
 	line = NULL;
 	if (read_len == 0 && **backup != '\0')
-		line = ft_strdup(*backup);
-	free_str(buff, backup);
+		line = gnl_strdup(*backup);
+	gnl_free_str(buff, backup);
 	return (line);
 }
 
@@ -82,13 +82,13 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (backup == NULL)
-		backup = ft_strdup("");
+		backup = gnl_strdup("");
 	if (backup == NULL)
 		return (NULL);
 	if (ft_strchr(backup, '\n') >= 0)
 		return (divide_line(&backup));
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
-		return (free_str(NULL, &backup));
+		return (gnl_free_str(NULL, &backup));
 	return (read_line(fd, 0, buff, &backup));
 }

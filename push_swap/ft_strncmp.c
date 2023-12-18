@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 14:42:41 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/13 20:51:59 by eushin           ###   ########.fr       */
+/*   Created: 2023/03/17 15:39:33 by eushin            #+#    #+#             */
+/*   Updated: 2023/03/17 15:40:47 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void 	a(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	system("leaks push_swap");
-}
+	size_t	i;
 
-int	main(int ac, char *av[])
-{
-//	atexit(a);
-	t_deque	*a;
-	t_deque	*b;
-	int		*arr;
-
-	if (ac < 2)
+	i = 0;
+	if (n == 0)
 		return (0);
-	a = create_deque();
-	split_args(ac, av, a);
-	arr = (int *) malloc(sizeof(int) * a->size);
-	make_arr(a, arr);
-	set_stack(a, arr, a->size);
-	b = create_deque();
-	push_swap(a, b);
-//	while (1)
-//		;
-	exit (0);
+	if (!s1 || !s2)
+		return (0);
+	while ((unsigned char)s1[i] && (unsigned char)s2[i] && i < n - 1)
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
