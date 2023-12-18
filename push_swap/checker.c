@@ -22,6 +22,7 @@ void	checker(t_deque *a, t_deque *b)
 		if (op == NULL)
 			break;
 		do_op(a, b, op);
+		free(op);
 	}
 	if (b->size == 0 && is_sorted(a))
 		write(1, "OK\n", 3);
