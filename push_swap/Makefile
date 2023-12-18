@@ -6,10 +6,12 @@ CFLAGS = -Wall -Werror -Wextra
 
 INC = ./
 
-$(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
+SRCS_DIR = ./push_swap_files/
 
-SRCS = $(addprefix ./push_swap_files,
-		$(deque.c\
+BONUS_DIR = ./checker_files/
+
+SRCS = \
+		deque.c\
 		op_s.c\
         op_p.c\
         op_r.c\
@@ -26,10 +28,10 @@ SRCS = $(addprefix ./push_swap_files,
         is_sorted.c\
 		main.c\
 		push_swap.c\
-		set_stack.c))
+		set_stack.c
 
-SRCS_BONUS = $(addprefix ./checker_files,
-		$(deque_bonus.c\
+SRCS_BONUS = \
+		deque_bonus.c\
 		op_s_bonus.c\
         op_p_bonus.c\
         op_r_bonus.c\
@@ -49,12 +51,13 @@ SRCS_BONUS = $(addprefix ./checker_files,
 		set_stack_bonus.c\
 		ft_strcmp_bonus.c\
 		do_op_bonus.c\
-		./get_next_line/get_next_line.c\
-		./get_next_line/get_next_line_utils.c))
+		../get_next_line/get_next_line.c\
+		../get_next_line/get_next_line_utils.c
 
-OBJS = $(SRCS:.c=.o)
 
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+OBJS = $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
+
+OBJS_BONUS = $(addprefix $(BONUS_DIR), $(SRCS_BONUS:.c=.o))
 
 
 $(NAME):	$(OBJS)
