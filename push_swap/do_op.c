@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:12:36 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/18 13:14:19 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:22:37 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -38,4 +38,3 @@ void	do_op(t_deque *a, t_deque *b, char *op)
 	else
 		exit(print_error());
 }
-

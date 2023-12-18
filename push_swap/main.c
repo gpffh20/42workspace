@@ -6,19 +6,13 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:42:41 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/13 20:51:59 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:24:08 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void 	a(void)
-{
-	system("leaks push_swap");
-}
-
 int	main(int ac, char *av[])
 {
-//	atexit(a);
 	t_deque	*a;
 	t_deque	*b;
 	int		*arr;
@@ -32,7 +26,5 @@ int	main(int ac, char *av[])
 	set_stack(a, arr, a->size);
 	b = create_deque();
 	push_swap(a, b);
-//	while (1)
-//		;
 	exit (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:09:44 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/18 13:09:51 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:22:10 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -23,4 +23,3 @@ void	check_dup(int *arr, int limit)
 		i++;
 	}
 }
-

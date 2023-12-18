@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 19:25:09 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/17 19:25:11 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:22:29 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,7 +20,7 @@ void	checker(t_deque *a, t_deque *b)
 	{
 		op = get_next_line(0);
 		if (op == NULL)
-			break;
+			break ;
 		do_op(a, b, op);
 		free(op);
 	}
@@ -30,4 +30,3 @@ void	checker(t_deque *a, t_deque *b)
 		write(1, "KO\n", 3);
 	return ;
 }
-

@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:07:33 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/18 13:07:42 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:24:50 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -31,4 +31,3 @@ void	split_args(int ac, char *av[], t_deque *a)
 		i++;
 	}
 }
-
