@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   split_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 13:14:31 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/18 13:14:35 by eushin           ###   ########.fr       */
+/*   Created: 2023/12/18 13:07:33 by eushin            #+#    #+#             */
+/*   Updated: 2023/12/18 13:24:50 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	main(int ac, char *av[])
+void	split_args(int ac, char *av[], t_deque *a)
 {
-	t_deque	*a;
-	t_deque	*b;
-	int		*arr;
+	int		i;
+	int		j;
+	char	**tmp;
 
-	if (ac < 2)
-		return (0);
-	a = create_deque();
-	split_args(ac, av, a);
-	arr = (int *) malloc(sizeof(int) * a->size);
-	make_arr(a, arr);
-	set_stack_bonus(a, arr, a->size);
-	b = create_deque();
-	checker(a, b);
-	exit (0);
+	i = 1;
+	while (i < ac)
+	{
+		j = 0;
+		tmp = ft_split(av[i], 32);
+		while (tmp[j])
+		{
+			push_back(a, ft_atoi(tmp[j]));
+			j++;
+		}
+		free_str(tmp);
+		i++;
+	}
 }

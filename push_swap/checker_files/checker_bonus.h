@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,12 +9,12 @@
 /*   Updated: 2023/11/06 15:10:45 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "./get_next_line/get_next_line.h"
+# include "../get_next_line/get_next_line.h"
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
@@ -54,8 +54,6 @@ int		print_error(void);
 int		ft_atoi(const char *str);
 int		*ft_strdup(int *s1, int len);
 void	check_dup(int *arr, int limit);
-void	set_stack(t_deque *stack, int *arr, int len);
-void	push_swap(t_deque *a, t_deque *b);
 void	under_five(t_deque *a, t_deque *b);
 char	**ft_split(char const *s, char c);
 int		is_sorted(t_deque *a);
@@ -63,10 +61,8 @@ void	short_sort(t_deque *a, t_deque *b);
 void	free_deque(t_deque *stack);
 void	free_str(char **str);
 void	make_arr(t_deque *a, int *arr);
-
 void	set_stack_bonus(t_deque *stack, int *arr, int len);
 int		ft_strcmp(const char *s1, const char *s2);
 void	do_op(t_deque *a, t_deque *b, char *op);
 void	checker(t_deque *a, t_deque *b);
-
 #endif

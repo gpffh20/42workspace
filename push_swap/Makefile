@@ -6,7 +6,10 @@ CFLAGS = -Wall -Werror -Wextra
 
 INC = ./
 
-COMMON = deque.c\
+$(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
+
+SRCS = $(addprefix ./push_swap_files,
+		$(deque.c\
 		op_s.c\
         op_p.c\
         op_r.c\
@@ -21,21 +24,33 @@ COMMON = deque.c\
         check_dup.c\
         print_error.c\
         is_sorted.c\
-
-SRCS =	$(COMMON)\
 		main.c\
 		push_swap.c\
-		set_stack.c
+		set_stack.c))
 
-SRCS_BONUS = $(COMMON)\
-			main_bonus.c\
-			checker.c\
-			set_stack_bonus.c\
-			ft_strcmp.c\
-			do_op.c\
-			./get_next_line/get_next_line.c\
-			./get_next_line/get_next_line_utils.c
-
+SRCS_BONUS = $(addprefix ./checker_files,
+		$(deque_bonus.c\
+		op_s_bonus.c\
+        op_p_bonus.c\
+        op_r_bonus.c\
+        op_rr_bonus.c\
+        ft_atoi_bonus.c\
+        ft_strdup_bonus.c\
+        ft_split_bonus.c\
+        short_sort_bonus.c\
+        free_bonus.c\
+        make_arr_bonus.c\
+        split_args_bonus.c\
+        check_dup_bonus.c\
+        print_error_bonus.c\
+        is_sorted_bonus.c\
+		main_bonus.c\
+		checker_bonus.c\
+		set_stack_bonus.c\
+		ft_strcmp_bonus.c\
+		do_op_bonus.c\
+		./get_next_line/get_next_line.c\
+		./get_next_line/get_next_line_utils.c))
 
 OBJS = $(SRCS:.c=.o)
 
