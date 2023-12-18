@@ -13,11 +13,14 @@ COMMON = deque.c\
         op_rr.c\
         ft_atoi.c\
         ft_strdup.c\
-        utils.c\
         ft_split.c\
         short_sort.c\
         free.c\
-        make_arr.c
+        make_arr.c\
+        split_args.c\
+        check_dup.c\
+        print_error.c\
+        is_sorted.c\
 
 SRCS =	$(COMMON)\
 		main.c\
@@ -25,9 +28,11 @@ SRCS =	$(COMMON)\
 		set_stack.c
 
 SRCS_BONUS = $(COMMON)\
+			main_bonus.c\
 			checker.c\
 			set_stack_bonus.c\
 			ft_strcmp.c\
+			do_op.c\
 			./get_next_line/get_next_line.c\
 			./get_next_line/get_next_line_utils.c
 

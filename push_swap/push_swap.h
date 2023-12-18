@@ -66,4 +66,7 @@ void	make_arr(t_deque *a, int *arr);
 
 void	set_stack_bonus(t_deque *stack, int *arr, int len);
 int		ft_strcmp(const char *s1, const char *s2);
+void	do_op(t_deque *a, t_deque *b, char *op);
+void	checker(t_deque *a, t_deque *b);
+
 #endif
