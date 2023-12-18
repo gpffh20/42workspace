@@ -13,7 +13,6 @@
 
 void	rra(t_deque *a, int flag)
 {
-	write(1, "test\n", 5);
 	if (a->size > 1)
 	{
 		push_front(a, a->back->data);

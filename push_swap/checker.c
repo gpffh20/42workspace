@@ -13,27 +13,27 @@
 
 void	do_op(t_deque *a, t_deque *b, char *op)
 {
-	if (!ft_strcmp(op, "pa"))
+	if (!ft_strcmp(op, "pa\n"))
 		pa(a, b, 0);
-	else if (!ft_strcmp(op, "pb"))
+	else if (!ft_strcmp(op, "pb\n"))
 		pb(b, a, 0);
-	else if (!ft_strcmp(op, "ra"))
+	else if (!ft_strcmp(op, "ra\n"))
 		ra(a, 0);
-	else if (!ft_strcmp(op, "rb"))
+	else if (!ft_strcmp(op, "rb\n"))
 		rb(b, 0);
-	else if (!ft_strcmp(op, "rr"))
+	else if (!ft_strcmp(op, "rr\n"))
 		rr(a, b, 0);
-	else if (!ft_strcmp(op, "rra"))
+	else if (!ft_strcmp(op, "rra\n"))
 		rra(a, 0);
-	else if (!ft_strcmp(op, "rrb"))
+	else if (!ft_strcmp(op, "rrb\n"))
 		rrb(b, 0);
-	else if (!ft_strcmp(op, "rrr"))
+	else if (!ft_strcmp(op, "rrr\n"))
 		rrr(a, b, 0);
-	else if (!ft_strcmp(op, "sa"))
+	else if (!ft_strcmp(op, "sa\n"))
 		sa(a, 0);
-	else if (!ft_strcmp(op, "sb"))
+	else if (!ft_strcmp(op, "sb\n"))
 		sb(b, 0);
-	else if (!ft_strcmp(op, "ss"))
+	else if (!ft_strcmp(op, "ss\n"))
 		ss(a, b, 0);
 	else
 		exit(print_error());
@@ -57,7 +57,7 @@ void	checker(t_deque *a, t_deque *b)
 	char	*op;
 
 	op = NULL;
-	print_deque(a);
+//	print_deque(a);
 	while (1)
 	{
 		op = get_next_line(0);
@@ -65,7 +65,7 @@ void	checker(t_deque *a, t_deque *b)
 			break;
 		do_op(a, b, op);
 	}
-	print_deque(a);
+//	print_deque(a);
 	if (is_sorted(a))
 		write(1, "OK\n", 3);
 	else
