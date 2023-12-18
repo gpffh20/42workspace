@@ -65,6 +65,5 @@ void	free_str(char **str);
 void	make_arr(t_deque *a, int *arr);
 
 void	set_stack_bonus(t_deque *stack, int *arr, int len);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-
+int		ft_strcmp(const char *s1, const char *s2);
 #endif

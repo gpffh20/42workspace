@@ -27,7 +27,7 @@ SRCS =	$(COMMON)\
 SRCS_BONUS = $(COMMON)\
 			checker.c\
 			set_stack_bonus.c\
-			ft_strncmp.c\
+			ft_strcmp.c\
 			./get_next_line/get_next_line.c\
 			./get_next_line/get_next_line_utils.c
 

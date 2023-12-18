@@ -13,7 +13,7 @@
 
 void	ra(t_deque *a, int flag)
 {
-	if (a->size > 0)
+	if (a->size > 1)
 	{
 		push_back(a, a->front->data);
 		pop_front(a);
@@ -24,7 +24,7 @@ void	ra(t_deque *a, int flag)
 
 void	rb(t_deque *b, int flag)
 {
-	if (b->size > 0)
+	if (b->size > 1)
 	{
 		push_back(b, b->front->data);
 		pop_front(b);
@@ -35,7 +35,7 @@ void	rb(t_deque *b, int flag)
 
 void	rr(t_deque *a, t_deque *b, int flag)
 {
-	if (a->size > 0 && b->size > 0)
+	if (a->size > 1 && b->size > 1)
 	{
 		push_back(a, a->front->data);
 		pop_front(a);

@@ -13,30 +13,43 @@
 
 void	do_op(t_deque *a, t_deque *b, char *op)
 {
-	if (!ft_strncmp(op, "pa", 2))
+	if (!ft_strcmp(op, "pa"))
 		pa(a, b, 0);
-	else if (!ft_strncmp(op, "pb", 2))
+	else if (!ft_strcmp(op, "pb"))
 		pb(b, a, 0);
-	else if (!ft_strncmp(op, "ra", 2))
+	else if (!ft_strcmp(op, "ra"))
 		ra(a, 0);
-	else if (!ft_strncmp(op, "rb", 2)) // segv
+	else if (!ft_strcmp(op, "rb"))
 		rb(b, 0);
-	else if (!ft_strncmp(op, "rr", 2)) // segv
+	else if (!ft_strcmp(op, "rr"))
 		rr(a, b, 0);
-	else if (!ft_strncmp(op, "rra", 3)) // segv
+	else if (!ft_strcmp(op, "rra"))
 		rra(a, 0);
-	else if (!ft_strncmp(op, "rrb", 3)) // segv
+	else if (!ft_strcmp(op, "rrb"))
 		rrb(b, 0);
-	else if (!ft_strncmp(op, "rrr", 3)) // segv
+	else if (!ft_strcmp(op, "rrr"))
 		rrr(a, b, 0);
-	else if (!ft_strncmp(op, "sa", 2))
+	else if (!ft_strcmp(op, "sa"))
 		sa(a, 0);
-	else if (!ft_strncmp(op, "sb", 2)) // segv
+	else if (!ft_strcmp(op, "sb"))
 		sb(b, 0);
-	else if (!ft_strncmp(op, "ss", 2)) // segv
+	else if (!ft_strcmp(op, "ss"))
 		ss(a, b, 0);
 	else
 		exit(print_error());
+}
+
+#include <stdio.h>
+void print_deque(t_deque *a)
+{
+	t_node *node;
+
+	node = a->front;
+	while (node)
+	{
+		printf("%d\n", node->data);
+		node = node->next;
+	}
 }
 
 void	checker(t_deque *a, t_deque *b)
@@ -44,13 +57,15 @@ void	checker(t_deque *a, t_deque *b)
 	char	*op;
 
 	op = NULL;
+	print_deque(a);
 	while (1)
 	{
 		op = get_next_line(0);
-		if (!ft_strncmp(op, "(null)", 6))
+		if (op == NULL)
 			break;
 		do_op(a, b, op);
 	}
+	print_deque(a);
 	if (is_sorted(a))
 		write(1, "OK\n", 3);
 	else

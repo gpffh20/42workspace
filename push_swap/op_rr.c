@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-
 void	rra(t_deque *a, int flag)
 {
-	if (a->size > 0)
+	write(1, "test\n", 5);
+	if (a->size > 1)
 	{
 		push_front(a, a->back->data);
 		pop_back(a);
@@ -25,7 +25,7 @@ void	rra(t_deque *a, int flag)
 
 void	rrb(t_deque *b, int flag)
 {
-	if (b->size > 0)
+	if (b->size > 1)
 	{
 		push_front(b, b->back->data);
 		pop_back(b);
@@ -36,7 +36,7 @@ void	rrb(t_deque *b, int flag)
 
 void	rrr(t_deque *a, t_deque *b, int flag)
 {
-	if (a->size > 0 && b->size > 0)
+	if (a->size > 1 && b->size > 1)
 	{
 		push_front(a, a->back->data);
 		pop_back(a);
