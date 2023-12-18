@@ -13,26 +13,35 @@
 
 void	ra(t_deque *a, int flag)
 {
-	push_back(a, a->front->data);
-	pop_front(a);
+	if (a->size > 0)
+	{
+		push_back(a, a->front->data);
+		pop_front(a);
+	}
 	if (flag == 1)
 		write(1, "ra\n", 3);
 }
 
 void	rb(t_deque *b, int flag)
 {
-	push_back(b, b->front->data);
-	pop_front(b);
+	if (b->size > 0)
+	{
+		push_back(b, b->front->data);
+		pop_front(b);
+	}
 	if (flag == 1)
 		write(1, "rb\n", 3);
 }
 
 void	rr(t_deque *a, t_deque *b, int flag)
 {
-	push_back(a, a->front->data);
-	pop_front(a);
-	push_back(b, b->front->data);
-	pop_front(b);
+	if (a->size > 0 && b->size > 0)
+	{
+		push_back(a, a->front->data);
+		pop_front(a);
+		push_back(b, b->front->data);
+		pop_front(b);
+	}
 	if (flag == 1)
 		write(1, "rr\n", 3);
 }
