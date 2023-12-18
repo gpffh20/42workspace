@@ -6,9 +6,10 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:40:59 by eushin            #+#    #+#             */
-/*   Updated: 2023/11/06 15:10:45 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/18 14:31:08 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
 
