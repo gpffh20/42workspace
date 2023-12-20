@@ -47,5 +47,4 @@ int main(int ac, char *av[])
 	philo = init_philo(&info, &errno);
 	if (errno != SUCCESS)
 		return (print_error(errno));
-
 }
