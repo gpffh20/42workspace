@@ -12,8 +12,12 @@
 
 #include "philo.h"
 
-int	print_error(int errno)
+int	print_error(int errno, t_info *info, t_philo *philo)
 {
+	if (info != NULL)
+		free(info->mutex.forks);
+	if (philo != NULL)
+		free(philo);
 	if (errno == ERR_ARGC)
 		printf("Error: Wrong number of arguments\n");
 	else if (errno == ERR_ARGV)
@@ -28,23 +32,27 @@ int	print_error(int errno)
 //		printf("Error: Time failed\n");
 //	else if (errno == ERR_PHILO)
 //		printf("Error: Philo failed\n");
-	return (-1);
+	return (FAIL);
 }
+
 
 
 
 int main(int ac, char *av[])
 {
+	int		errno;
 	t_info	info;
 	t_philo	*philo;
-	int		errno;
 
 	errno = SUCCESS;
 	if (ac < 5 || ac > 6)
-		return (print_error(ERR_ARGC));
-	if (init_info(&info, ac, av) < 0)
-		return (-1);
-	philo = init_philo(&info, &errno);
+		return (print_error(ERR_ARGC, NULL, NULL));
+	if (init_info(&info, ac, av) == FAIL)
+		return (FAIL);
+	errno = init_philo(&philo, &info);
 	if (errno != SUCCESS)
-		return (print_error(errno));
+		return (print_error(errno, &info, NULL));
+	(void)philo;
+//	if (philosopher(&info, philo, &errno) == FAIL)
+//		return (print_error(errno));
 }

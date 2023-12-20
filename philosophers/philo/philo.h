@@ -23,6 +23,7 @@
 
 enum	e_errno
 {
+	FAIL = -1,
 	SUCCESS,
 	ERR_ARGC,
 	ERR_ARGV,
@@ -67,9 +68,9 @@ typedef struct s_philo
 int		ft_atoi(const char *str);
 int		ft_isdigit(char c);
 
-int		print_error(int errno);
+int		print_error(int errno, t_info *info, t_philo *philo);
 
-t_philo	*init_philo(t_info *info, int *errno);
+int	init_philo(t_philo **philo, t_info *info);
 int		init_info(t_info *info, int ac, char *av[]);
 int		init_mutex(t_info *info);
 
