@@ -64,6 +64,7 @@ int	init_info(t_info *info, int ac, char *av[])
 	info->num_philo = ft_atoi(av[1]);
 	if (info->num_philo < 1)
 		return (print_error(ERR_ARGV, NULL, NULL));
+	info->num_full_philo = 0;
 	info->time_to_die = ft_atoi(av[2]);
 	info->time_to_eat = ft_atoi(av[3]);
 	info->time_to_sleep = ft_atoi(av[4]);

@@ -35,16 +35,12 @@ int	print_error(int errno, t_info *info, t_philo *philo)
 	return (FAIL);
 }
 
-
-
-
 int main(int ac, char *av[])
 {
 	int		errno;
 	t_info	info;
 	t_philo	*philo;
 
-	errno = SUCCESS;
 	if (ac < 5 || ac > 6)
 		return (print_error(ERR_ARGC, NULL, NULL));
 	if (init_info(&info, ac, av) == FAIL)
@@ -53,6 +49,7 @@ int main(int ac, char *av[])
 	if (errno != SUCCESS)
 		return (print_error(errno, &info, NULL));
 	(void)philo;
-//	if (philosopher(&info, philo, &errno) == FAIL)
-//		return (print_error(errno));
+	if (philosopher(&info, philo) == FAIL)
+		return (FAIL);
+	return (SUCCESS);
 }

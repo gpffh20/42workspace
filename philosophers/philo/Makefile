@@ -8,6 +8,7 @@ SRCS	=	main.c\
 			init.c\
 			ft_atoi.c\
 			ft_isdigit.c\
+			philo.c\
 
 OBJS	= $(SRCS:.c=.o)
 

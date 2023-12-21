@@ -17,6 +17,8 @@
 # include <pthread.h>
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
+# include <sys/time.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -29,9 +31,7 @@ enum	e_errno
 	ERR_ARGV,
 	ERR_MALLOC,
 	ERR_MUTEX,
-	ERR_THREAD,
-	ERR_TIME,
-	ERR_PHILO
+	ERR_PHILO,
 };
 
 typedef struct s_mutex
@@ -45,6 +45,7 @@ typedef struct s_mutex
 typedef struct s_info
 {
 	int			num_philo;
+	int			num_full_philo;
 	int			time_to_die;
 	int			time_to_eat;
 	int			time_to_sleep;
@@ -60,19 +61,21 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	t_info			*info;
-	pthread_t		thread;
+	pthread_t		thread_id;
 	long long		last_eat_time;
 	pthread_mutex_t	last_eat_mutex;
 }	t_philo;
 
-int		ft_atoi(const char *str);
-int		ft_isdigit(char c);
+int	ft_atoi(const char *str);
+int	ft_isdigit(char c);
 
-int		print_error(int errno, t_info *info, t_philo *philo);
+int	print_error(int errno, t_info *info, t_philo *philo);
 
 int	init_philo(t_philo **philo, t_info *info);
-int		init_info(t_info *info, int ac, char *av[]);
-int		init_mutex(t_info *info);
+int	init_info(t_info *info, int ac, char *av[]);
+int	init_mutex(t_info *info);
+
+int	philosopher(t_info *info, t_philo *philo);
 
 
 #endif
