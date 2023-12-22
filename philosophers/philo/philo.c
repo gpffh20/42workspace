@@ -31,7 +31,7 @@ int	print_state(t_philo *philo, char *msg)
 		return (FAIL);
 	}
 	time_taken = get_time() - philo->info->start_time;
-	printf("%lld %d %s", time_taken, philo->id + 1, msg);
+	printf("%lld %d %s", time_taken, philo->id, msg);
 	pthread_mutex_unlock(&philo->info->mutex.print_mutex);
 	return (SUCCESS);
 

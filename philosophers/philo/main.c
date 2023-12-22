@@ -48,7 +48,6 @@ int main(int ac, char *av[])
 	errno = init_philo(&philo, &info);
 	if (errno != SUCCESS)
 		return (print_error(errno, &info, NULL));
-	(void)philo;
 	if (philosopher(&info, philo) == FAIL)
 		return (FAIL);
 	return (SUCCESS);

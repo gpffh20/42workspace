@@ -59,7 +59,7 @@ int	init_mutex(t_info *info)
 int	init_info(t_info *info, int ac, char *av[])
 {
 	memset(info, 0, sizeof(t_info));
-	if (!check_pos_int(av))
+	if (check_pos_int(av))
 		return (print_error(ERR_ARGV, NULL, NULL));
 	info->num_philo = ft_atoi(av[1]);
 	if (info->num_philo < 1)
