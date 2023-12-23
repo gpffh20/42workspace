@@ -80,7 +80,7 @@ int	philosopher(t_info *info, t_philo *philo);
 
 long long	get_time(void);
 int	check_is_dead(t_philo *philo);
-void	mornitoring(t_info *info, t_philo *philo);
+void	monitoring(t_info *info, t_philo *philo);
 
 
 #endif

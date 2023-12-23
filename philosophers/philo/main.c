@@ -50,6 +50,5 @@ int main(int ac, char *av[])
 		return (print_error(errno, &info, NULL));
 	if (philosopher(&info, philo) == FAIL)
 		return (FAIL);
-	printf("=======================\n");
 	return (SUCCESS);
 }
