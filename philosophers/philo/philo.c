@@ -12,20 +12,34 @@
 
 #include "philo.h"
 
+void	print_dead(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->info->mutex.print_mutex);
+	if (philo->info->is_print == FALSE)
+	{
+		printf("%lld %d %s", get_time() - philo->info->start_time, philo->id, "is dead\n");
+		philo->info->is_print = TRUE;
+	}
+	pthread_mutex_unlock(&philo->info->mutex.print_mutex);
+	return ;
+}
+
+
 int	print_state(t_philo *philo, char *msg)
 {
 	long long	time_taken;
 
 	pthread_mutex_lock(&philo->info->mutex.is_dead_mutex);
-	if (check_is_dead(philo) == TRUE)
+	if (philo->info->mutex.is_dead == TRUE)
 	{
-		printf("%lld %d %s", get_time() - philo->info->start_time, philo->id, "is dead\n");
+		print_dead(philo);
+//		printf("%lld %d %s", get_time() - philo->info->start_time, philo->id, "is dead\n");
 		pthread_mutex_unlock(&philo->info->mutex.is_dead_mutex);
 		return (FAIL);
 	}
+	pthread_mutex_unlock(&philo->info->mutex.is_dead_mutex);
 	time_taken = get_time() - philo->info->start_time;
 	printf("%lld %d %s", time_taken, philo->id, msg);
-	pthread_mutex_unlock(&philo->info->mutex.is_dead_mutex);
 	return (SUCCESS);
 }
 
@@ -63,7 +77,6 @@ int	check_is_dead(t_philo *philo)
 	int	res;
 
 	res = FALSE;
-
 	if (philo->info->mutex.is_dead == TRUE)
 		res = TRUE;
 	return (res);
@@ -86,7 +99,9 @@ int	eating(t_philo *philo)
 		pthread_mutex_unlock(&philo->info->mutex.forks[philo->right_fork]);
 		return (FAIL);
 	}
+	pthread_mutex_lock(&philo->last_eat_mutex);
 	philo->last_eat_time = get_time();
+	pthread_mutex_unlock(&philo->last_eat_mutex);
 	usleep(philo->info->time_to_eat * 1000);
 	pthread_mutex_unlock(&philo->info->mutex.forks[philo->left_fork]);
 	pthread_mutex_unlock(&philo->info->mutex.forks[philo->right_fork]);
@@ -104,10 +119,14 @@ int	eating(t_philo *philo)
 int	take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->info->mutex.forks[philo->left_fork]);
-	pthread_mutex_lock(&philo->info->mutex.forks[philo->right_fork]);
 	if (print_state(philo, "has taken a fork\n") == FAIL)
 	{
 		pthread_mutex_unlock(&philo->info->mutex.forks[philo->left_fork]);
+		return (FAIL);
+	}
+	pthread_mutex_lock(&philo->info->mutex.forks[philo->right_fork]);
+	if (print_state(philo, "has taken a fork\n") == FAIL)
+	{
 		pthread_mutex_unlock(&philo->info->mutex.forks[philo->right_fork]);
 		return (FAIL);
 	}

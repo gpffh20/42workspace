@@ -51,6 +51,7 @@ typedef struct s_info
 	int			time_to_eat;
 	int			time_to_sleep;
 	int			limit_eat_cnt;
+	int			is_print;
 	long long	start_time;
 	t_mutex		mutex;
 }	t_info;

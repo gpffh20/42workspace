@@ -68,6 +68,7 @@ int	init_info(t_info *info, int ac, char *av[])
 	info->time_to_die = ft_atoi(av[2]);
 	info->time_to_eat = ft_atoi(av[3]);
 	info->time_to_sleep = ft_atoi(av[4]);
+	info->is_print = FALSE;
 	info->limit_eat_cnt = -1;
 	if (ac == 6)
 		info->limit_eat_cnt = ft_atoi(av[5]);
