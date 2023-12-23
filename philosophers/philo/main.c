@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:12:42 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/24 00:52:01 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/24 01:01:50 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	main(int ac, char *av[])
 		return (print_error(errno, &info, NULL));
 	if (philosopher(&info, philo) == FAIL)
 		return (FAIL);
+	free(philo);
+	free(info.mutex.forks);
 	return (SUCCESS);
 }
