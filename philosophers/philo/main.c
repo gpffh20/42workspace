@@ -30,8 +30,8 @@ int	print_error(int errno, t_info *info, t_philo *philo)
 //		printf("Error: Thread failed\n");
 //	else if (errno == ERR_TIME)
 //		printf("Error: Time failed\n");
-//	else if (errno == ERR_PHILO)
-//		printf("Error: Philo failed\n");
+	else if (errno == ERR_PHILO)
+		printf("Error: Philo failed\n");
 	return (FAIL);
 }
 
@@ -50,5 +50,6 @@ int main(int ac, char *av[])
 		return (print_error(errno, &info, NULL));
 	if (philosopher(&info, philo) == FAIL)
 		return (FAIL);
+	printf("=======================\n");
 	return (SUCCESS);
 }

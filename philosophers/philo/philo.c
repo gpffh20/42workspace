@@ -12,6 +12,54 @@
 
 #include "philo.h"
 
+int	print_state(t_philo *philo, char *msg)
+{
+	long long	time_taken;
+
+	pthread_mutex_lock(&philo->info->mutex.is_dead_mutex);
+	if (check_is_dead(philo) == TRUE)
+	{
+		// 죽음 출력
+		print_state(philo, "died\n");
+		pthread_mutex_unlock(&philo->info->mutex.is_dead_mutex);
+		return (FAIL);
+	}
+	time_taken = get_time() - philo->info->start_time;
+	printf("%lld %d %s", time_taken, philo->id, msg);
+	pthread_mutex_unlock(&philo->info->mutex.is_dead_mutex);
+	return (SUCCESS);
+}
+
+void	mornitoring(t_info *info, t_philo *philo)
+{
+	int		idx;
+
+	idx = 0;
+	while (TRUE)
+	{
+		if (info->num_full_philo == info->limit_eat_cnt)
+			return ;
+		if (get_time() - philo[idx].last_eat_time > info->time_to_die)
+		{
+			pthread_mutex_lock(&info->mutex.is_dead_mutex);
+			info->mutex.is_dead = TRUE;
+			pthread_mutex_unlock(&info->mutex.is_dead_mutex);
+		}
+		idx++;
+		idx %= info->num_philo;
+	}
+}
+
+int	check_is_dead(t_philo *philo)
+{
+	int	res;
+
+	res = FALSE;
+	if (philo->info->mutex.is_dead == TRUE)
+		res = TRUE;
+	return (res);
+}
+
 long long	get_time(void)
 {
 	struct timeval	tv;
@@ -20,22 +68,7 @@ long long	get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-int	print_state(t_philo *philo, char *msg)
-{
-	long long	time_taken;
 
-	pthread_mutex_lock(&philo->info->mutex.print_mutex);
-	if (philo->info->mutex.is_dead == TRUE)
-	{
-		pthread_mutex_unlock(&philo->info->mutex.print_mutex);
-		return (FAIL);
-	}
-	time_taken = get_time() - philo->info->start_time;
-	printf("%lld %d %s", time_taken, philo->id, msg);
-	pthread_mutex_unlock(&philo->info->mutex.print_mutex);
-	return (SUCCESS);
-
-}
 
 int	eating(t_philo *philo)
 {
@@ -44,7 +77,11 @@ int	eating(t_philo *philo)
 	philo->last_eat_time = get_time();
 	philo->eat_cnt++;
 	if (philo->eat_cnt == philo->info->limit_eat_cnt)
+	{
+		pthread_mutex_lock(&philo->info->mutex.num_full_philo_mutex);
 		philo->info->num_full_philo++;
+		pthread_mutex_unlock(&philo->info->mutex.num_full_philo_mutex);
+	}
 	if (philo->info->num_full_philo == philo->info->num_philo)
 		philo->info->mutex.is_dead = TRUE;
 	usleep(philo->info->time_to_eat * 1000);
@@ -125,6 +162,7 @@ int	philosopher(t_info *info, t_philo *philo)
 			return (print_error(ERR_PHILO, info, philo));
 		i++;
 	}
+	mornitoring(info, philo);
 	i = 0;
 	while (i < info->num_philo)
 	{

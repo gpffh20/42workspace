@@ -78,10 +78,10 @@ int	init_info(t_info *info, int ac, char *av[])
 
 int	init_philo(t_philo **philo, t_info *info)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	*philo = (t_philo *)malloc(sizeof(t_philo) * info->num_philo);
+	*philo = (t_philo *) malloc(sizeof(t_philo) * info->num_philo);
 	if (!(*philo))
 		return (ERR_MALLOC);
 	while (i < info->num_philo)
