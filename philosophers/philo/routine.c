@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	put_fork(t_philo *philo)
+int	put_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(&philo->info->mutex.forks[philo->left_fork]);
 	pthread_mutex_unlock(&philo->info->mutex.forks[philo->right_fork]);
@@ -42,15 +42,15 @@ int	eating(t_philo *philo)
 	long long	last_time;
 
 	if (print_state(philo, "is eating\n") == FAIL)
-		return (put_fork(philo));
+		return (put_forks(philo));
 	pthread_mutex_lock(&philo->last_eat_mutex);
-	philo->last_eat_time = get_time();
+	philo->last_eat_time = get_ms_time();
 	last_time = philo->last_eat_time;
 	pthread_mutex_unlock(&philo->last_eat_mutex);
 	while (check_is_died(philo) == FALSE && \
-			get_time() - last_time < philo->info->time_to_eat)
+			get_ms_time() - last_time < philo->info->time_to_eat)
 		usleep(100);
-	put_fork(philo);
+	put_forks(philo);
 	philo->eat_cnt++;
 	if (philo->eat_cnt == philo->info->limit_eat_cnt)
 	{
@@ -70,9 +70,9 @@ int	sleeping(t_philo *philo)
 
 	if (print_state(philo, "is sleeping\n") == FAIL)
 		return (FAIL);
-	last_time = get_time();
+	last_time = get_ms_time();
 	while (check_is_died(philo) == FALSE && \
-			get_time() - last_time < philo->info->time_to_sleep)
+			get_ms_time() - last_time < philo->info->time_to_sleep)
 		usleep(200);
 	return (SUCCESS);
 }

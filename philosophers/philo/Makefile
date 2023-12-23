@@ -14,7 +14,7 @@ SRCS	=	main.c\
 			monitoring.c\
 			print.c\
 			check_is_died.c\
-			get_time.c\
+			get_ms_time.c\
 
 OBJS	= $(SRCS:.c=.o)
 

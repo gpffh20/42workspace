@@ -71,7 +71,7 @@ typedef struct s_philo
 int			ft_atoi(const char *str);
 int			ft_isdigit(char c);
 int			print_error(int errno, t_info *info, t_philo *philo);
-int			put_fork(t_philo *philo);
+int			put_forks(t_philo *philo);
 int			eating(t_philo *philo);
 int			take_forks(t_philo *philo);
 int			sleeping(t_philo *philo);
@@ -83,6 +83,6 @@ int			philosopher(t_info *info, t_philo *philo);
 void		monitoring(t_info *info, t_philo *philo);
 void		print_died(t_philo *philo);
 int			print_state(t_philo *philo, char *msg);
-long long	get_time(void);
+long long	get_ms_time(void);
 int			check_is_died(t_philo *philo);
 #endif

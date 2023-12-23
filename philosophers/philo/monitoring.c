@@ -26,7 +26,7 @@ void	monitoring(t_info *info, t_philo *philo)
 			return ;
 		}
 		pthread_mutex_lock(&philo[idx].last_eat_mutex);
-		if (get_time() - philo[idx].last_eat_time > info->time_to_die)
+		if (get_ms_time() - philo[idx].last_eat_time > info->time_to_die)
 		{
 			pthread_mutex_lock(&info->mutex.is_died_mutex);
 			info->mutex.is_died = TRUE;

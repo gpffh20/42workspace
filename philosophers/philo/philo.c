@@ -17,7 +17,7 @@ static int	one_philo(t_philo *philo)
 	pthread_mutex_lock(&philo->info->mutex.forks[philo->left_fork]);
 	print_state(philo, "has taken a fork\n");
 	pthread_mutex_unlock(&philo->info->mutex.forks[philo->left_fork]);
-	while (get_time() - philo->info->start_time < philo->info->time_to_die)
+	while (get_ms_time() - philo->info->start_time < philo->info->time_to_die)
 		usleep(500);
 	print_died(philo);
 	return (SUCCESS);
@@ -29,7 +29,7 @@ static void	*philo_start(void *arg)
 
 	philo = (t_philo *)arg;
 	pthread_mutex_lock(&philo->last_eat_mutex);
-	philo->last_eat_time = get_time();
+	philo->last_eat_time = get_ms_time();
 	pthread_mutex_unlock(&philo->last_eat_mutex);
 	if (philo->id % 2 == 0)
 	{
@@ -57,7 +57,7 @@ int	philosopher(t_info *info, t_philo *philo)
 	int	i;
 
 	i = 0;
-	info->start_time = get_time();
+	info->start_time = get_ms_time();
 	if (info->num_philo == 1)
 		return (one_philo(philo));
 	while (i < info->num_philo)
