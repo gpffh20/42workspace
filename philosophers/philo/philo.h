@@ -36,9 +36,10 @@ enum	e_errno
 
 typedef struct s_mutex
 {
-	int				is_died;
 	pthread_mutex_t num_full_philo_mutex;
+	int				is_print;
 	pthread_mutex_t	print_mutex;
+	int				is_died;
 	pthread_mutex_t	is_died_mutex;
 	pthread_mutex_t	*forks;
 }	t_mutex;
@@ -51,7 +52,6 @@ typedef struct s_info
 	int			time_to_eat;
 	int			time_to_sleep;
 	int			limit_eat_cnt;
-	int			is_print;
 	long long	start_time;
 	t_mutex		mutex;
 }	t_info;

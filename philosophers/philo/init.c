@@ -38,6 +38,7 @@ int	init_mutex(t_info *info)
 
 	i = 0;
 	memset(&info->mutex, 0, sizeof(t_mutex));
+	info->mutex.is_print = FALSE;
 	if (pthread_mutex_init(&info->mutex.print_mutex, NULL) == FAIL)
 		return (print_error(ERR_MUTEX, NULL, NULL));
 	info->mutex.is_died = FALSE;
@@ -68,7 +69,7 @@ int	init_info(t_info *info, int ac, char *av[])
 	info->time_to_die = ft_atoi(av[2]);
 	info->time_to_eat = ft_atoi(av[3]);
 	info->time_to_sleep = ft_atoi(av[4]);
-	info->is_print = FALSE;
+//	info->is_print = FALSE;
 	info->limit_eat_cnt = -1;
 	if (ac == 6)
 		info->limit_eat_cnt = ft_atoi(av[5]);
