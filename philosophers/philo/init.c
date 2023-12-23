@@ -6,24 +6,24 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:40:34 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/24 00:47:58 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/24 03:18:19 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	check_pos_int(char *av[])
+static int	check_numeric(char *av[])
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (av[i])
 	{
 		j = 0;
 		while (av[i][j])
 		{
-			if (!ft_isdigit(av[i][j]) || av[i][j] == '-')
+			if (ft_isdigit(av[i][j]) == FALSE)
 				return (FALSE);
 			j++;
 		}
@@ -60,7 +60,7 @@ int	init_mutex(t_info *info)
 int	init_info(t_info *info, int ac, char *av[])
 {
 	memset(info, 0, sizeof(t_info));
-	if (check_pos_int(av))
+	if (check_numeric(av) == FALSE)
 		return (print_error(ERR_ARGV, NULL, NULL));
 	info->num_philo = ft_atoi(av[1]);
 	if (info->num_philo < 1)
@@ -83,7 +83,7 @@ int	init_philo(t_philo **philo, t_info *info)
 
 	i = 0;
 	*philo = (t_philo *) malloc(sizeof(t_philo) * info->num_philo);
-	if (!(*philo))
+	if (*philo == NULL)
 		return (ERR_MALLOC);
 	while (i < info->num_philo)
 	{

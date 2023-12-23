@@ -6,14 +6,11 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:37:04 by eushin            #+#    #+#             */
-/*   Updated: 2023/04/28 18:38:39 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/24 03:14:53 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(char c)
 {
-	if ('0' <= c && c <= '9')
-		return (1);
-	else
-		return (0);
+	return ('0' <= c && c <= '9');
 }
