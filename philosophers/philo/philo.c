@@ -165,7 +165,9 @@ void	*philo_start(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	pthread_mutex_lock(&philo->last_eat_mutex);
 	philo->last_eat_time = get_time();
+	pthread_mutex_unlock(&philo->last_eat_mutex);
 	if (philo->id % 2 == 0)
 	{
 		if (philo->info->time_to_die < \

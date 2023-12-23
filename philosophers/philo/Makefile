@@ -1,7 +1,7 @@
 NAME	= philo
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=thread -g3 #-fsanitize=address -g3
 #=thread -g3
 RM		= rm -f
 
