@@ -12,12 +12,12 @@
 
 #include "philo.h"
 
-void	print_dead(t_philo *philo)
+void	print_died(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->info->mutex.print_mutex);
 	if (philo->info->is_print == FALSE)
 	{
-		printf("%lld %d %s", get_time() - philo->info->start_time, philo->id, "is dead\n");
+		printf("%lld %d %s", get_time() - philo->info->start_time, philo->id, "died\n");
 		philo->info->is_print = TRUE;
 	}
 	pthread_mutex_unlock(&philo->info->mutex.print_mutex);
@@ -27,19 +27,17 @@ void	print_dead(t_philo *philo)
 
 int	print_state(t_philo *philo, char *msg)
 {
-	long long	time_taken;
-
-	pthread_mutex_lock(&philo->info->mutex.is_dead_mutex);
-	if (philo->info->mutex.is_dead == TRUE)
+	pthread_mutex_lock(&philo->info->mutex.is_died_mutex);
+	if (philo->info->mutex.is_died == TRUE)
 	{
-		print_dead(philo);
-//		printf("%lld %d %s", get_time() - philo->info->start_time, philo->id, "is dead\n");
-		pthread_mutex_unlock(&philo->info->mutex.is_dead_mutex);
+		print_died(philo);
+		pthread_mutex_unlock(&philo->info->mutex.is_died_mutex);
 		return (FAIL);
 	}
-	pthread_mutex_unlock(&philo->info->mutex.is_dead_mutex);
-	time_taken = get_time() - philo->info->start_time;
-	printf("%lld %d %s", time_taken, philo->id, msg);
+	pthread_mutex_unlock(&philo->info->mutex.is_died_mutex);
+	pthread_mutex_lock(&philo->info->mutex.print_mutex);
+	printf("%lld %d %s", get_time() - philo->info->start_time, philo->id, msg);
+	pthread_mutex_unlock(&philo->info->mutex.print_mutex);
 	return (SUCCESS);
 }
 
@@ -50,7 +48,6 @@ void	monitoring(t_info *info, t_philo *philo)
 	idx = 0;
 	while (TRUE)
 	{
-//		printf("========================");
 		pthread_mutex_lock(&info->mutex.num_full_philo_mutex);
 		if (info->num_full_philo == info->num_philo)
 		{
@@ -60,9 +57,9 @@ void	monitoring(t_info *info, t_philo *philo)
 		pthread_mutex_lock(&philo[idx].last_eat_mutex);
 		if (get_time() - philo[idx].last_eat_time > info->time_to_die)
 		{
-			pthread_mutex_lock(&info->mutex.is_dead_mutex);
-			info->mutex.is_dead = TRUE;
-			pthread_mutex_unlock(&info->mutex.is_dead_mutex);
+			pthread_mutex_lock(&info->mutex.is_died_mutex);
+			info->mutex.is_died = TRUE;
+			pthread_mutex_unlock(&info->mutex.is_died_mutex);
 			pthread_mutex_unlock(&philo[idx].last_eat_mutex);
 			return ;
 		}
@@ -72,12 +69,12 @@ void	monitoring(t_info *info, t_philo *philo)
 	}
 }
 
-int	check_is_dead(t_philo *philo)
+int	check_is_died(t_philo *philo)
 {
 	int	res;
 
 	res = FALSE;
-	if (philo->info->mutex.is_dead == TRUE)
+	if (philo->info->mutex.is_died == TRUE)
 		res = TRUE;
 	return (res);
 }
@@ -128,6 +125,7 @@ int	take_forks(t_philo *philo)
 	if (print_state(philo, "has taken a fork\n") == FAIL)
 	{
 		pthread_mutex_unlock(&philo->info->mutex.forks[philo->right_fork]);
+		pthread_mutex_unlock(&philo->info->mutex.forks[philo->left_fork]);
 		return (FAIL);
 	}
 	return (SUCCESS);
@@ -165,12 +163,7 @@ void	*philo_start(void *arg)
 	while (TRUE)
 	{
 		if (take_forks(philo) == FAIL || eating(philo) == FAIL)
-		{
-//			put_forks(philo);
 			return (NULL);
-		}
-//		if (eating(philo) == FAIL)
-//			return (NULL);
 		if (sleeping(philo) == FAIL)
 			return (NULL);
 		if (thinking(philo) == FAIL)
@@ -192,7 +185,7 @@ int	philosopher(t_info *info, t_philo *philo)
 			return (print_error(ERR_PHILO, info, philo));
 		i++;
 	}
-	usleep(500);
+	usleep(1000);
 	monitoring(info, philo);
 	i = 0;
 	while (i < info->num_philo)

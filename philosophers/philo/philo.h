@@ -36,10 +36,10 @@ enum	e_errno
 
 typedef struct s_mutex
 {
-	int				is_dead;
+	int				is_died;
 	pthread_mutex_t num_full_philo_mutex;
 	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	is_dead_mutex;
+	pthread_mutex_t	is_died_mutex;
 	pthread_mutex_t	*forks;
 }	t_mutex;
 
@@ -80,7 +80,7 @@ int	init_mutex(t_info *info);
 int	philosopher(t_info *info, t_philo *philo);
 
 long long	get_time(void);
-int	check_is_dead(t_philo *philo);
+int	check_is_died(t_philo *philo);
 void	monitoring(t_info *info, t_philo *philo);
 
 

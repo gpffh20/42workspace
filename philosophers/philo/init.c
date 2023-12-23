@@ -40,8 +40,8 @@ int	init_mutex(t_info *info)
 	memset(&info->mutex, 0, sizeof(t_mutex));
 	if (pthread_mutex_init(&info->mutex.print_mutex, NULL) == FAIL)
 		return (print_error(ERR_MUTEX, NULL, NULL));
-	info->mutex.is_dead = FALSE;
-	if (pthread_mutex_init(&info->mutex.is_dead_mutex, NULL) == FAIL)
+	info->mutex.is_died = FALSE;
+	if (pthread_mutex_init(&info->mutex.is_died_mutex, NULL) == FAIL)
 		return (print_error(ERR_MUTEX, NULL, NULL));
 	info->mutex.forks = (pthread_mutex_t *)malloc \
 	(sizeof(pthread_mutex_t) * info->num_philo);
