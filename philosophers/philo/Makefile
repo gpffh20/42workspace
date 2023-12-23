@@ -1,8 +1,7 @@
 NAME	= philo
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=thread -g3 #-fsanitize=address -g3
-#=thread -g3
+CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
 SRCS	=	main.c\
@@ -10,6 +9,12 @@ SRCS	=	main.c\
 			ft_atoi.c\
 			ft_isdigit.c\
 			philo.c\
+			routine.c\
+			print_error.c\
+			monitoring.c\
+			print.c\
+			check_is_died.c\
+			get_time.c\
 
 OBJS	= $(SRCS:.c=.o)
 
