@@ -6,13 +6,13 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 01:37:01 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/24 00:39:43 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/24 00:54:08 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int one_philo(t_philo *philo)
+static int	one_philo(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->info->mutex.forks[philo->left_fork]);
 	print_state(philo, "has taken a fork\n");
@@ -22,22 +22,6 @@ static int one_philo(t_philo *philo)
 	print_died(philo);
 	return (SUCCESS);
 }
-
-// static void	*_one_philo_routine(t_philo *philo, t_data *data)
-// {
-// 	pthread_mutex_lock(&data->forks[philo->left]);
-// 	data->fork_state[philo->left] = USING;
-// 	print_message(philo, FORK);
-// 	pthread_mutex_unlock(&data->forks[philo->left]);
-
-// 	while (current_time() - data->start_t < data->die_t)
-// 		usleep(500);
-// 	print_dead(philo, data);
-// 	pthread_mutex_lock(&data->forks[philo->left]);
-// 	data->fork_state[philo->left] = AVAILABLE;
-// 	pthread_mutex_unlock(&data->forks[philo->left]);
-// 	return (NULL);
-// }
 
 static void	*philo_start(void *arg)
 {
@@ -68,7 +52,6 @@ static void	*philo_start(void *arg)
 	return (NULL);
 }
 
-
 int	philosopher(t_info *info, t_philo *philo)
 {
 	int	i;
@@ -76,7 +59,7 @@ int	philosopher(t_info *info, t_philo *philo)
 	i = 0;
 	info->start_time = get_time();
 	if (info->num_philo == 1)
-		return(one_philo(philo));
+		return (one_philo(philo));
 	while (i < info->num_philo)
 	{
 		if (pthread_create(&philo[i].thread_id, NULL, \

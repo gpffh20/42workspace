@@ -6,19 +6,18 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 00:45:40 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/24 00:45:41 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/24 00:50:12 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "philo.h"
 
-void	put_fork(t_philo *philo)
+int	put_fork(t_philo *philo)
 {
 	pthread_mutex_unlock(&philo->info->mutex.forks[philo->left_fork]);
 	pthread_mutex_unlock(&philo->info->mutex.forks[philo->right_fork]);
+	return (FAIL);
 }
-
 
 int	take_forks(t_philo *philo)
 {
@@ -43,15 +42,13 @@ int	eating(t_philo *philo)
 	long long	last_time;
 
 	if (print_state(philo, "is eating\n") == FAIL)
-	{
-		put_fork(philo);
-		return (FAIL);
-	}
+		return (put_fork(philo));
 	pthread_mutex_lock(&philo->last_eat_mutex);
 	philo->last_eat_time = get_time();
 	last_time = philo->last_eat_time;
 	pthread_mutex_unlock(&philo->last_eat_mutex);
-	while (check_is_died(philo) == FALSE && get_time() - last_time < philo->info->time_to_eat)
+	while (check_is_died(philo) == FALSE && \
+			get_time() - last_time < philo->info->time_to_eat)
 		usleep(100);
 	put_fork(philo);
 	philo->eat_cnt++;
@@ -67,16 +64,15 @@ int	eating(t_philo *philo)
 	return (SUCCESS);
 }
 
-
-
-int sleeping(t_philo *philo)
+int	sleeping(t_philo *philo)
 {
 	long long	last_time;
 
 	if (print_state(philo, "is sleeping\n") == FAIL)
 		return (FAIL);
 	last_time = get_time();
-	while (check_is_died(philo) == FALSE && get_time() - last_time < philo->info->time_to_sleep)
+	while (check_is_died(philo) == FALSE && \
+			get_time() - last_time < philo->info->time_to_sleep)
 		usleep(200);
 	return (SUCCESS);
 }

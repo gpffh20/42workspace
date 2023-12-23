@@ -6,13 +6,13 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:12:42 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/24 00:09:20 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/24 00:52:01 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
 	int		errno;
 	t_info	info;

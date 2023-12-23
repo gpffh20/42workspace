@@ -6,7 +6,7 @@
 /*   By: eushin <eushin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:40:34 by eushin            #+#    #+#             */
-/*   Updated: 2023/12/24 00:06:07 by eushin           ###   ########.fr       */
+/*   Updated: 2023/12/24 00:47:58 by eushin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	init_info(t_info *info, int ac, char *av[])
 
 int	init_philo(t_philo **philo, t_info *info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	*philo = (t_philo *) malloc(sizeof(t_philo) * info->num_philo);
