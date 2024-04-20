@@ -2,6 +2,9 @@
 #include <string>
 
 class Megaphone {
+private:
+    char **messages;
+
 public:
     Megaphone(char **messages) : messages(messages) {}
 
@@ -19,9 +22,6 @@ public:
 		}
 		std::cout << std::endl;
     }
-
-private:
-    char **messages;
 };
 
 int main(int ac, char **av) {

@@ -10,18 +10,18 @@ all : $(NAME)
 
 $(NAME) : $(OBJECTS)
 	@$(CPP) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
-	@echo $(CYAN) "⚡︎	[ cpp00 ]	Ready to run $(NAME)" $(RESET)
+	@echo $(CYAN) "⚡︎	[ cpp00/ex00 ]	Ready to run $(NAME)" $(RESET)
 
 %.o: %.cpp
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean :
 	@rm -f $(OBJECTS)
-	@echo $(PURPLE) "⚡︎	[ cpp00 ]	Removed Object files" $(RESET)
+	@echo $(PURPLE) "⚡︎	[ cpp00/ex00 ]	Removed Object files" $(RESET)
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo $(BLUE) "⚡︎	[ cpp00 ]	Removed $(NAME)" $(RESET)
+	@echo $(BLUE) "⚡︎	[ cpp00/ex00 ]	Removed $(NAME)" $(RESET)
 
 re :
 	@$(MAKE) fclean
