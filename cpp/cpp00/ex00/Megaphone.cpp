@@ -8,10 +8,10 @@ class Megaphone {
 		void PrintMessagesToUpperCase(int ac) const;
 
 	private:
-		char **messages;
+		char **messages_;
 };
 
-Megaphone::Megaphone(char **messages) : messages(messages) {}
+Megaphone::Megaphone(char **messages) :   messages_(messages) {}
 
 Megaphone::~Megaphone() {}
 
@@ -22,7 +22,7 @@ void Megaphone::PrintMessagesToUpperCase(int ac) const {
 	}
 
 	for (int i = 1; i < ac; i++) {
-		std::string message = messages[i];
+		std::string message = messages_[i];
 		for (size_t j = 0; j < message.length(); j++) {
 			std::cout << static_cast<char>(std::toupper(message[j]));
 		}
