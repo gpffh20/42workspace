@@ -98,7 +98,7 @@ void PhoneBook::SearchContact() {
 				continue;
 			}
 			else {
-				this->PrintContact(std::stoi(index) - 1);
+				this->PrintContact((index[0] - '0') - 1);
 				break;
 			}
 		}
