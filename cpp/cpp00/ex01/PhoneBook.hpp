@@ -5,7 +5,6 @@
 
 #include "Contact.hpp"
 
-//#include <iostream>
 #include <string>
 
 class PhoneBook {
@@ -31,8 +30,6 @@ class PhoneBook {
 		void PrintPhoneBook();
 		void PrintUnderTen(std::string str);
 		void PrintContact(int index);
-
-//		const std::string question_[kNumAttrs];
 };
 
 #endif

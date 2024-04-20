@@ -9,8 +9,6 @@ int main() {
 		std::getline(std::cin, command);
 		if (command == "EXIT" || std::cin.eof()) {
 			std::cin.clear();
-//			clearerr(stdin);
-//			continue ;
 			break ;
 		}
 		else if (command == "ADD")

@@ -47,7 +47,7 @@ void PhoneBook::AddContact() {
 			std::getline(std::cin, attr);
 			if (std::cin.eof()) {
 				std::cin.clear();
-//				clearerr(stdin);
+				return;
 			}
 			else if (attr.empty()) {
 				std::cout << " cannot be empty!" << std::endl;
@@ -61,11 +61,9 @@ void PhoneBook::AddContact() {
 	}
 	if (this->contact_count_ < MAX_CONTACTS) {
 		this->contact_count_++;
-		std::cout << "Contact has been added." << std::endl;
 	}
+	std::cout << "Contact has been added." << std::endl;
 	this->index_++;
-//	if (this->index < 0)
-//		this->index = 0;
 }
 
 void PhoneBook::SearchContact() {
@@ -80,6 +78,9 @@ void PhoneBook::SearchContact() {
 	std::cout << "---------------------------------------------" << std::endl;
 
 	while (true) {
+		if (this->contact_count_ == 0) {
+			break;
+		}
 		std::cout << "Enter the index to search: ";
 		std::getline(std::cin, index);
 		if (std::cin.eof()) {
@@ -91,9 +92,7 @@ void PhoneBook::SearchContact() {
 			continue;
 		}
 		else {
-			int index_num = std::stoi(index);
-
-			if (index_num < 1 || index_num > this->contact_count_) {
+			if (index.length() != 1 || static_cast<char>(index[0]) < '1' || static_cast<char>(index[0]) > this->contact_count_ + '0') {
 				std::cout << "Please enter a number from 1 to ";
 				std::cout << this->contact_count_ << "!" << std::endl;
 				continue;
@@ -105,7 +104,6 @@ void PhoneBook::SearchContact() {
 		}
 	}
 }
-
 
 void PhoneBook::PrintPhoneBook() {
 	for (int i = 0; i < this->contact_count_; i++) {
@@ -136,21 +134,3 @@ void PhoneBook::PrintContact(int index) {
 	std::cout << "Phone number: " << this->contacts_[index].get_phone_number_() << std::endl;
 	std::cout << "Darkest secret: " << this->contacts_[index].get_darkest_secret_() << std::endl;
 }
-// SEARCH
-// 특정 연락처 표시
-// 저장된 연락처를 색인, 이름, 성, 닉네임의 4개 열 목록으로 표시합니다.
-// 이름 및 닉네임.
-// 각 열의 너비는 10자여야 합니다. 파이프 문자('|')로 구분합니다.
-// 구분합니다. 텍스트는 오른쪽 정렬해야 합니다. 텍스트가 열보다 긴 경우
-// 잘라내야 하며 표시 가능한 마지막 문자는 점('')으로 대체해야 합니다.
-// 점('.')으로 대체해야 합니다.
-// 그런 다음 사용자에게 표시할 항목의 색인을 다시 묻습니다. 인덱스
-// 가 범위를 벗어나거나 잘못된 경우 관련 동작을 정의합니다. 그렇지 않으면
-// 연락처 정보를 한 줄당 한 필드씩 표시합니다.
-
-// EXIT
-// 프로그램이 종료되고 연락처가 영원히 사라집니다!
-// - 다른 입력은 모두 삭제됩니다.
-// 명령이 올바르게 실행되면 프로그램은 다른 명령을 기다립니다. It
-// 사용자가 EXIT를 입력하면 중지됩니다.
-
