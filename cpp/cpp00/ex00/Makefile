@@ -2,7 +2,7 @@ NAME	= Megaphone
 CPP		= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SOURCES =	./Megaphone.cpp
+SOURCES =	./megaphone.cpp
 
 OBJECTS	= $(SOURCES:.cpp=.o)
 

@@ -2,8 +2,8 @@ NAME	= PhoneBook
 CPP		= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SOURCES =	./PhoneBook.cpp \
-			./Contact.cpp \
+SOURCES =	./phonebook.cpp \
+			./contact.cpp \
 			./main.cpp
 
 
