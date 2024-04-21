@@ -7,12 +7,13 @@ SOURCES =	./main.cpp \
 			./newZombie.cpp \
 			./randomChump.cpp
 
+INCLUDES =	./Zombie.hpp
 
 OBJECTS	= $(SOURCES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJECTS)
+$(NAME) : $(OBJECTS) $(INCLUDES)
 	@$(CPP) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 	@echo $(CYAN) "⚡︎	[ cpp01/ex00 ]	Ready to run $(NAME)" $(RESET)
 

@@ -6,12 +6,14 @@ SOURCES =	./phonebook.cpp \
 			./contact.cpp \
 			./main.cpp
 
+INCLUDES =	./phonebook.hpp \
+			./contact.hpp
 
 OBJECTS	= $(SOURCES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJECTS)
+$(NAME) : $(OBJECTS) $(INCLUDES)
 	@$(CPP) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 	@echo $(CYAN) "⚡︎	[ cpp00/ex01 ]	Ready to run $(NAME)" $(RESET)
 

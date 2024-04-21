@@ -6,12 +6,13 @@ SOURCES =	./main.cpp \
 			./Zombie.cpp \
 			./zombieHorde.cpp
 
+INCLUDES =	./Zombie.hpp
 
 OBJECTS	= $(SOURCES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJECTS)
+$(NAME) : $(OBJECTS) $(INCLUDES)
 	@$(CPP) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 	@echo $(CYAN) "⚡︎	[ cpp01/ex01 ]	Ready to run $(NAME)" $(RESET)
 

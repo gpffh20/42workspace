@@ -7,12 +7,15 @@ SOURCES =	./main.cpp \
 			./HumanA.cpp \
 			./HumanB.cpp
 
+INCLUDES =	./Weapon.hpp \
+			./HumanA.hpp \
+			./HumanB.hpp
 
 OBJECTS	= $(SOURCES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJECTS)
+$(NAME) : $(OBJECTS) $(INCLUDES)
 	@$(CPP) $(CPPFLAGS) $(OBJECTS) -o $(NAME)
 	@echo $(CYAN) "⚡︎	[ cpp01/ex03 ]	Ready to run $(NAME)" $(RESET)
 
