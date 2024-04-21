@@ -7,5 +7,6 @@ int main() {
 
 	Zombie* horde = zombieHorde(5, "Horde");
 	delete[] horde;
+	system("sleep 100000");
 	return 0;
 }

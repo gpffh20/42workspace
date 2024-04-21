@@ -4,12 +4,12 @@ Zombie::Zombie() {}
 
 Zombie::~Zombie() {
 	std::cout << "Zombie(";
-	std::cout << this->name << ") is destroyed." << std::endl;
+	std::cout << this->name_ << ") is destroyed." << std::endl;
 }
 
 void Zombie::set_name(std::string name) {
-	this->name = name;
+	this->name_ = name;
 }
 void Zombie::announce() {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name_ << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
