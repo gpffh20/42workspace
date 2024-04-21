@@ -26,7 +26,7 @@ int main() {
 
 	std::cout << "Enter a filename: ";
 	std::getline(std::cin, filename);
-	file.open(filename);
+	file.open(filename.c_str());
 	if (!file.is_open()) {
 		std::cout << "File not found." << std::endl;
 		return 1;
@@ -35,7 +35,8 @@ int main() {
 	std::getline(std::cin, s1);
 	std::cout << "Enter a string s2: ";
 	std::getline(std::cin, s2);
-	new_file.open(filename + ".replace");
+
+	new_file.open(filename.append(".replace").c_str());
 	if (!new_file.is_open()) {
 		std::cout << "Failed to create a new file." << std::endl;
 		return 1;
