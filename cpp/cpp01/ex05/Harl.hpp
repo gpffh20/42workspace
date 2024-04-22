@@ -12,13 +12,6 @@ class Harl {
 		void error();
 
 	public:
-		enum ComplaintsLevel {
-			kDebug,
-			kInfo,
-			kWarning,
-			kError
-		};
-
 		Harl();
 		~Harl();
 		void complain(std::string level);

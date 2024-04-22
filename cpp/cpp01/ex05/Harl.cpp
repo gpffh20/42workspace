@@ -33,15 +33,18 @@ void Harl::complain(std::string level) {
 		&Harl::error
 	};
 
-	if (level == "DEBUG")
-		(this->*complaints[kDebug])();
-	else if (level == "INFO")
-		(this->*complaints[kInfo])();
-	else if (level == "WARNING")
-		(this->*complaints[kWarning])();
-	else if (level == "ERROR")
-		(this->*complaints[kError])();
-	else
-		std::cout << "Invalid level!" << std::endl;
+	std::string levels[4] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR"
+	};
+
+	for (int i = 0; i < 4; i++) {
+		if (level == levels[i]) {
+			(this->*complaints[i])();
+			return ;
+		}
+	}
 }
 
