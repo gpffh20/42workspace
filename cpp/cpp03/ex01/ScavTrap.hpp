@@ -12,7 +12,7 @@ public:
 	ScavTrap(const ScavTrap &scavtrap);
 	ScavTrap &operator=(const ScavTrap &scavtrap);
 
-	virtual void attack(std::string const &target);
+	void attack(std::string const &target);
 	void guardGate();
 };
 
