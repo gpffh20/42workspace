@@ -17,10 +17,13 @@ ScavTrap::ScavTrap(const ScavTrap &scavtrap) {
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &scavtrap) {
-	this->name_ = scavtrap.name_;
-	this->hit_points_ = scavtrap.hit_points_;
-	this->energy_points_ = scavtrap.energy_points_;
-	this->attack_damage_ = scavtrap.attack_damage_;
+	if (this != &scavtrap) {
+		ClapTrap::operator=(scavtrap);
+		this->name_ = scavtrap.name_;
+		this->hit_points_ = scavtrap.hit_points_;
+		this->energy_points_ = scavtrap.energy_points_;
+		this->attack_damage_ = scavtrap.attack_damage_;
+	}
 	std::cout << "ScavTrap " << this->name_ << " is assigned!" << std::endl;
 	return (*this);
 }
