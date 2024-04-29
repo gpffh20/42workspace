@@ -19,10 +19,7 @@ ClapTrap::~ClapTrap() {
 }
 
 ClapTrap::ClapTrap(const ClapTrap &claptrap) {
-	this->name_ = claptrap.name_;
-	this->hit_points_ = claptrap.hit_points_;
-	this->energy_points_ = claptrap.energy_points_;
-	this->attack_damage_ = claptrap.attack_damage_;
+	*this = claptrap;
 	std::cout << "ClapTrap " << this->name_ << " is copied!" << std::endl;
 }
 

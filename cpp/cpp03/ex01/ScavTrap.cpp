@@ -12,10 +12,7 @@ ScavTrap::~ScavTrap() {
 }
 
 ScavTrap::ScavTrap(const ScavTrap &scavtrap) {
-	this->name_ = scavtrap.name_;
-	this->hit_points_ = scavtrap.hit_points_;
-	this->energy_points_ = scavtrap.energy_points_;
-	this->attack_damage_ = scavtrap.attack_damage_;
+	*this = scavtrap;
 	std::cout << "ScavTrap " << this->name_ << " is copied!" << std::endl;
 }
 
