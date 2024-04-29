@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() {
+	this->name_ = "ClapTrap";
 	this->hit_points_ = 10;
 	this->energy_points_ = 10;
 	this->attack_damage_ = 0;
