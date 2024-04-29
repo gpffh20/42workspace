@@ -11,7 +11,7 @@ ScavTrap::~ScavTrap() {
 	std::cout << "ScavTrap " << this->name_ << " is destroyed!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &scavtrap) {
+ScavTrap::ScavTrap(const ScavTrap &scavtrap) : ClapTrap(scavtrap) {
 	*this = scavtrap;
 	std::cout << "ScavTrap " << this->name_ << " is copied!" << std::endl;
 }
