@@ -5,14 +5,13 @@
 #include <string>
 
 class ClapTrap {
+private:
+	ClapTrap();
 protected:
 	std::string name_;
 	int hit_points_;
 	int energy_points_;
 	int attack_damage_;
-
-	ClapTrap();
-
 public:
 	ClapTrap(std::string name);
 	virtual ~ClapTrap();

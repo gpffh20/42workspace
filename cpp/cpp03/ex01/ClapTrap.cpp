@@ -1,12 +1,12 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() {
-	this->name_ = "ClapTrap";
-	this->hit_points_ = 10;
-	this->energy_points_ = 10;
-	this->attack_damage_ = 0;
-	std::cout << "ClapTrap is created!" << std::endl;
-}
+//ClapTrap::ClapTrap() {
+//	this->name_ = "ClapTrap";
+//	this->hit_points_ = 10;
+//	this->energy_points_ = 10;
+//	this->attack_damage_ = 0;
+//	std::cout << "ClapTrap is created!" << std::endl;
+//}
 
 ClapTrap::ClapTrap(std::string name) : name_(name) {
 	this->hit_points_ = 10;
@@ -45,7 +45,7 @@ void ClapTrap::attack(std::string const &target) {
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->hit_points_ < 1)
-		std::cout << "ClapTrap " << this->name_ << " is already dead!" << std::endl;
+		std::cout << "ClapTrap " << this->name_ << " is out of energy!" << std::endl;
 	else {
 		this->hit_points_ -= amount;
 		if (this->hit_points_ < 0)
