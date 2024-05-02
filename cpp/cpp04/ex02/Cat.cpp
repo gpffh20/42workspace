@@ -10,7 +10,7 @@ Cat::~Cat() {
 	std::cout << "Cat destructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &cat) {
+Cat::Cat(const Cat &cat) : AAnimal(cat) {
 	*this = cat;
 }
 
