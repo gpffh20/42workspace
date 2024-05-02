@@ -2,13 +2,14 @@
 #include <string>
 
 class Megaphone {
-	public:
-		Megaphone(char **messages);
-		~Megaphone();
-		void PrintMessagesToUpperCase(int ac) const;
+public:
+	Megaphone(char **messages);
+	~Megaphone();
 
-	private:
-		char **messages_;
+	void PrintMessagesToUpperCase(int ac) const;
+
+private:
+	char **messages_;
 };
 
 Megaphone::Megaphone(char **messages) :   messages_(messages) {}

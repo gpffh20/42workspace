@@ -5,10 +5,6 @@
 #include <math.h>
 
 class Fixed {
-private:
-	int fixed_value_;
-	static const int fractional_bits_ = 8;
-
 public:
 	Fixed();
 	Fixed(int const value);
@@ -21,6 +17,9 @@ public:
 	void setRawBits(int const raw);
 	float toFloat(void) const;
 	int toInt(void) const;
+private:
+	int fixed_value_;
+	static const int fractional_bits_ = 8;
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);

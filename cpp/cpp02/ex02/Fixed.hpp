@@ -5,18 +5,13 @@
 #include <math.h>
 
 class Fixed {
-private:
-	int fixed_value_;
-	static const int fractional_bits_ = 8;
-
 public:
 	Fixed();
+	Fixed(int const value);
+	Fixed(float const value);
 	~Fixed();
 	Fixed(const Fixed &fixed);
 	Fixed &operator=(const Fixed &fixed);
-
-	Fixed(int const value);
-	Fixed(float const value);
 
 	bool operator>(const Fixed &fixed) const;
 	bool operator<(const Fixed &fixed) const;
@@ -44,9 +39,11 @@ public:
 	static const Fixed &min(const Fixed &a, const Fixed &b);
 	static Fixed &max(Fixed &a, Fixed &b);
 	static const Fixed &max(const Fixed &a, const Fixed &b);
+private:
+	int fixed_value_;
+	static const int fractional_bits_ = 8;
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
-
 
 #endif
