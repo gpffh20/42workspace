@@ -12,6 +12,8 @@ public:
 
 	void makeSound() const;
 	std::string getType() const;
+private:
+	std::string type_;
 };
 
 #endif
