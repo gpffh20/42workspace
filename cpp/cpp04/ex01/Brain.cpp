@@ -21,10 +21,10 @@ Brain &Brain::operator=(const Brain &brain) {
 	return *this;
 }
 
-std::string Brain::getIdea(int index) const {
+std::string Brain::getIdeas(int index) const {
 	return ideas_[index];
 }
 
-void Brain::setIdea(int index, std::string idea) {
+void Brain::setIdeas(int index, std::string idea) {
 	ideas_[index] = idea;
 }

@@ -11,8 +11,8 @@ public:
 	Brain(const Brain &brain);
 	Brain &operator=(const Brain &brain);
 
-	std::string getIdea(int index) const;
-	void setIdea(int index, std::string idea);
+	std::string getIdeas(int index) const;
+	void setIdeas(int index, std::string idea);
 private:
 	std::string ideas_[100];
 };
