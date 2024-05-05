@@ -11,8 +11,10 @@ public:
 	Dog(const Dog &dog);
 	Dog &operator=(const Dog &dog);
 
-	void makeSound() const;
-	std::string getType() const;
+	virtual void makeSound() const;
+	virtual std::string getType() const;
+	std::string getBrainIdeas(int index) const;
+	void setBrainIdeas(int index, std::string idea);
 private:
 	std::string type_;
 	Brain *brain_;

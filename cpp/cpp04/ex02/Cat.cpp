@@ -1,4 +1,4 @@
-#include "Cat.hpp"
+# include "Cat.hpp"
 
 Cat::Cat() : AAnimal() {
 	type_ = "Cat";
@@ -8,15 +8,17 @@ Cat::Cat() : AAnimal() {
 
 Cat::~Cat() {
 	std::cout << "Cat destructor called" << std::endl;
+	delete brain_;
 }
 
-Cat::Cat(const Cat &cat) : AAnimal(cat) {
-	*this = cat;
-}
+Cat::Cat(const Cat &cat) : AAnimal(cat), type_(cat.type_), brain_(new Brain(*cat.brain_)) {}
 
 Cat &Cat::operator=(const Cat &cat) {
-	type_ = cat.type_;
-	return *this;
+    if (this != &cat) {
+        type_ = cat.type_;
+        *brain_ = *cat.brain_;
+    }
+    return *this;
 }
 
 void Cat::makeSound() const {
@@ -25,4 +27,17 @@ void Cat::makeSound() const {
 
 std::string Cat::getType() const {
 	return type_;
+}
+
+std::string Cat::getBrainIdeas(int index) const {
+	if (brain_ != NULL && index >= 0 && index < 100) {
+		return brain_->getIdeas(0);
+	}
+	return "Invalid index\n";
+}
+
+void Cat::setBrainIdeas(int index, std::string idea) {
+	if (brain_ != NULL && index >= 0 && index < 100) {
+		brain_->setIdeas(index, idea);
+	}
 }
