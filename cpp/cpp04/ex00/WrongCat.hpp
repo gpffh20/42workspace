@@ -10,8 +10,8 @@ public:
 	WrongCat(const WrongCat &wrongCat);
 	WrongCat &operator=(const WrongCat &wrongCat);
 
-	void makeSound() const;
-	std::string getType() const;
+	virtual void makeSound() const;
+	virtual std::string getType() const;
 protected:
 	std::string type_;
 };

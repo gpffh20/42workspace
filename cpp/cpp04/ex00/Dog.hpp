@@ -10,8 +10,8 @@ public:
 	Dog(const Dog &dog);
 	Dog &operator=(const Dog &dog);
 
-	void makeSound() const;
-	std::string getType() const;
+	virtual void makeSound() const;
+	virtual std::string getType() const;
 private:
 	std::string type_;
 };

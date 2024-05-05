@@ -10,8 +10,8 @@ public:
 	Cat(const Cat &cat);
 	Cat &operator=(const Cat &cat);
 
-	void makeSound() const;
-	std::string getType() const;
+	virtual void makeSound() const;
+	virtual std::string getType() const;
 private:
 	std::string type_;
 };
