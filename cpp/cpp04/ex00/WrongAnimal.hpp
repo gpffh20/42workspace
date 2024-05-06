@@ -8,11 +8,10 @@ class WrongAnimal {
 public:
 	WrongAnimal();
 	virtual ~WrongAnimal();
-//	~WrongAnimal();
 	WrongAnimal(const WrongAnimal &wrongAnimal);
 	WrongAnimal &operator=(const WrongAnimal &wrongAnimal);
 
-	virtual void makeSound() const;
+	void makeSound() const;
 	virtual std::string getType() const;
 protected:
 	std::string type_;
