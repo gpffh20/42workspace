@@ -34,13 +34,27 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &materiaSource) {
 	return *this;
 }
 
+// void MateriaSource::learnMateria(AMateria *materia) {
+// 	for (int i = 0; i < 4; i++) {
+// 		if (!this->materias_[i]) {
+// 			this->materias_[i] = materia;
+// 			break;
+// 		}
+// 	}
+// }
+
 void MateriaSource::learnMateria(AMateria *materia) {
-	for (int i = 0; i < 4; i++) {
-		if (!this->materias_[i]) {
-			this->materias_[i] = materia;
-			break;
-		}
-	}
+    bool isFull = true;  // 배열이 가득 찼는지 확인하기 위한 변수
+    for (int i = 0; i < 4; i++) {
+        if (!this->materias_[i]) {
+            this->materias_[i] = materia;
+            isFull = false;  // 빈 자리를 찾았으므로 배열이 가득 차지 않았음
+            break;
+        }
+    }
+    if (isFull) {
+        delete materia;  // 배열이 가득 차 있으면 들어온 materia 객체를 삭제
+    }
 }
 
 AMateria *MateriaSource::createMateria(const std::string &type) {
