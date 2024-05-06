@@ -3,14 +3,30 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+void	asd(void){
+	system("leaks Materia");
+}
+
 int main() {
 	IMateriaSource *src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
 	ICharacter *me = new Character("me");
 
 	AMateria *tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
@@ -24,6 +40,6 @@ int main() {
 	delete bob;
 	delete me;
 	delete src;
-
+//	atexit(asd);
 	return 0;
 }
