@@ -24,9 +24,10 @@ public:
 		virtual const char *what() const throw();
 	};
 private:
+	Bureaucrat();
+
 	const std::string kName;
 	int grade_;
-	Bureaucrat();
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
