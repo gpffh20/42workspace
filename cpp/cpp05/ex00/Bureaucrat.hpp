@@ -4,9 +4,6 @@
 #include <iostream>
 
 class Bureaucrat {
-private:
-	const std::string name_;
-	int grade_;
 public:
 	Bureaucrat(std::string name, int grade);
 	~Bureaucrat();
@@ -26,6 +23,9 @@ public:
 	public:
 		virtual const char *what() const throw();
 	};
+private:
+	const std::string kName;
+	int grade_;
 };
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
 
