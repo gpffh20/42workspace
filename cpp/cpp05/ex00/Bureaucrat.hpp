@@ -1,16 +1,16 @@
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef BUERAUCRAT_HPP
+#define BUERAUCRAT_HPP
 
 #include <iostream>
 
 class Bureaucrat {
 public:
-	Bureaucrat(std::string name, int grade);
+	Bureaucrat(const std::string &name, int grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &bureaucrat);
 	Bureaucrat &operator=(const Bureaucrat &bureaucrat);
 
-	std::string getName() const;
+	const std::string &getName() const;
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
@@ -26,7 +26,9 @@ public:
 private:
 	const std::string kName;
 	int grade_;
+	Bureaucrat();
 };
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif
