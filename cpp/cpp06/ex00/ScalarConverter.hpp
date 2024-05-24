@@ -6,6 +6,8 @@
 #include <limits>
 #include <cctype>
 #include <iomanip>
+#include <cstring>
+#include <cmath>
 
 class ScalarConverter {
   public:

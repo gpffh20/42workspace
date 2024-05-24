@@ -7,7 +7,7 @@ void ScalarConverter::convert(const std::string &input) {
 
 	if (ptr && *ptr) {
 		// 남은 문자가 'f'이 아니고, 공백 또는 숫자 또는 부호 이외의 것인 경우
-		bool invalidSuffix = std::strcmp(ptr, "f") != 0;
+		bool invalidSuffix = strcmp(ptr, "f") != 0;
 		for (char *check = ptr; *check; ++check) {
 			if (!std::isspace(*check) && *check != 'f') {
 				invalidSuffix = true;
