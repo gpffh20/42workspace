@@ -6,10 +6,8 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &name)
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &robotomyRequestForm)
-	: AForm("RobotomyRequestForm", 72, 45), kName(robotomyRequestForm.kName) {
-	*this = robotomyRequestForm;
-}
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &form)
+	: AForm(form), kName(form.kName) {}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &robotomyRequestForm) {
 	if (this != &robotomyRequestForm) {

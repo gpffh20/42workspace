@@ -6,8 +6,8 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &name)
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &presidentialPardonForm)
-	: AForm(presidentialPardonForm) {}
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &form)
+	: AForm(form), kName(form.kName) {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &presidentialPardonForm) {
 	if (this != &presidentialPardonForm) {
