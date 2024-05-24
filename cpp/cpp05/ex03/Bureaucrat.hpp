@@ -31,6 +31,7 @@ private:
 	Bureaucrat();
 	Bureaucrat &operator=(const Bureaucrat &bureaucrat);
 
+
 	const std::string kName;
 	int grade_;
 };

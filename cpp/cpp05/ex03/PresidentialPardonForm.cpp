@@ -6,8 +6,8 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &name)
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &presidentialPardonForm)
-	: AForm(presidentialPardonForm) {}
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &form)
+	: AForm(form), kName(form.kName) {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &presidentialPardonForm) {
 	if (this != &presidentialPardonForm) {
@@ -17,11 +17,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
-	if (!getIsSigned()) {
-		throw AForm::FormNotSignedException();
-	}
-	if (executor.getGrade() > getExecGrade()) {
-		throw AForm::GradeTooLowException();
-	}
-	std::cout << getName() << " has been pardoned by Zafod Beeblebrox" << std::endl;
+	AForm::execute(executor);
+	std::cout << getName() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
