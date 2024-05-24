@@ -6,10 +6,6 @@
 #include <cstdlib>
 #include <ctime>
 
-//void check_leaks() {
-//	system("leaks identify");
-//}
-
 Base* generate() {
 	srand(time(NULL));
 	int random = rand() % 3;
@@ -58,6 +54,5 @@ int main() {
     std::cout << "Identified by reference: ";
     identify(*instance);
     delete instance;
-//	atexit(check_leaks);
 	return 0;
 }
