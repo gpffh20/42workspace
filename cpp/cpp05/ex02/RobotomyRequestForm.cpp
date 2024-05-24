@@ -17,12 +17,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
-	if (!getIsSigned()) {
-		throw AForm::FormNotSignedException();
-	}
-	if (executor.getGrade() > getExecGrade()) {
-		throw AForm::GradeTooLowException();
-	}
+	AForm::execute(executor);
 	std::cout << "*drilling noises* " << std::endl;
 	if (rand() % 2 == 0) {
 		std::cout << kName << " has been robotomized successfully" << std::endl;
