@@ -63,6 +63,7 @@ void Character::unequip(int idx) {
 	if (idx < 0 || idx >= INVENTORY_SIZE || inventory_[idx] == NULL) {
 		return;
 	}
+	floor_[idx] = inventory_[idx];
 	inventory_[idx] = NULL;
 }
 
