@@ -28,7 +28,7 @@ void BitcoinExchange::loadPrice(void) {
 	std::getline(csv, line);
 	while (std::getline(csv, line)) {
 		std::string date = line.substr(0, line.find(","));
-		double price = std::stod(line.substr(line.find(",") + 1));
+		double price = stringToDouble(line.substr(line.find(",") + 1));
 		prices_[date] = price;
 	}
 	csv.close();
@@ -48,7 +48,7 @@ void BitcoinExchange::loadTransactions(const std::string filename) {
 			std::cout << "Error: bad input => " << line << std::endl;
 			continue;
 		}
-		double value = std::stod(line.substr(line.find("|") + 2));
+		double value = stringToDouble(line.substr(line.find("|") + 2));
 		if (value < 0) {
 			std::cout << "Error: not a positive number." << std::endl;
 			continue;
