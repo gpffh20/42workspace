@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 #include <cctype>
-#include <exception>
+#include <stdexcept>
 
 class RPN {
 public:

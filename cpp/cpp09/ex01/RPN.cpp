@@ -55,15 +55,18 @@ bool RPN::processToken(const std::string &token, std::stack<double> &stack) {
 }
 
 bool RPN::isValidNumber(const std::string &token) {
-    char *end;
-    strtod(token.c_str(), &end);
-    return *end == '\0';
+    try {
+        stringToDouble(token);
+        return true;
+    } catch (const std::runtime_error& e) {
+        return false;
+    }
 }
 
 double RPN::stringToDouble(const std::string& str) {
-	std::istringstream iss(str);
-	double value;
- 	if (!(iss >> value)) {
+    std::istringstream iss(str);
+    double value;
+    if (!(iss >> value) || !iss.eof()) {
         throw std::runtime_error("Error: Conversion to double failed.");
     }
     return value;
