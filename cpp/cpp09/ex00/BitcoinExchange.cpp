@@ -9,15 +9,6 @@ void BitcoinExchange::exchange(const std::string filename) {
 	loadTransactions(filename);
 }
 
-double BitcoinExchange::stringToDouble(const std::string& str) {
-	std::istringstream iss(str);
-	double value;
- 	if (!(iss >> value)) {
-        throw std::runtime_error("Error: Conversion to double failed.");
-    }
-    return value;
-}
-
 void BitcoinExchange::loadPrice(void) {
 	std::ifstream csv("data.csv");
 	if (!csv.is_open()) {
@@ -57,12 +48,21 @@ void BitcoinExchange::loadTransactions(const std::string filename) {
 			std::cout << "Error: too large a number." << std::endl;
 			continue;
 		}
-		 std::map<std::string, double>::iterator iter = this->prices_.upper_bound(date);
-            if (iter == this->prices_.begin())
-                throw std::logic_error("Error: no data in database");
-            std::cout << date << " => " << value << " = " << value * (--iter)->second << std::endl;
+		std::map<std::string, double>::iterator iter = this->prices_.upper_bound(date);
+		if (iter == this->prices_.begin())
+			throw std::logic_error("Error: no data in database");
+		std::cout << date << " => " << value << " = " << value * (--iter)->second << std::endl;
 	}
 	input.close();
+}
+
+double BitcoinExchange::stringToDouble(const std::string& str) {
+	std::istringstream iss(str);
+	double value;
+ 	if (!(iss >> value)) {
+        throw std::runtime_error("Error: Conversion to double failed.");
+    }
+    return value;
 }
 
 bool BitcoinExchange::isLeapYear(int year) {
