@@ -9,6 +9,15 @@ void BitcoinExchange::exchange(const std::string filename) {
 	loadTransactions(filename);
 }
 
+double BitcoinExchange::stringToDouble(const std::string& str) {
+	std::istringstream iss(str);
+	double value;
+ 	if (!(iss >> value)) {
+        throw std::runtime_error("Error: Conversion to double failed.");
+    }
+    return value;
+}
+
 void BitcoinExchange::loadPrice(void) {
 	std::ifstream csv("data.csv");
 	if (!csv.is_open()) {
@@ -26,7 +35,7 @@ void BitcoinExchange::loadPrice(void) {
 }
 
 void BitcoinExchange::loadTransactions(const std::string filename) {
-	std::ifstream input(filename);
+	std::ifstream input(filename.c_str());
 	if (!input.is_open()) {
 		std::cerr << "Error: could not open input file." << std::endl;
 		return ;

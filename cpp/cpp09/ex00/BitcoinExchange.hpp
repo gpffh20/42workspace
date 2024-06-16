@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <map>
 #include <sstream>
+#include <string>
 #include <cstdlib>
 #include <cctype>
+#include <stdexcept>
+#include <map>
 
 class BitcoinExchange {
 public:
@@ -24,6 +25,7 @@ private:
 	BitcoinExchange(const BitcoinExchange &other);
 	BitcoinExchange &operator=(const BitcoinExchange &other);
 	
+	double stringToDouble(const std::string& str);
 	bool isValidDate(const std::string date);
 	bool isLeapYear(int year);
 };
