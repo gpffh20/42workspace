@@ -29,7 +29,8 @@ void PmergeMe::makeOriginContainer(int ac, char **av) {
     while (ss >> tmp) {
 		if (!isNumber(tmp))
 			throw std::logic_error("Error: You can only put positive numbers.");
-		int num = std::stoi(tmp);
+		int num;
+		ss >> num;
 		if (num < 0)
 			throw std::logic_error("Error: You can only put positive numbers.");
 		this->v_.push_back(num);
@@ -72,11 +73,11 @@ void PmergeMe::run() {
 	std::cout << std::endl; std::cout << std::endl;
 	
 	std::cout << "Time to process a range of " << this->v_.size() << " elements with std::[vector] : " << v_time << " us" << std::endl;
-	std::cout << "Is sorted: " << (std::is_sorted(this->v_.begin(), this->v_.end()) ? "True" : "False");
+//	std::cout << "Is sorted: " << (std::is_sorted(this->v_.begin(), this->v_.end()) ? "True" : "False");
 	std::cout << std::endl; std::cout << std::endl;
 	
 	std::cout << "Time to process a range of " << this->dq_.size() << " elements with std::[deque] : " << dq_time << " us" << std::endl;
-	std::cout << "Is sorted: " << (std::is_sorted(this->dq_.begin(), this->dq_.end()) ? "True" : "False") << std::endl;
+//	std::cout << "Is sorted: " << (std::is_sorted(this->dq_.begin(), this->dq_.end()) ? "True" : "False") << std::endl;
 }
 
 void PmergeMe::mergeInsertionSort(std::vector<int> &v) {
