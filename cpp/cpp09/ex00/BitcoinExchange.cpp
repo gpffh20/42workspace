@@ -12,8 +12,7 @@ void BitcoinExchange::exchange(const std::string& filename) {
 void BitcoinExchange::loadPrice(void) {
 	std::ifstream csv("data.csv");
 	if (!csv.is_open()) {
-		std::cerr << "Error: could not open data file." << std::endl;
-		return ;
+		throw std::logic_error("Error: could not open data file.");
 	}
 	std::string line;
 	std::getline(csv, line);
@@ -31,29 +30,30 @@ void BitcoinExchange::loadPrice(void) {
 void BitcoinExchange::loadTransactions(const std::string& filename) {
 	std::ifstream input(filename.c_str());
 	if (!input.is_open()) {
-		std::cerr << "Error: could not open input file." << std::endl;
-		return ;
+		throw std::logic_error("Error: could not open input file.");
 	}
 	std::string line;
 	std::getline(input, line);
 	while (std::getline(input, line)) {
 		std::string date = line.substr(0, line.find(" | "));
 		if (line.length() <= 13 || !isValidDate(date)) {
-			std::cout << "Error: bad input => " << line << std::endl;
+			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
 		double value = stringToDouble(line.substr(line.find("|") + 2));
 		if (value < 0) {
-			std::cout << "Error: not a positive number." << std::endl;
+			std::cerr << "Error: not a positive number." << std::endl;
 			continue;
 		}
 		if (value > 1000) {
-			std::cout << "Error: too large a number." << std::endl;
+			std::cerr << "Error: too large a number." << std::endl;
 			continue;
 		}
 		std::map<std::string, double>::iterator iter = this->prices_.upper_bound(date);
-		if (iter == this->prices_.begin())
-			throw std::logic_error("Error: no data in database");
+		if (iter == this->prices_.begin()) {
+			std::cerr << "Error: no data in database" << std::endl;
+			continue;
+		}
 		std::cout << date << " => " << value << " = " << value * (--iter)->second << std::endl;
 	}
 	input.close();
