@@ -28,14 +28,14 @@ void PmergeMe::makeOriginContainer(int ac, char **av) {
     std::string tmp;
     while (ss >> tmp) {
 		if (!isNumber(tmp))
-			throw std::logic_error("Error: You can only put positive numbers.");
+			throw std::logic_error("Error: You can only put positive Integer.");
 		std::stringstream num_ss(tmp);
-		int num;
+		long long num;
 		num_ss >> num;
-		if (num < 0)
-			throw std::logic_error("Error: You can only put positive numbers.");
-		this->v_.push_back(num);
-		this->dq_.push_back(num);
+		if (num < 0 || num > INT_MAX)
+			throw std::logic_error("Error: You can only put positive Integer.");
+		this->v_.push_back(static_cast<int>(num));
+		this->dq_.push_back(static_cast<int>(num));
 	}
 }
 
