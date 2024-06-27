@@ -15,7 +15,7 @@ public:
 	BitcoinExchange();
 	~BitcoinExchange();
 
-	void exchange(const std::string filename);
+	void exchange(const std::string& filename);
 	
 
 private:
@@ -25,7 +25,7 @@ private:
 	BitcoinExchange &operator=(const BitcoinExchange &other);
 	
 	void loadPrice(void);
-	void loadTransactions(const std::string filename);
+	void loadTransactions(const std::string& filename);
 	
 	double stringToDouble(const std::string& str);
 	bool isLeapYear(int year);

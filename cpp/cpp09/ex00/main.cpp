@@ -5,9 +5,14 @@ int main(int ac, char **av) {
 		std::cerr << "Error: Requires one argument." << std::endl;
 		return 1;
 	}
+	
+	try {
+		BitcoinExchange btc;
+		btc.exchange(av[1]);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	BitcoinExchange btc;
-	btc.exchange(av[1]);
 	
 	return 0;
 }
