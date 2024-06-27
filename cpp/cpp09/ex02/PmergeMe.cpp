@@ -112,6 +112,7 @@ void PmergeMe::mergeInsertionSort(std::vector<int> &v) {
 		for (size_t j = 0; j < pairs.size(); ++j)
 			if (main_chain[i] == pairs[j].first) {
 				pending[i] = pairs[j].second;
+				pairs[j].first = -1;
 				break;
 			}
 	}
@@ -160,6 +161,7 @@ void PmergeMe::mergeInsertionSort(std::deque<int> &dq) {
 		for (size_t j = 0; j < pairs.size(); ++j)
 			if (main_chain[i] == pairs[j].first) {
 				pending[i] = pairs[j].second;
+				pairs[j].first = -1;
 				break;
 			}
 	}
