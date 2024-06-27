@@ -4,21 +4,19 @@ RPN::RPN() {}
 
 RPN::~RPN() {}
 
-void RPN::calculate(const std::string expression) {
+void RPN::calculate(const std::string& expression) {
     std::istringstream iss(expression);
     std::stack<double> stack;
     std::string token;
 
     while (iss >> token) {
         if (!processToken(token, stack)) {
-            std::cerr << "Error" << std::endl;
-            return ;
+			throw std::runtime_error("Error");
         }
     }
 
     if (stack.size() != 1) {
-        std::cerr << "Error" << std::endl;
-        return ;
+		throw std::runtime_error("Error");
     }
 
     std::cout << stack.top() << std::endl;
@@ -39,35 +37,22 @@ bool RPN::processToken(const std::string &token, std::stack<double> &stack) {
             case '*': stack.push(b * a); break;
             case '/':
                 if (a == 0) {
-                    std::cerr << "Error: Division by zero." << std::endl;
-                    return 1;
+					throw std::runtime_error("Error: Division by zero.");
                 }
                 stack.push(b / a);
                 break;
         }
     } else {
-        if (!isValidNumber(token)) {
-            return false;
-        }
-        stack.push(stringToDouble(token));
+        stack.push(stringToInt(token));
     }
     return true;
 }
 
-bool RPN::isValidNumber(const std::string &token) {
-    try {
-        stringToDouble(token);
-        return true;
-    } catch (const std::runtime_error& e) {
-        return false;
-    }
-}
-
-double RPN::stringToDouble(const std::string& str) {
+double RPN::stringToInt(const std::string& str) {
     std::istringstream iss(str);
-    double value;
+    int value;
     if (!(iss >> value) || !iss.eof()) {
-        throw std::runtime_error("Error: Conversion to double failed.");
+        throw std::runtime_error("Error");
     }
     return value;
 }

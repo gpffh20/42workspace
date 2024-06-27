@@ -13,7 +13,7 @@ public:
 	RPN();
 	~RPN();
 
-	void calculate(const std::string expression);
+	void calculate(const std::string& expression);
 	
 private:
 	std::stack<double> stack_;
@@ -22,8 +22,7 @@ private:
 	RPN& operator=(const RPN& origin);
 	
 	bool processToken(const std::string &token, std::stack<double> &stack);
-	bool isValidNumber(const std::string &token);
-	double stringToDouble(const std::string& str);
+	double stringToInt(const std::string& str);
 };
 
 #endif
